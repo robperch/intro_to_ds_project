@@ -142,79 +142,6 @@ def vars_classif_by_type():
 
 
 
-## Process coordinates to clean dataframe.
-def geo_transformation(data, variable_latlong, variable_drop):
-    """
-    Get the Latitude and Longitude columns from a specific column, then transform both columns to floats and finally remove the original column.
-        args:
-            data (geodataframe): Original data with Geo Point column
-            variable (string): Name of column with longitude and latitude data
-            variable_drop (string): name of columns that will be dropped.
-        returns:
-            Geodataframe with columns longitude and latitude
-    """
-
-    data[['latitud','longitud']] = data.loc[:, variable_latlong].str.split(",", expand = True)
-    data[['latitud','longitud']] = data[['latitud','longitud']].astype('float')
-    data = data.drop(columns = [variable_latlong, variable_drop])
-
-    return data
-
-
-
-## Function to print the number of decimals that each of the geo columns have
-def geo_vars_precision(data, geo_vars):
-    """
-    Function to print the number of decimals that each of the geo columns have
-        args:
-            data (dataframe): dataset that contains the geospatial columns (e.g. "latitud" & "longitud")
-            geo_vars (list - strings): list with the names of the geospatial columns (e.g. ["latitud", "longitud"])
-        returns:
-            -
-    """
-
-    ## List where the resulting dataframes will be stored for join
-    list_dfs_res = []
-
-    ## Looop to create precision dataframes and append to list
-    for col in geo_vars:
-        df_geo_decs = data[col].astype("str").str.split(pat=".", expand=True).loc[:, 1].str.len().value_counts().to_frame()
-        df_geo_decs.columns = ["No. of entries - " + col]
-        list_dfs_res.append(df_geo_decs)
-
-    ## Joining precision dataframes and printing result
-    dfres = list_dfs_res[0].join(list_dfs_res[1])
-    dfres.index.name = "No. of decimals"
-    print(display(dfres))
-
-    return
-
-
-
-## Transform columns' names to standard format
-def clean_col_names(dataframe):
-    """
-    Transform columns' names to standard format (lowercase, no spaces, no points)
-        args:
-            dataframe (dataframe): df whose columns will be formatted.
-        returns:
-            dataframe (dataframe): df with columns cleaned.
-    """
-
-    ## Definition of cleaning funcitons that will be applied to the columns' names
-    fun1 = lambda x: x.lower() ## convert to lowercase
-    fun2 = lambda x: re.sub("( |¡|!|¿|\?|\.|,|;|:)", "_", x) ## eliminate spaces and punctuation signs for underscore
-    fun3 = lambda x: unicodedata.normalize("NFD", x).encode("ascii", "ignore").decode("utf-8") ## substitute accents for normal letters
-    funcs = [fun1, fun2, fun3]
-
-    ## Applying the defined functions to the columns' names
-    for fun in funcs:
-        dataframe.columns = [fun(col) for col in dataframe.columns]
-
-    return dataframe
-
-
-
 ## Data profiling for numeric variables
 def data_profiling_numeric(data, num_vars):
     """
@@ -302,6 +229,163 @@ def data_profiling_numeric(data, num_vars):
 
 
 
+## Create the data profiling of categorical variables.
+def data_profiling_categ(data, cat_vars):
+    """
+    Create the data profiling of categorical variables.
+        args:
+            data (Data Frame): data set into Dataframe.
+            cat_vars (list): list with categorical variables names.
+        returns:
+           display(): display the Dataframes with info.
+    """
+
+    print("*************************************")
+    print("** Conteo y proporción de entradas **")
+    print("*************************************")
+
+    df_catVar_list = []
+
+    for val in cat_vars:
+
+        print("Variable categorica -> {}".format(val))
+
+        catego  = data[val].value_counts()
+        totalOb = len(data[val])
+        can_Cat = len(catego)
+        moda    = data[val].mode().values[0]
+        valFal  = data[val].isnull().sum()
+        top1    = [catego[0:1].index[0],catego[0:1].values[0]] if can_Cat >= 1 else 0
+        top2    = [catego[1:2].index[0],catego[1:2].values[0]] if can_Cat >= 2 else 0
+        top3    = [catego[2:3].index[0],catego[2:3].values[0]] if can_Cat >= 3 else 0
+
+        elemVarCat = {
+            "Info":val,
+            "Num_Registros":[totalOb],
+            "Num_de_categorias":[can_Cat],
+            "Moda":[moda],
+            "Valores_faltantes":[valFal],
+            "Top1":[top1],
+            "Top2":[top2],
+            "Top3":[top3]
+            }
+
+        #primerdataframe
+        df_catVar_list.append(pd.DataFrame(elemVarCat).set_index("Info").T)
+        # print(display(pd.DataFrame(elemVarCat).set_index("Info").T))
+
+        # print("Valores de las categorias y sus proporciones")
+        #segundodataframe donde se muestra los valores de las categorias su cantidad y su proporción.
+        pro = proporcion(catego, totalOb)
+        dfProp = pd.DataFrame(pro, columns=['Categoría', 'Observaciones', 'Proporción']).set_index("Categoría")
+        #mostrar primer data frame
+        print(display(dfProp))
+        print("\n\n".format())
+
+
+    print("***************************************")
+    print("** Impresión de resumen de variables **")
+    print("***************************************")
+
+    ## Print summary dataframe with results from categoric variables
+    print(display(pd.concat(df_catVar_list, axis=1)))
+
+
+    return
+
+
+
+## Create the data profiling of categorical variables.
+def data_profiling_date(data, cat_vars):
+    """
+    Create the data profiling of categorical variables.
+        args:
+            data (Data Frame): data set into Dataframe.
+            cat_vars (list): list with categorical variables names.
+        returns:
+           display(): display the Dataframes with info.
+    """
+
+    #
+
+
+    return
+
+
+
+## Process coordinates to clean dataframe.
+def geo_transformation(data, variable_latlong, variable_drop):
+    """
+    Get the Latitude and Longitude columns from a specific column, then transform both columns to floats and finally remove the original column.
+        args:
+            data (geodataframe): Original data with Geo Point column
+            variable (string): Name of column with longitude and latitude data
+            variable_drop (string): name of columns that will be dropped.
+        returns:
+            Geodataframe with columns longitude and latitude
+    """
+
+    data[['latitud','longitud']] = data.loc[:, variable_latlong].str.split(",", expand = True)
+    data[['latitud','longitud']] = data[['latitud','longitud']].astype('float')
+    data = data.drop(columns = [variable_latlong, variable_drop])
+
+    return data
+
+
+
+## Function to print the number of decimals that each of the geo columns have
+def geo_vars_precision(data, geo_vars):
+    """
+    Function to print the number of decimals that each of the geo columns have
+        args:
+            data (dataframe): dataset that contains the geospatial columns (e.g. "latitud" & "longitud")
+            geo_vars (list - strings): list with the names of the geospatial columns (e.g. ["latitud", "longitud"])
+        returns:
+            -
+    """
+
+    ## List where the resulting dataframes will be stored for join
+    list_dfs_res = []
+
+    ## Looop to create precision dataframes and append to list
+    for col in geo_vars:
+        df_geo_decs = data[col].astype("str").str.split(pat=".", expand=True).loc[:, 1].str.len().value_counts().to_frame()
+        df_geo_decs.columns = ["No. of entries - " + col]
+        list_dfs_res.append(df_geo_decs)
+
+    ## Joining precision dataframes and printing result
+    dfres = list_dfs_res[0].join(list_dfs_res[1])
+    dfres.index.name = "No. of decimals"
+    print(display(dfres))
+
+    return
+
+
+
+## Transform columns' names to standard format
+def clean_col_names(dataframe):
+    """
+    Transform columns' names to standard format (lowercase, no spaces, no points)
+        args:
+            dataframe (dataframe): df whose columns will be formatted.
+        returns:
+            dataframe (dataframe): df with columns cleaned.
+    """
+
+    ## Definition of cleaning funcitons that will be applied to the columns' names
+    fun1 = lambda x: x.lower() ## convert to lowercase
+    fun2 = lambda x: re.sub("( |¡|!|¿|\?|\.|,|;|:)", "_", x) ## eliminate spaces and punctuation signs for underscore
+    fun3 = lambda x: unicodedata.normalize("NFD", x).encode("ascii", "ignore").decode("utf-8") ## substitute accents for normal letters
+    funcs = [fun1, fun2, fun3]
+
+    ## Applying the defined functions to the columns' names
+    for fun in funcs:
+        dataframe.columns = [fun(col) for col in dataframe.columns]
+
+    return dataframe
+
+
+
 ## Converting observatios for selected columns into lowercase.
 def convert_lower(data, vars_lower):
     """
@@ -355,59 +439,6 @@ def proporcion(listaVar,n):
     for lis in listaVar.iteritems():
         newList.append([lis[0],lis[1],"{}%".format(round(100*(lis[1]/n),1))])
     return newList
-
-
-
-## Create the data profiling of categorical variables.
-def data_profiling_categ(data, cat_vars):
-    """
-    Create the data profiling of categorical variables.
-        args:
-            data (Data Frame): data set into Dataframe.
-            cat_vars (list): list with categorical variables names.
-        returns:
-           display(): display the Dataframes with info.
-    """
-
-    for val in cat_vars:
-        print("*********************************")
-        print("Variable Categorica {}".format(val))
-        print("*********************************")
-
-        catego  = data[val].value_counts()
-        totalOb = len(data[val])
-        can_Cat = len(catego)
-        moda    = data[val].mode().values[0]
-        valFal  = data[val].isnull().sum()
-        top1    = [catego[0:1].index[0],catego[0:1].values[0]] if can_Cat >= 1 else 0
-        top2    = [catego[1:2].index[0],catego[1:2].values[0]] if can_Cat >= 2 else 0
-        top3    = [catego[2:3].index[0],catego[2:3].values[0]] if can_Cat >= 3 else 0
-
-        elemVarCat = {
-            "Info":val,
-            "Num_Registros":[totalOb],
-            "Num_de_categorias":[can_Cat],
-            "Moda":[moda],
-            "Valores_faltantes":[valFal],
-            "Top1":[top1],
-            "Top2":[top2],
-            "Top3":[top3]
-            }
-
-        #primerdataframe
-        df_catVar = pd.DataFrame(elemVarCat).set_index("Info").T
-
-        #mostrar primer data frame
-        print(display(df_catVar))
-
-        print("Valores de las categorias y sus proporciones")
-        #segundodataframe donde se muestra los valores de las categorias su cantidad y su proporción.
-        pro = proporcion(catego,totalOb)
-        dfProp = pd.DataFrame(pro,columns=['Categoría', 'Observaciones', 'proporción']).set_index("Categoría")
-        #mostrar primer data frame
-        print(display(dfProp))
-        print("\n\n".format())
-    return
 
 
 
