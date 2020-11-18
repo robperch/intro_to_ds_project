@@ -313,11 +313,25 @@ def data_profiling_date(data, date_vars):
     dfx = data.loc[:, date_vars]
 
     #### Filtering only hour in time data
-    time_cols = ["hora_creacion", "hora_cierre"]
+    time_cols = ["hora_creacion"]
     for tc in time_cols:
         dfx[tc] = dfx[tc].apply(lambda x: x[:2] if x[2]==":" else "xx")
 
-    #### Extracting the day number from the date string
+    #### Extracting date data from date column
+    dfx["fecha_creacion_sep"] = dfx["fecha_creacion"].str.split(pat="/")
+
+    date_desc = ["dia", "mes", "año"]
+    for dd in date_desc:
+        dfx[dd + "_creacion"] = dfx["fecha_creacion_sep"].apply(lambda x: x[date_desc.index(dd)])
+
+    ###### Correcting years with length two
+    dfx["año_creacion"] = dfx["año_creacion"].apply(lambda x: "20" + x if len(x)==2 else x)
+
+    ###### Deleting acillary column
+    dfx.drop("fecha_creacion_sep", axis=1, inplace=True)
+
+
+    #### Deleting columns related with
 
 
     return dfx
