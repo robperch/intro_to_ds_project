@@ -225,6 +225,8 @@ def data_profiling_numeric(data, num_vars):
     print("-"*75)
     print("-"*75)
     print()
+
+
     return
 
 
@@ -331,8 +333,73 @@ def data_profiling_date(data, date_vars):
     dfx.drop("fecha_creacion_sep", axis=1, inplace=True)
 
 
-    #### Deleting columns related with
+    ## Conducting data profiling for date features - general description
+    print("*********************************")
+    print("** General description of data **")
+    print("*********************************")
 
+    #### List where the resulting dataframes will be stored for further concatenation
+    res_dfs = []
+
+    #### Type of numeric variables
+    dfx_dtype = dfx.dtypes.to_frame().T
+    dfx_dtype.index = ["dtype"]
+    res_dfs.append(dfx_dtype)
+
+    #### Counting missing values
+    dfx_notnull = dfx.count().to_frame().T
+    dfx_notnull.index = ["notnull_v"]
+    res_dfs.append(dfx_notnull)
+
+    #### Counting missing values
+    dfx_missing = dfx.isnull().sum().to_frame().T
+    dfx_missing.index = ["missing_v"]
+    res_dfs.append(dfx_missing)
+
+    #### Counting unique variables
+    dfx_uniqvars = dfx.nunique().to_frame().T
+    dfx_uniqvars.index = ["count_unique"]
+    res_dfs.append(dfx_uniqvars)
+
+    #### Concatenating resulting dataframes into one final result
+    print(display(pd.concat(res_dfs, axis=0)))
+    print("-"*75)
+    print("-"*75)
+    print("\n\n".format())
+
+
+    ## Conducting data profiling for date features - general description
+    print("****************************")
+    print("** Top repeated variables **")
+    print("****************************")
+
+    #### Initial variables
+    tops = 5 #### Number of tops that will be selected
+    i = 0 #### Counter to start joining dataframes
+
+    #### Loop through all variables that will be processed
+    for col_sel in dfx:
+
+        #### Creating dataframe with top entries and count
+        dfxx = dfx[col_sel].value_counts().iloc[:tops].to_frame()
+        dfxx.reset_index(drop=False, inplace=True)
+        dfxx["part"] = round(dfxx[col_sel]/dfx[col_sel].count()*100, 2)
+        dfxx.columns = pd.MultiIndex.from_tuples([(col_sel, tag) for tag in ["value", "count", "part_notnull"]])
+
+        #### Joining all the variables in one final dataframe
+        if i == 0:
+            df_tops = dfxx
+            i += 1
+        else:
+            df_tops = df_tops.join(dfxx)
+
+    ## Fill empty spaces of resulting dataframe and renaming index entries
+    df_tops.fillna("-", inplace=True)
+    df_tops.index = ["top_" + str(i) for i in range(1, df_tops.shape[0] + 1)]
+    print(display(df_tops))
+    print("-"*75)
+    print("-"*75)
+    print()
 
     return dfx
 
