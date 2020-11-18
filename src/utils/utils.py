@@ -297,7 +297,7 @@ def data_profiling_categ(data, cat_vars):
 
 
 
-## Create the data profiling of categorical variables.
+## Create the data profiling of date variables.
 def data_profiling_date(data, date_vars):
     """
     Create the data profiling of categorical variables.
@@ -368,7 +368,7 @@ def data_profiling_date(data, date_vars):
     print("\n\n".format())
 
 
-    ## Conducting data profiling for date features - general description
+    ## Conducting data profiling for date features - top repeated features
     print("****************************")
     print("** Top repeated variables **")
     print("****************************")
@@ -402,6 +402,93 @@ def data_profiling_date(data, date_vars):
     print()
 
     return dfx
+
+
+
+## Create the data profiling of location/coordinate variables.
+def data_profiling_loc(data, loc_vars):
+    """
+    Create the data profiling of categorical variables.
+        args:
+            data (Data Frame): project data set.
+            date_vars (list): list with date variables names.
+        returns:
+            -
+    """
+
+
+    ## Craeting new dataframe with date columns and adjusting contents for profiling
+
+    #### Working dataframe
+    dfx = data.loc[:, loc_vars]
+
+
+    ## Conducting data profiling for location features - general description
+    print("*********************************")
+    print("** General description of data **")
+    print("*********************************")
+
+    #### List where the resulting dataframes will be stored for further concatenation
+    res_dfs = []
+
+    #### Type of numeric variables
+    dfx_dtype = dfx.dtypes.to_frame().T
+    dfx_dtype.index = ["dtype"]
+    res_dfs.append(dfx_dtype)
+
+    #### Counting missing values
+    dfx_notnull = dfx.count().to_frame().T
+    dfx_notnull.index = ["notnull_v"]
+    res_dfs.append(dfx_notnull)
+
+    #### Counting missing values
+    dfx_missing = dfx.isnull().sum().to_frame().T
+    dfx_missing.index = ["missing_v"]
+    res_dfs.append(dfx_missing)
+
+    #### Concatenating resulting dataframes into one final result
+    print(display(pd.concat(res_dfs, axis=0)))
+
+
+    ## Conducting data profiling for location features - coordinates precision
+    print("***************************")
+    print("** Coordinates precision **")
+    print("***************************")
+
+    #### Initial variables
+    tops = 5 #### Number of tops that will be selected
+    i = 0 #### Counter to start joining dataframes
+
+    #### Creating new columns with the number of decimals in each coordinate
+    coord_cols = ["latitud", "longitud"]
+
+    for cc in coord_cols:
+        dfx[cc + "_nd"] = dfx[cc].astype("str").str.split(pat=".")
+        dfx[cc + "_nd"] = dfx[cc + "_nd"].apply(lambda x: len(x[1]) if len(x)==2 else None)
+
+        #### Creating dataframe with top entries and count
+        dfxx = dfx[cc + "_nd"].value_counts().iloc[:tops].to_frame()
+        dfxx.reset_index(drop=False, inplace=True)
+        dfxx["part"] = round(dfxx[cc + "_nd"]/dfx[cc + "_nd"].count()*100, 2)
+        dfxx.columns = pd.MultiIndex.from_tuples([(cc + "_nd", tag) for tag in ["value", "count", "part_notnull"]])
+
+        #### Joining all the variables in one final dataframe
+        if i == 0:
+            df_tops = dfxx
+            i += 1
+        else:
+            df_tops = df_tops.join(dfxx)
+
+    ## Fill empty spaces of resulting dataframe and renaming index entries
+    df_tops.fillna("-", inplace=True)
+    df_tops.index = ["top_" + str(i) for i in range(1, df_tops.shape[0] + 1)]
+    print(display(df_tops))
+    print("-"*75)
+    print("-"*75)
+    print()
+
+
+    return
 
 
 
