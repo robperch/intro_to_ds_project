@@ -25,7 +25,7 @@ data_dict = {
     },
     "dia_semana": {
         "relevant": True,
-        "data_type": "categoric"
+        "data_type": "date_and_time"
     },
     "codigo_cierre": {
         "relevant": True,

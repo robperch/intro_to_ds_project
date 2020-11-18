@@ -296,20 +296,31 @@ def data_profiling_categ(data, cat_vars):
 
 
 ## Create the data profiling of categorical variables.
-def data_profiling_date(data, cat_vars):
+def data_profiling_date(data, date_vars):
     """
     Create the data profiling of categorical variables.
         args:
-            data (Data Frame): data set into Dataframe.
-            cat_vars (list): list with categorical variables names.
+            data (Data Frame): project data set.
+            date_vars (list): list with date variables names.
         returns:
-           display(): display the Dataframes with info.
+            -
     """
 
-    #
+
+    ## Craeting new dataframe with date columns and adjusting contents for profiling
+
+    #### Working dataframe
+    dfx = data.loc[:, date_vars]
+
+    #### Filtering only hour in time data
+    time_cols = ["hora_creacion", "hora_cierre"]
+    for tc in time_cols:
+        dfx[tc] = dfx[tc].apply(lambda x: x[:2] if x[2]==":" else "xx")
+
+    #### Extracting the day number from the date string
 
 
-    return
+    return dfx
 
 
 
