@@ -50,12 +50,16 @@ def ingest_file(filename):
 
 
 
-##
+## Saving dataframe as pickle object in specified location.
 def save_ingestion(df, path):
     """
+    Saving dataframe as pickle object in specified location.
+        args:
+            df (dataframe): df that will be converted and saved as pickle.
+            path (string): location where the pickle will be stored.
     """
 
-    ##
+    ## Converting and saving dataframe.
     pickle.dump(df, open(path + "ingest_df.pkl", "wb"))
 
 
