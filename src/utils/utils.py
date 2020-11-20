@@ -50,6 +50,34 @@ def json_dump_dict(dictionary):
 
 
 
+## Loading pickle.
+def load_df(path):
+    """
+    Loading pickle.
+        args:
+            path (string): specific location of pickle.
+        returns:
+            -
+    """
+
+    pass
+
+
+
+## Xxx.
+def save_df(df, path):
+    """
+    Xxx.
+        args:
+            Xxx.
+        returns:
+            -
+    """
+
+    pass
+
+
+
 
 
 "------------------------------------------------------------------------------"
