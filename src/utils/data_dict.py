@@ -32,19 +32,19 @@ data_dict = {
         "data_type": "categoric"
     },
     "fecha_cierre": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "date_and_time"
     },
     "año_cierre": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "date_and_time"
     },
     "mes_cierre": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "date_and_time"
     },
     "hora_cierre": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "date_and_time"
     },
     "delegacion_inicio": {
@@ -72,15 +72,15 @@ data_dict = {
         "data_type": "categoric"
     },
     "delegacion_cierre": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "categoric"
     },
     "geopoint": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "coordenate"
     },
     "mes": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "date_and_time"
     }
 }
