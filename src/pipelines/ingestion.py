@@ -19,8 +19,14 @@ import pickle
 
 
 ## Ancillary modules
+
 from src.utils.data_dict import (
     data_dict
+)
+
+from src.utils.params import(
+    data_path,
+    ingestion_save
 )
 
 
@@ -127,10 +133,10 @@ def ingest(path):
     """
 
     ## Executing ingestion functions
-    df = ingest_file(filename)
+    df = ingest_file(data_path)
     drop_cols(df)
     generate_label(df)
-    save_ingestion(df, path)
+    save_ingestion(df, ingestion_save)
 
 
 
