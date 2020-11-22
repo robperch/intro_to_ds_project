@@ -24,11 +24,6 @@ from src.utils.data_dict import (
     data_dict
 )
 
-from src.utils.params import(
-    data_path,
-    ingestion_save
-)
-
 
 
 
@@ -124,20 +119,21 @@ def generate_label(df):
 
 
 ## Function desigend to execute all ingestion functions.
-def ingest(path):
+def ingest(path, ingestion_save):
     """
     Function desigend to execute all ingestion functions.
         args:
-            path (string): Xxx
-        ret
+            path (string): path where the project's data is stored.
+            ingestion_save (string): location where the resulting pickle object will be stored.
+        returns:
+            -
     """
 
     ## Executing ingestion functions
-    df = ingest_file(data_path)
+    df = ingest_file(path)
     drop_cols(df)
     generate_label(df)
     save_ingestion(df, ingestion_save)
-
 
 
 
@@ -147,3 +143,4 @@ def ingest(path):
 #################
 ## END OF FILE ##
 #################
+"------------------------------------------------------------------------------"
