@@ -19,6 +19,7 @@ import pickle
 
 
 ## Ancillary modules
+
 from src.utils.data_dict import (
     data_dict
 )
@@ -106,3 +107,40 @@ def generate_label(df):
                                             ("(N) " in x)
                                             else 0
                                            )
+
+
+
+
+
+"------------------------------------------------------------------------------"
+###############################
+## Ingestion master function ##
+###############################
+
+
+## Function desigend to execute all ingestion functions.
+def ingest(path, ingestion_save):
+    """
+    Function desigend to execute all ingestion functions.
+        args:
+            path (string): path where the project's data is stored.
+            ingestion_save (string): location where the resulting pickle object will be stored.
+        returns:
+            -
+    """
+
+    ## Executing ingestion functions
+    df = ingest_file(path)
+    drop_cols(df)
+    generate_label(df)
+    save_ingestion(df, ingestion_save)
+
+
+
+
+
+"------------------------------------------------------------------------------"
+#################
+## END OF FILE ##
+#################
+"------------------------------------------------------------------------------"
