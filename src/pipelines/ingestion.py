@@ -106,3 +106,38 @@ def generate_label(df):
                                             ("(N) " in x)
                                             else 0
                                            )
+
+
+
+
+
+"------------------------------------------------------------------------------"
+###############################
+## Ingestion master function ##
+###############################
+
+
+## Function desigend to execute all ingestion functions.
+def ingest(path):
+    """
+    Function desigend to execute all ingestion functions.
+        args:
+            path (string): Xxx
+        ret
+    """
+
+    ## Executing ingestion functions
+    df = ingest_file(filename)
+    drop_cols(df)
+    generate_label(df)
+    save_ingestion(df, path)
+
+
+
+
+
+
+"------------------------------------------------------------------------------"
+#################
+## END OF FILE ##
+#################
