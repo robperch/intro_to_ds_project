@@ -16,17 +16,14 @@ import pickle
 
 import sys
 
+import pandas as pd
+
 
 ## Ancillary modules
 
 from src.utils.utils import (
     load_df,
     save_df
-)
-
-from src.utils.params import (
-    ingestion_pickle_loc,
-    transformation_pickle_loc
 )
 
 
@@ -71,24 +68,6 @@ def save_transformation(df, path):
 
 
 
-def newlabel_tipo_entrada(data):
-    """
-     Converting observatios for selected columns into new categoric label.
-        args:
-            col(string):name of column that will be changed.
-            data (dataframe): data that is being analyzed.
-        returns:
-            data(dataframe): dataframe that is being analyzed with the observations (of the selected columns) in lowercase.
-    """
-    col="tipo_entrada"
-    data[col] = data[col].replace(['LLAMADA DEL 911'],'LLAMADA_911_066')
-    data[col] = data[col].replace(['LLAMADA DEL 066'],'LLAMADA_911_066')
-    return data
-
-
-
-
-
 
 "------------------------------------------------------------------------------"
 ##############################
@@ -106,24 +85,30 @@ def date_transformation(col, df):
         returns:
             df (dataframe): resulting df with cleaned date column.
     """
-    fechas_inicio = data[col].str.split("/", n=2,expand=True)
-    data['dia_inicio'] = fechas_inicio[0]
-    data['mes_inicio'] = fechas_inicio[1]
-    data['anio_inicio'] = fechas_inicio[2]
-    
-    data['anio_inicio'] = data['anio_inicio'].replace(['19'],'2019')
-    data['anio_inicio'] = data['anio_inicio'].replace(['18'],'2018')
-    return data
+    fechas_inicio = df[col].str.split("/", n=2,expand=True)
+    df['dia_inicio'] = fechas_inicio[0]
+    df['mes_inicio'] = fechas_inicio[1]
+    df['anio_inicio'] = fechas_inicio[2]
+
+    df['anio_inicio'] = df['anio_inicio'].replace(['19'],'2019')
+    df['anio_inicio'] = df['anio_inicio'].replace(['18'],'2018')
+
+    return df
+
 
 
 ##
-def hour_transformation(col,data):
-    data[col] = pd.to_timedelta(data[col],errors='ignore')
-    hora_inicio = data[col].str.split(":", n=2,expand=True)
-    data['hora_inicio'] = hora_inicio[0]
-    data['min_inicio'] = hora_inicio[1]
-    data['hora_inicio'] = round(data['hora_inicio'].apply(lambda x: float(x)),0)
-    return data
+def hour_transformation(col, df):
+    """
+    """
+
+    df[col] = pd.to_timedelta(df[col],errors='ignore')
+    hora_inicio = df[col].str.split(":", n=2,expand=True)
+    df['hora_inicio'] = hora_inicio[0]
+    df['min_inicio'] = hora_inicio[1]
+    df['hora_inicio'] = round(df['hora_inicio'].apply(lambda x: float(x)),0)
+
+    return df
 
 
 
@@ -153,8 +138,9 @@ def categoric_trasformation(col, df):
             df (dataframe): resulting df with cleaned categoric column.
     """
 
-    df = newlabel_tipo_entrada(data)
-    
+    df[col] = df[col].replace(['LLAMADA DEL 911'],'LLAMADA_911_066')
+    df[col] = df[col].replace(['LLAMADA DEL 066'],'LLAMADA_911_066')
+
     return df
 
 
@@ -168,22 +154,23 @@ def categoric_trasformation(col, df):
 
 
 ## Function desigend to execute all transformation functions.
-def transform(path, ingestion_save):
+def transform(ingestion_pickle_loc, transformation_pickle_loc):
     """
     Function desigend to execute all transformation functions.
         args:
-            path (string): path where the picke obtained from the ingestion is.
-            ingestion_save (string): location where the resulting pickle object will be stored.
+            ingestion_pickle_loc (string): path where the picke obtained from the ingestion is.
+            transformation_pickle_loc (string): location where the resulting pickle object will be stored.
         returns:
             -
     """
 
     ## Executing transformation functions
-    df = load_ingestion(path)
-    df = date_transformation(col, df)
-    df = numeric_tranformation(col, df)
-    df = categoric_trasformation(col, df)
-    df = save_transformation(df, path)
+    df = load_ingestion(ingestion_pickle_loc)
+    df = date_transformation("fecha_creacion", df)
+    df = hour_transformation("hora_creacion", df)
+    # df = numeric_tranformation(col, df)
+    df = categoric_trasformation("tipo_entrada", df)
+    save_transformation(df, transformation_pickle_loc)
 
 
 

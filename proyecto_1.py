@@ -15,6 +15,21 @@
 
 ## Ancillary modules
 
+from src.utils.params import (
+    data_path,
+    ingestion_pickle_loc,
+    transformation_pickle_loc,
+    fe_pickle_loc
+)
+
+from src.pipelines.ingestion import (
+    ingest
+)
+
+from src.pipelines.transformation import (
+    transform
+)
+
 
 
 
@@ -36,13 +51,13 @@ def main():
     """
 
     ## Executing ingestion function
-    ingest(path)
+    ingest(data_path, ingestion_pickle_loc)
 
     ## Executing transformation function
-    transform(path)
+    transform(ingestion_pickle_loc, transformation_pickle_loc)
 
     ## Executing feature engineering function
-    feature_enineering(path)
+    # feature_enineering(path)
 
 
 
