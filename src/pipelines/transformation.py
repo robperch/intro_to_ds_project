@@ -14,8 +14,20 @@
 
 import pickle
 
+import sys
+
 
 ## Ancillary modules
+
+from src.utils.utils import (
+    load_df,
+    save_df
+)
+
+from src.utils.params import (
+    ingestion_pickle_loc,
+    transformation_pickle_loc
+)
 
 
 
@@ -34,10 +46,12 @@ def load_ingestion(path):
         args:
             path (string): location where the pickle that will be loaded is.
         returns:
-            -
+            df (dataframe): dataframe obtained from ingestion pickle.
     """
 
-    ingest_df = pickle.load(open(path, "rb"))
+    df = load_df(path)
+
+    return df
 
 
 
@@ -52,7 +66,7 @@ def save_transformation(df, path):
             -
     """
 
-    pass
+    save_df(df, path)
 
 
 
