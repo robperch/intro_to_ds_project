@@ -18,4 +18,4 @@ ingestion_pickle_loc = "outputs/ingest_df.pkl"
 transformation_pickle_loc = "outputs/transformation_df.pkl"
 
 ## Feature engineering
-fe_save = "outputs/fe_df.pkl"
+fe_pickle_loc = "outputs/fe_df.pkl"

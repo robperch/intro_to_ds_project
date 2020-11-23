@@ -12,6 +12,21 @@
 
 ## Python libraries
 
+import sys
+
+
+## Ancillary modules
+
+from src.utils.utils import (
+    load_df,
+    save_df
+)
+
+from src.utils.params import (
+    transformation_pickle_loc,
+    fe_pickle_loc
+)
+
 
 
 
@@ -32,7 +47,9 @@ def load_transformation(path):
             -
     """
 
-    pass
+    df = load_df(path)
+
+    return df
 
 
 
@@ -47,7 +64,7 @@ def save_fe(df, path):
             -
     """
 
-    pass
+    save_df(df, path)
 
 
 
@@ -84,3 +101,41 @@ def feature_selection(df):
     """
 
     pass
+
+
+
+
+
+"------------------------------------------------------------------------------"
+#######################################
+## Feature engineering main function ##
+#######################################
+
+
+## Function desigend to execute all fe functions.
+def feature_engineering(path):
+    """
+    Function desigend to execute all fe functions.
+        args:
+            path (string): path where the picke obtained from the transformation is.
+            ingestion_save (string): location where the resulting pickle object will be stored.
+        returns:
+            -
+    """
+
+    ## Executing transformation functions
+    df = load_ingestion(path)
+    df = date_transformation(col, df)
+    df = numeric_tranformation(col, df)
+    df = categoric_trasformation(col, df)
+    df = save_transformation(df, path)
+
+
+
+
+
+"------------------------------------------------------------------------------"
+#################
+## END OF FILE ##
+#################
+"------------------------------------------------------------------------------"
