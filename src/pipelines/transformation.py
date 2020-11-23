@@ -120,3 +120,41 @@ def categoric_trasformation(col, df):
     """
 
     pass
+
+
+
+
+
+"------------------------------------------------------------------------------"
+####################################
+## Transformation master function ##
+####################################
+
+
+## Function desigend to execute all transformation functions.
+def transform(path, ingestion_save):
+    """
+    Function desigend to execute all transformation functions.
+        args:
+            path (string): path where the picke obtained from the ingestion is.
+            ingestion_save (string): location where the resulting pickle object will be stored.
+        returns:
+            -
+    """
+
+    ## Executing transformation functions
+    df = load_ingestion(path)
+    df = date_transformation(col, df)
+    df = numeric_tranformation(col, df)
+    df = categoric_trasformation(col, df)
+    df = save_transformation(df, path)
+
+
+
+
+
+"------------------------------------------------------------------------------"
+#################
+## END OF FILE ##
+#################
+"------------------------------------------------------------------------------"
