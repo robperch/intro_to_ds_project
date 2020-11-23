@@ -17,9 +17,13 @@ import pandas as pd
 
 import sys
 
+import pickle
+
 
 ## Ancillary modules
+
 sys.path.append("..")
+
 from src.utils.data_dict import (
     data_dict
 )
@@ -55,26 +59,29 @@ def load_df(path):
     """
     Loading pickle.
         args:
-            path (string): specific location of pickle.
+            path (string): specific location of pickle that will be loaded.
         returns:
-            -
+            pickle_load (*various*): loaded pickle object; most likely a dataframe.
     """
 
-    pass
+    pickle_load = pickle.load(open(path, "rb"))
+
+    return pickle_load
 
 
 
-## Xxx.
+## Dataframe that will be saved as picke object at specified path.
 def save_df(df, path):
     """
-    Xxx.
+    Dataframe that will be saved as picke object at specified path.
         args:
-            Xxx.
+            df (dataframe): dataframe that will be converted and saved as pickle.
+            path (string): location where the pickle will be placed.
         returns:
             -
     """
 
-    pass
+    pickle.dump(df, open(path, "wb"))
 
 
 
