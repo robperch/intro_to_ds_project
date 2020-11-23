@@ -67,6 +67,24 @@ def save_transformation(df, path):
     """
 
     save_df(df, path)
+    
+    
+    
+
+def newlabel_tipo_entrada(data):
+    """
+     Converting observatios for selected columns into new categoric label.
+        args:
+            col(string):name of column that will be changed.
+            data (dataframe): data that is being analyzed.
+        returns:
+            data(dataframe): dataframe that is being analyzed with the observations (of the selected columns) in lowercase.
+    """
+    col="tipo_entrada"
+    data[col] = data[col].replace(['LLAMADA DEL 911'],'LLAMADA_911_066')
+    data[col] = data[col].replace(['LLAMADA DEL 066'],'LLAMADA_911_066')
+    return data
+
 
 
 
@@ -118,11 +136,11 @@ def categoric_trasformation(col, df):
         returns:
             df (dataframe): resulting df with cleaned categoric column.
     """
-
-    pass
-
-
-
+    df=newlabel_tipo_entrada(data)
+    return df
+    
+    
+    
 
 
 "------------------------------------------------------------------------------"
