@@ -12,6 +12,11 @@
 
 ## Python libraries
 
+import pickle
+
+
+## Ancillary modules
+
 
 
 
@@ -32,7 +37,7 @@ def load_ingestion(path):
             -
     """
 
-    pass
+    ingest_df = pickle.load(open(path, "rb"))
 
 
 
