@@ -67,9 +67,9 @@ def save_transformation(df, path):
     """
 
     save_df(df, path)
-    
-    
-    
+
+
+
 
 def newlabel_tipo_entrada(data):
     """
@@ -136,11 +136,13 @@ def categoric_trasformation(col, df):
         returns:
             df (dataframe): resulting df with cleaned categoric column.
     """
-    df=newlabel_tipo_entrada(data)
+
+    df = newlabel_tipo_entrada(data)
+    
     return df
-    
-    
-    
+
+
+
 
 
 "------------------------------------------------------------------------------"
