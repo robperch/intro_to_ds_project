@@ -106,8 +106,24 @@ def date_transformation(col, df):
         returns:
             df (dataframe): resulting df with cleaned date column.
     """
+    fechas_inicio = data[col].str.split("/", n=2,expand=True)
+    data['dia_inicio'] = fechas_inicio[0]
+    data['mes_inicio'] = fechas_inicio[1]
+    data['anio_inicio'] = fechas_inicio[2]
+    
+    data['anio_inicio'] = data['anio_inicio'].replace(['19'],'2019')
+    data['anio_inicio'] = data['anio_inicio'].replace(['18'],'2018')
+    return data
 
-    pass
+
+##
+def hour_transformation(col,data):
+    data[col] = pd.to_timedelta(data[col],errors='ignore')
+    hora_inicio = data[col].str.split(":", n=2,expand=True)
+    data['hora_inicio'] = hora_inicio[0]
+    data['min_inicio'] = hora_inicio[1]
+    data['hora_inicio'] = round(data['hora_inicio'].apply(lambda x: float(x)),0)
+    return data
 
 
 
