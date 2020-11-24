@@ -100,8 +100,14 @@ def feature_generation(df):
     ## Separating features from labels
     df_features = df.drop("label", axis=1)
     df_labels = df["label"]
+    
+    ##Generation dummy columns of categoric variables with OneHotEncoder
+    l=[key for key in data_dict if (data_dict[key]['relevant']==True) & (data_dict[key]['data_type']=='categoric')]
+    categoric_pipeline=Pipeline([('hotencode',OneHotEncoder())])
+    pipeline=ColumnTransformer([('categoric', categoric_pipeline, l)])
+    df_new=pipeline.fit_transform(df)
+    return df_new
 
-    pass
 
 
 
