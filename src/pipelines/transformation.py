@@ -14,8 +14,17 @@
 
 import pickle
 
+import sys
+
+import pandas as pd
+
 
 ## Ancillary modules
+
+from src.utils.utils import (
+    load_df,
+    save_df
+)
 
 
 
@@ -34,10 +43,12 @@ def load_ingestion(path):
         args:
             path (string): location where the pickle that will be loaded is.
         returns:
-            -
+            df (dataframe): dataframe obtained from ingestion pickle.
     """
 
-    ingest_df = pickle.load(open(path, "rb"))
+    df = load_df(path)
+
+    return df
 
 
 
@@ -52,7 +63,7 @@ def save_transformation(df, path):
             -
     """
 
-    pass
+    save_df(df, path)
 
 
 
@@ -74,8 +85,30 @@ def date_transformation(col, df):
         returns:
             df (dataframe): resulting df with cleaned date column.
     """
+    fechas_inicio = df[col].str.split("/", n=2,expand=True)
+    df['dia_inicio'] = fechas_inicio[0]
+    df['mes_inicio'] = fechas_inicio[1]
+    df['anio_inicio'] = fechas_inicio[2]
 
-    pass
+    df['anio_inicio'] = df['anio_inicio'].replace(['19'],'2019')
+    df['anio_inicio'] = df['anio_inicio'].replace(['18'],'2018')
+
+    return df
+
+
+
+##
+def hour_transformation(col, df):
+    """
+    """
+
+    df[col] = pd.to_timedelta(df[col],errors='ignore')
+    hora_inicio = df[col].str.split(":", n=2,expand=True)
+    df['hora_inicio'] = hora_inicio[0]
+    df['min_inicio'] = hora_inicio[1]
+    df['hora_inicio'] = round(df['hora_inicio'].apply(lambda x: float(x)),0)
+
+    return df
 
 
 
@@ -105,4 +138,46 @@ def categoric_trasformation(col, df):
             df (dataframe): resulting df with cleaned categoric column.
     """
 
-    pass
+    df[col] = df[col].replace(['LLAMADA DEL 911'],'LLAMADA_911_066')
+    df[col] = df[col].replace(['LLAMADA DEL 066'],'LLAMADA_911_066')
+
+    return df
+
+
+
+
+
+"------------------------------------------------------------------------------"
+####################################
+## Transformation master function ##
+####################################
+
+
+## Function desigend to execute all transformation functions.
+def transform(ingestion_pickle_loc, transformation_pickle_loc):
+    """
+    Function desigend to execute all transformation functions.
+        args:
+            ingestion_pickle_loc (string): path where the picke obtained from the ingestion is.
+            transformation_pickle_loc (string): location where the resulting pickle object will be stored.
+        returns:
+            -
+    """
+
+    ## Executing transformation functions
+    df = load_ingestion(ingestion_pickle_loc)
+    df = date_transformation("fecha_creacion", df)
+    df = hour_transformation("hora_creacion", df)
+    # df = numeric_tranformation(col, df)
+    df = categoric_trasformation("tipo_entrada", df)
+    save_transformation(df, transformation_pickle_loc)
+
+
+
+
+
+"------------------------------------------------------------------------------"
+#################
+## END OF FILE ##
+#################
+"------------------------------------------------------------------------------" 
