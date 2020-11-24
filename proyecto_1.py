@@ -30,6 +30,10 @@ from src.pipelines.transformation import (
     transform
 )
 
+from src.pipelines.feature_engineering import (
+    feature_engineering
+)
+
 
 
 
@@ -57,7 +61,7 @@ def main():
     transform(ingestion_pickle_loc, transformation_pickle_loc)
 
     ## Executing feature engineering function
-    # feature_enineering(path)
+    feature_engineering(transformation_pickle_loc, fe_pickle_loc)
 
 
 

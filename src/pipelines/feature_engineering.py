@@ -14,6 +14,13 @@
 
 import sys
 
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import (
+    train_test_split,
+    cross_val_score
+)
+
 
 ## Ancillary modules
 
@@ -23,6 +30,9 @@ from src.utils.utils import (
 )
 
 from src.utils.params import (
+    param_grid,
+    max_features,
+    n_estimators,
     transformation_pickle_loc,
     fe_pickle_loc
 )
@@ -100,7 +110,41 @@ def feature_selection(df):
             df (dataframe): df with cleaned features.
     """
 
-    pass
+
+    ## Selecting and training model - Random Forrest.
+    model = RandomForestRegressor(max_features=max_features, n_estimators=n_estimators)
+    print("The model that will be used is: ", model)
+    model.fit(housingc_prp, housingc_labs)
+
+
+    ## Evaluating model performance with cross validation
+    cv_scores = cross_val_score(
+        model,
+        housingc_prp,
+        housingc_labs,
+        scoring="precision",
+        cv=cv_rounds
+    )
+
+    print("Scores:", cv_scores)
+    print("Mean:", cv_scores.mean())
+    print("Standard deviation:", cv_scores.std())
+
+
+    ## Grid search CV to select best possible model.
+    grid_search = GridSearchCV(model,
+                               param_grid,
+                               cv=10,
+                               scoring="precision",
+                               return_train_score=True)
+
+    grid_search.fit(housing_prepared, housing_labels)
+
+    print(grid_search.best_params_)
+    print(grid_search.best_estimator_)
+
+
+    return df
 
 
 
@@ -113,22 +157,21 @@ def feature_selection(df):
 
 
 ## Function desigend to execute all fe functions.
-def feature_engineering(path):
+def feature_engineering(transformation_pickle_loc, fe_pickle_loc):
     """
     Function desigend to execute all fe functions.
         args:
-            path (string): path where the picke obtained from the transformation is.
-            ingestion_save (string): location where the resulting pickle object will be stored.
+            transformation_pickle_loc (string): path where the picke obtained from the transformation is.
+            fe_pickle_loc (string): location where the resulting pickle object will be stored.
         returns:
             -
     """
 
     ## Executing transformation functions
-    df = load_ingestion(path)
-    df = date_transformation(col, df)
-    df = numeric_tranformation(col, df)
-    df = categoric_trasformation(col, df)
-    df = save_transformation(df, path)
+    df = load_transformation(transformation_pickle_loc)
+    df = feature_generation(df)
+    df = feature_selection(df)
+    save_fe(df, fe_pickle_loc)
 
 
 
