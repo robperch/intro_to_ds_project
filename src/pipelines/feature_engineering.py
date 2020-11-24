@@ -96,6 +96,11 @@ def feature_generation(df):
             df (dataframe): resulting df with new features.
     """
 
+
+    ## Separating features from labels
+    df_features = df.drop("label", axis=1)
+    df_labels = df["label"]
+
     pass
 
 
