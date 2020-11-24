@@ -12,7 +12,7 @@
 
 data_dict = {
     "folio": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "categoric"
     },
     "fecha_creacion": {
@@ -48,7 +48,7 @@ data_dict = {
         "data_type": "date_and_time"
     },
     "delegacion_inicio": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "categoric"
     },
     "incidente_c4": {

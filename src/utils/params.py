@@ -48,6 +48,8 @@ param_grid = [
 #### Random forest regressor
 max_features = 6
 n_estimators = 100
+cv_rounds = 10
+evaluation_metric = "accuracy"
 
 
 

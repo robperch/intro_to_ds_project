@@ -14,15 +14,25 @@
 
 import sys
 
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import (
     train_test_split,
     cross_val_score
 )
+from sklearn.preprocessing import (
+    OneHotEncoder
+)
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
 
 
 ## Ancillary modules
+
+from src.utils.data_dict import (
+    data_dict
+)
 
 from src.utils.utils import (
     load_df,
@@ -33,6 +43,8 @@ from src.utils.params import (
     param_grid,
     max_features,
     n_estimators,
+    cv_rounds,
+    evaluation_metric,
     transformation_pickle_loc,
     fe_pickle_loc
 )
@@ -100,62 +112,78 @@ def feature_generation(df):
     ## Separating features from labels
     df_features = df.drop("label", axis=1)
     df_labels = df["label"]
-    
-    ##Generation dummy columns of categoric variables with OneHotEncoder
-    l=[key for key in data_dict if (data_dict[key]['relevant']==True) & (data_dict[key]['data_type']=='categoric')]
-    categoric_pipeline=Pipeline([('hotencode',OneHotEncoder())])
-    pipeline=ColumnTransformer([('categoric', categoric_pipeline, l)])
-    df_new=pipeline.fit_transform(df)
-    return df_new
+
+    ## Generation dummy columns of categoric variables with OneHotEncoder
+    #### Creating list of the features that will processed through the pipeline.
+    cat_features = [key for key in data_dict if (data_dict[key]['relevant']==True) & (data_dict[key]['data_type']=='categoric')]
+    print("\n++ List of categorical variables ({}) that will be processed through the pipeline are:".format(len(cat_features)))
+    for cat in cat_features:
+        print("    {}. {}".format(cat_features.index(cat) + 1, cat))
+
+    #### Building and applying pipeline.
+    categoric_pipeline = Pipeline([('hotencode',OneHotEncoder())])
+    pipeline = ColumnTransformer([('categoric', categoric_pipeline, cat_features)])
+    df_features_prc = pipeline.fit_transform(df_features)
+
+    return df_features_prc, df_labels
 
 
 
 
 ## Select most relevant features for the model.
-def feature_selection(df):
+def feature_selection(df_features_prc, df_labels):
     """
     Select most relevant features for the model.
         args:
-            df (dataframe): df whose features will be assesed.
+            df_features_prc (dataframe): Xxx
+            df_labels (dataframe): Xxx
         returns:
-            df (dataframe): df with cleaned features.
+            Xxx
     """
 
 
     ## Selecting and training model - Random Forrest.
-    model = RandomForestRegressor(max_features=max_features, n_estimators=n_estimators)
-    print("The model that will be used is: ", model)
-    model.fit(housingc_prp, housingc_labs)
+    model = RandomForestClassifier(max_features=max_features, n_estimators=n_estimators)
+    print("\n++ The model that will be used is: {}\n".format(model))
+    model.fit(df_features_prc, df_labels)
 
 
     ## Evaluating model performance with cross validation
+    # print("\nFeatures feed to the model: {}\n".format(df_features_prc))
+    # print("\nLabels feed to the model: {}\n".format(df_labels))
     cv_scores = cross_val_score(
         model,
-        housingc_prp,
-        housingc_labs,
-        scoring="precision",
+        df_features_prc,
+        df_labels,
+        scoring=evaluation_metric,
         cv=cv_rounds
     )
 
-    print("Scores:", cv_scores)
-    print("Mean:", cv_scores.mean())
-    print("Standard deviation:", cv_scores.std())
+    print("\n++ Model performance metrics:\n")
+    print("    ++++ Cross validation scores:")
+    i = 1
+    for cvs in list(cv_scores):
+        print("        Round {} -> {}".format(i, cvs))
+        i += 1
+    print("\n")
+    print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
+    print("    ++++ Cross validation score standard deviation: ", cv_scores.std())
 
 
-    ## Grid search CV to select best possible model.
-    grid_search = GridSearchCV(model,
-                               param_grid,
-                               cv=10,
-                               scoring="precision",
-                               return_train_score=True)
+    # ## Grid search CV to select best possible model.
+    # grid_search = GridSearchCV(model,
+    #                            param_grid,
+    #                            cv=10,
+    #                            scoring=evaluation_metric,
+    #                            return_train_score=True)
+    #
+    # grid_search.fit(df_features_prc, df_labels)
+    #
+    # print(grid_search.best_params_)
+    # print(grid_search.best_estimator_)
 
-    grid_search.fit(housing_prepared, housing_labels)
 
-    print(grid_search.best_params_)
-    print(grid_search.best_estimator_)
-
-
-    return df
+    return df_features_prc
 
 
 
@@ -180,16 +208,18 @@ def feature_engineering(transformation_pickle_loc, fe_pickle_loc):
 
     ## Executing transformation functions
     df = load_transformation(transformation_pickle_loc)
-    df = feature_generation(df)
-    df = feature_selection(df)
-    save_fe(df, fe_pickle_loc)
+    df_features_prc, df_labels = feature_generation(df)
+    df_features_prc = feature_selection(df_features_prc, df_labels)
+    save_fe(df_features_prc, fe_pickle_loc)
 
 
 
 
 
 "------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------"
 #################
 ## END OF FILE ##
 #################
+"------------------------------------------------------------------------------"
 "------------------------------------------------------------------------------"

@@ -106,10 +106,10 @@ def generate_label(df):
     """
 
     ## Crating new label column,
-    df["label"] = df["codigo_cierre"].apply(lambda x: 1 if
+    df["label"] = df["codigo_cierre"].apply(lambda x: 1.0 if
                                             ("(F) " in x) |
                                             ("(N) " in x)
-                                            else 0
+                                            else 0.0
                                            )
 
 

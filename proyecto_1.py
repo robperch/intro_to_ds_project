@@ -61,7 +61,7 @@ def main():
     transform(ingestion_pickle_loc, transformation_pickle_loc)
 
     ## Executing feature engineering function
-    # feature_engineering(transformation_pickle_loc, fe_pickle_loc)
+    feature_engineering(transformation_pickle_loc, fe_pickle_loc)
 
 
 
