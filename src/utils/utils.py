@@ -22,7 +22,7 @@ import pickle
 
 ## Ancillary modules
 
-sys.path.append("..")
+# sys.path.append("..")
 
 from src.utils.data_dict import (
     data_dict
