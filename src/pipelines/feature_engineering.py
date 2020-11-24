@@ -211,6 +211,7 @@ def feature_engineering(transformation_pickle_loc, fe_pickle_loc):
     df_features_prc, df_labels = feature_generation(df)
     df_features_prc = feature_selection(df_features_prc, df_labels)
     save_fe(df_features_prc, fe_pickle_loc)
+    print("** Feature engineering module successfully executed ** ")
 
 
 
