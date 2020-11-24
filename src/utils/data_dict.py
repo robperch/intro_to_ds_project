@@ -16,7 +16,7 @@ data_dict = {
         "data_type": "categoric"
     },
     "fecha_creacion": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "date_and_time"
     },
     "hora_creacion": {
@@ -56,15 +56,15 @@ data_dict = {
         "data_type": "categoric"
     },
     "latitud": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "coordenate"
     },
     "longitud": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "coordenate"
     },
     "clas_con_f_alarma": {
-        "relevant": True,
+        "relevant": False,
         "data_type": "categoric"
     },
     "tipo_entrada": {
