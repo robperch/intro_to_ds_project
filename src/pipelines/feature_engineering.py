@@ -113,17 +113,35 @@ def feature_generation(df):
     df_features = df.drop("label", axis=1)
     df_labels = df["label"]
 
+
+    ## Cleaning features to leave only those relevant for the model.
+    nr_features_cols = [key for key in data_dict if
+                (data_dict[key]['relevant']==True) &
+                (data_dict[key]['model_relevant']==False)
+              ]
+    df_features.drop(nr_features_cols, axis=1, inplace=True)
+    features_cols = list(df_features.columns)
+    print("\n++ Complete list of features ({}) that will be fed to the model:".format(len(features_cols)))
+    for col in features_cols:
+        print("    {}. {}".format(features_cols.index(col) + 1, col))
+
+
     ## Generation dummy columns of categoric variables with OneHotEncoder
     #### Creating list of the features that will processed through the pipeline.
-    cat_features = [key for key in data_dict if (data_dict[key]['relevant']==True) & (data_dict[key]['data_type']=='categoric')]
-    print("\n++ List of categorical variables ({}) that will be processed through the pipeline are:".format(len(cat_features)))
+    cat_features = [key for key in data_dict if
+                    (data_dict[key]['model_relevant']==True) &
+                    (data_dict[key]['data_type']=='categoric')
+                   ]
+    print("\n++ List of categorical features ({}) that will be processed through the pipeline are:".format(len(cat_features)))
     for cat in cat_features:
         print("    {}. {}".format(cat_features.index(cat) + 1, cat))
+
 
     #### Building and applying pipeline.
     categoric_pipeline = Pipeline([('hotencode',OneHotEncoder())])
     pipeline = ColumnTransformer([('categoric', categoric_pipeline, cat_features)])
     df_features_prc = pipeline.fit_transform(df_features)
+
 
     return df_features_prc, df_labels
 
@@ -167,7 +185,7 @@ def feature_selection(df_features_prc, df_labels):
         i += 1
     print("\n")
     print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
-    print("    ++++ Cross validation score standard deviation: ", cv_scores.std())
+    print("    ++++ Cross validation score standard deviation:\n", cv_scores.std())
 
 
     # ## Grid search CV to select best possible model.
@@ -211,7 +229,7 @@ def feature_engineering(transformation_pickle_loc, fe_pickle_loc):
     df_features_prc, df_labels = feature_generation(df)
     df_features_prc = feature_selection(df_features_prc, df_labels)
     save_fe(df_features_prc, fe_pickle_loc)
-    print("** Feature engineering module successfully executed ** ")
+    print("** Feature engineering module successfully executed **")
 
 
 

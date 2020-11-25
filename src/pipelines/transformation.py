@@ -171,7 +171,7 @@ def transform(ingestion_pickle_loc, transformation_pickle_loc):
     # df = numeric_tranformation(col, df)
     df = categoric_trasformation("tipo_entrada", df)
     save_transformation(df, transformation_pickle_loc)
-    print("** Tranformation module successfully executed ** ")
+    print("\n** Tranformation module successfully executed **\n")
 
 
 

@@ -138,7 +138,7 @@ def ingest(data_path, ingestion_pickle_loc):
     drop_cols(df)
     generate_label(df)
     save_ingestion(df, ingestion_pickle_loc)
-    print("** Ingestion module successfully executed ** ")
+    print("\n** Ingestion module successfully executed **\n")
 
 
 
