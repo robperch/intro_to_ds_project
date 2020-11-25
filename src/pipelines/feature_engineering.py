@@ -49,6 +49,8 @@ from src.utils.params import (
     fe_pickle_loc
 )
 
+import pandas as pd
+
 
 
 
@@ -87,6 +89,46 @@ def save_fe(df, path):
     """
 
     save_df(df, path)
+
+
+
+##
+def get_feature_out(estimator, feature_in):
+    if hasattr(estimator,'get_feature_names'):
+        if isinstance(estimator, _VectorizerMixin):
+            # handling all vectorizers
+            return [f'vec_{f}' \
+                for f in estimator.get_feature_names()]
+        else:
+            return estimator.get_feature_names(feature_in)
+    elif isinstance(estimator, SelectorMixin):
+        return np.array(feature_in)[estimator.get_support()]
+    else:
+        return feature_in
+
+
+
+##
+def get_ct_feature_names(ct):
+    # handles all estimators, pipelines inside ColumnTransfomer
+    # doesn't work when remainder =='passthrough'
+    # which requires the input column names.
+    output_features = []
+
+    for name, estimator, features in ct.transformers_:
+        if name!='remainder':
+            if isinstance(estimator, Pipeline):
+                current_features = features
+                for step in estimator:
+                    current_features = get_feature_out(step, current_features)
+                features_out = current_features
+            else:
+                features_out = get_feature_out(estimator, features)
+            output_features.extend(features_out)
+        elif estimator=='passthrough':
+            output_features.extend(ct._feature_names_in[features])
+
+    return output_features
 
 
 
@@ -143,14 +185,29 @@ def feature_generation(df):
 
     #### Building and applying pipeline.
     categoric_pipeline = Pipeline([('hotencode',OneHotEncoder())])
-    pipeline = ColumnTransformer([('categoric', categoric_pipeline, cat_features)])
+    pipeline = ColumnTransformer([
+        ('categoric', categoric_pipeline, cat_features),
+    ],
+    # remainder='passthrough'
+    )
+    # print(df_features.columns)
     df_features_prc = pipeline.fit_transform(df_features)
 
-    # clf['pipeline'].transformers_[1][1]['hotencode']\
-    #                    .get_feature_names(categorical_features)
+
+    ## List of the transformed columns
+    df_features_prc_cols = list(df_features.columns)
+    for ohe_key in ohe_dict:
+        for i in range(len(ohe_dict[ohe_key])):
+            df_features_prc_cols.insert(i + df_features_prc_cols.index(ohe_key), ohe_dict[ohe_key][i])
+        df_features_prc_cols.remove(ohe_key)
+
+    enc_cat_features = pipeline.named_transformers_['categoric']['hotencode'].get_feature_names()
+    # labels = np.concatenate([numeric_features, enc_cat_features])
+    # transformed_df_columns = pd.DataFrame(preprocessor.transform(X_train).toarray(), columns=labels).columns
+    # print(transformed_df_columns)
 
 
-    return df_features_prc, df_labels
+    return df_features_prc, df_labels, df_features_prc_cols
 
 
 
@@ -217,14 +274,14 @@ def feature_selection(df_features_prc, df_labels):
 
 
     ## Determining model's best estimators
-    feature_importance = pd.Dataframe(
-        {
-            "Importance": grid_search.best_estimator_.feature_importances_,
-            "Feature": df_features_prc.columns
-        }
-    )
-    feature_importance.sort_values(by="Importance", ascending=False)
-    print(display(feature_importance))
+    # feature_importance = pd.DataFrame(
+    #     {
+    #         "Importance": grid_search.best_estimator_.feature_importances_,
+    #         "Feature": df_features_prc.columns
+    #     }
+    # )
+    # feature_importance.sort_values(by="Importance", ascending=False)
+    # print(display(feature_importance))
 
 
     return df_features_prc
@@ -252,10 +309,10 @@ def feature_engineering(transformation_pickle_loc, fe_pickle_loc):
 
     ## Executing transformation functions
     df = load_transformation(transformation_pickle_loc)
-    df_features_prc, df_labels = feature_generation(df)
+    df_features_prc, df_labels, df_features_prc_cols = feature_generation(df)
     df_features_prc = feature_selection(df_features_prc, df_labels)
     save_fe(df_features_prc, fe_pickle_loc)
-    print("** Feature engineering module successfully executed **")
+    print("** Feature engineering module successfully executed **\n")
 
 
 
