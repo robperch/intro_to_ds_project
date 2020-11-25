@@ -23,7 +23,13 @@ import numpy as np
 
 ## Ancillary modules
 
+from src.utils.data_dict import (
+    data_created_dict,
+    data_dict
+)
+
 from src.utils.utils import (
+    update_data_created_dict,
     load_df,
     save_df
 )
@@ -106,6 +112,8 @@ def date_transformation(col, df):
 
     df.drop(['dia_inicio','mes_inicio'], axis=1, inplace=True)
 
+    update_data_created_dict("anio_inicio", relevant=True, data_type="categoric", model_relevant=True)
+
     return df
 
 
@@ -140,6 +148,9 @@ def cyclic_trasformation(df, col):
         returns:
             df (dataframe): resulting df with cyclical column.
     """
+
+
+    ## Specifying divisors related to time.
     if "hora" in col:
         div=24
     elif "dia" in col:
@@ -147,8 +158,16 @@ def cyclic_trasformation(df, col):
     elif "mes" in col:
         div=12
 
+    ## Creating cyclical variables.
     df[col + '_sin'] = np.sin(2*np.pi*df[col].apply(lambda x: float(x))/div)
-    df[col+ '_cos'] = np.cos(2*np.pi*df[col].apply(lambda x: float(x))/div)
+    df[col + '_cos'] = np.cos(2*np.pi*df[col].apply(lambda x: float(x))/div)
+
+
+    ## Updating data creation dictionary to include cyclical features.
+    update_data_created_dict(col + "_sin", relevant=True, data_type="numeric", model_relevant=True)
+    update_data_created_dict(col + "_cos", relevant=True, data_type="numeric", model_relevant=True)
+
+
 
     return df
 
@@ -212,6 +231,7 @@ def transform(ingestion_pickle_loc, transformation_pickle_loc):
     df = hour_transformation("hora_creacion", df)
     # df = numeric_tranformation(col, df)
     df = categoric_trasformation("tipo_entrada", df)
+    # print(data_created_dict)
     save_transformation(df, transformation_pickle_loc)
     print("\n** Tranformation module successfully executed **\n")
 
@@ -220,7 +240,9 @@ def transform(ingestion_pickle_loc, transformation_pickle_loc):
 
 
 "------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------"
 #################
 ## END OF FILE ##
 #################
+"------------------------------------------------------------------------------"
 "------------------------------------------------------------------------------"
