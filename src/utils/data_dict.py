@@ -12,85 +12,109 @@
 
 data_dict = {
     "folio": {
-        "relevant": True,
-        "data_type": "categoric"
+        "relevant": False,
+        "data_type": "categoric",
+        "model_relevant": False
     },
     "fecha_creacion": {
         "relevant": True,
-        "data_type": "date_and_time"
+        "data_type": "date_and_time",
+        "model_relevant": False
     },
     "hora_creacion": {
         "relevant": True,
-        "data_type": "date_and_time"
+        "data_type": "date_and_time",
+        "model_relevant": False
     },
     "dia_semana": {
         "relevant": True,
-        "data_type": "date_and_time"
+        "data_type": "categoric",
+        "model_relevant": True
     },
-    "codigo_cierre": {
+    "codigo_cierre": { ## This feature will only be used to obtain labels and then its dropped.
         "relevant": True,
-        "data_type": "categoric"
+        "data_type": "categoric",
+        "model_relevant": False
     },
     "fecha_cierre": {
         "relevant": False,
-        "data_type": "date_and_time"
+        "data_type": "date_and_time",
+        "model_relevant": False
     },
     "año_cierre": {
         "relevant": False,
-        "data_type": "date_and_time"
+        "data_type": "date_and_time",
+        "model_relevant": False
     },
     "mes_cierre": {
         "relevant": False,
-        "data_type": "date_and_time"
+        "data_type": "date_and_time",
+        "model_relevant": False
     },
     "hora_cierre": {
         "relevant": False,
-        "data_type": "date_and_time"
+        "data_type": "date_and_time",
+        "model_relevant": False
     },
     "delegacion_inicio": {
-        "relevant": True,
-        "data_type": "categoric"
+        "relevant": False,
+        "data_type": "categoric",
+        "model_relevant": False
     },
     "incidente_c4": {
         "relevant": True,
-        "data_type": "categoric"
+        "data_type": "categoric",
+        "model_relevant": True
     },
     "latitud": {
-        "relevant": True,
-        "data_type": "coordenate"
+        "relevant": False,
+        "data_type": "coordenate",
+        "model_relevant": False
     },
     "longitud": {
-        "relevant": True,
-        "data_type": "coordenate"
+        "relevant": False,
+        "data_type": "coordenate",
+        "model_relevant": False
     },
     "clas_con_f_alarma": {
-        "relevant": True,
-        "data_type": "categoric"
+        "relevant": False,
+        "data_type": "categoric",
+        "model_relevant": False
     },
     "tipo_entrada": {
         "relevant": True,
-        "data_type": "categoric"
+        "data_type": "categoric",
+        "model_relevant": True
     },
     "delegacion_cierre": {
         "relevant": False,
-        "data_type": "categoric"
+        "data_type": "categoric",
+        "model_relevant": False
     },
     "geopoint": {
         "relevant": False,
-        "data_type": "coordenate"
+        "data_type": "coordenate",
+        "model_relevant": False
     },
     "mes": {
         "relevant": False,
-        "data_type": "date_and_time"
+        "data_type": "date_and_time",
+        "model_relevant": False
     }
 }
+
+
+
+data_created_dict = {}
 
 
 
 
 
 "------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------"
 #################
 ## END OF FILE ##
 #################
+"------------------------------------------------------------------------------"
 "------------------------------------------------------------------------------"

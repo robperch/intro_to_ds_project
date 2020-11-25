@@ -22,9 +22,10 @@ import pickle
 
 ## Ancillary modules
 
-# sys.path.append("..")
+sys.path.append("..")
 
 from src.utils.data_dict import (
+    data_created_dict,
     data_dict
 )
 
@@ -49,6 +50,35 @@ def json_dump_dict(dictionary):
     """
 
     print(json.dumps(dictionary, indent=4, ensure_ascii=False).encode("utf8").decode())
+
+    return
+
+
+
+## Function to create entries that will populate the data_created_dict.
+def update_data_created_dict(var, relevant=True, data_type="not_specified", model_relevant=False):
+    """
+    Function to create entries that will populate the data_created_dict.
+        args:
+            var (string): name of entry.
+            relevant (boolean): option to specify whether the entry is relevant or not (maybe this is an usless tag).
+            data_type (string): type of data related to the entry (e.g. categoric, numeric).
+            model_relevant (boolean): option to specify whether the entry will be fed to the model.
+        returns:
+            # entry (dictionary): dictionary with information about the entry.
+            -
+    """
+
+    entry = {
+        var: {
+            "relevant": relevant,
+            "data_type": data_type,
+            "model_relevant": model_relevant
+        }
+    }
+
+    data_created_dict.update(entry)
+
 
     return
 
@@ -263,23 +293,6 @@ def data_profiling_numeric(data, num_vars):
 
 
     return
-
-
-
-def proporcion(listaVar,n):
-    """
-    Calculate the data proportion of categorical variables.
-        args:
-            listaVar (Serie): Serie with unique values of categorical variables
-                               to get use value_counts() into a Serie
-            n (int): value of total observation of data set.
-        returns:
-           newList(list): List with name, count and proportion of each category.
-    """
-    newList = []
-    for lis in listaVar.iteritems():
-        newList.append([lis[0],lis[1],"{}%".format(round(100*(lis[1]/n),1))])
-    return newList
 
 
 

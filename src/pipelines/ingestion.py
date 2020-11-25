@@ -24,7 +24,13 @@ from src.utils.data_dict import (
     data_dict
 )
 
+from src.utils.params import (
+    data_path,
+    ingestion_pickle_loc
+)
+
 from src.utils.utils import (
+    load_df,
     save_df
 )
 
@@ -39,7 +45,7 @@ from src.utils.utils import (
 
 
 ## Converting data into pandas dataframe by providing the data's location.
-def ingest_file(filename):
+def ingest_file(data_path):
     """
     Converting data into pandas dataframe by providing the data's location.
         args:
@@ -49,9 +55,9 @@ def ingest_file(filename):
     """
 
     ## Reading file in specified path
-    df_c5 = pd.read_csv(filename)
+    df = pd.read_csv(data_path)
 
-    return df_c5
+    return df
 
 
 
@@ -106,10 +112,10 @@ def generate_label(df):
     """
 
     ## Crating new label column,
-    df["label"] = df["codigo_cierre"].apply(lambda x: 1 if
+    df["label"] = df["codigo_cierre"].apply(lambda x: 1.0 if
                                             ("(F) " in x) |
                                             ("(N) " in x)
-                                            else 0
+                                            else 0.0
                                            )
 
 
@@ -127,8 +133,8 @@ def ingest(data_path, ingestion_pickle_loc):
     """
     Function desigend to execute all ingestion functions.
         args:
-            data_path (string): path where the project's data is stored.
-            ingestion_pickle_loc (string): location where the resulting pickle object will be stored.
+            path (string): path where the project's data is stored.
+            ingestion_save (string): location where the resulting pickle object will be stored.
         returns:
             -
     """
@@ -138,13 +144,16 @@ def ingest(data_path, ingestion_pickle_loc):
     drop_cols(df)
     generate_label(df)
     save_ingestion(df, ingestion_pickle_loc)
+    print("\n** Ingestion module successfully executed **\n")
 
 
 
 
 
 "------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------"
 #################
 ## END OF FILE ##
 #################
+"------------------------------------------------------------------------------"
 "------------------------------------------------------------------------------"
