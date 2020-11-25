@@ -31,24 +31,18 @@ fe_pickle_loc = "outputs/fe_df.pkl"
 
 
 ## Grid Search CV - Parameters grid
-param_grid = [
-    {
-        "n_estimators": [50, 100, 150, 500],
-        "max_features": [2, 4, 6, 8]
-    },
-    {
-        "bootstrap": [False],
-        "n_estimators": [3, 10],
-        "max_features": [2, 3, 4]
+param_grid = {
+        "n_estimators": [500, 800],
+        "min_samples_leaf": [9],
+        "criterion": ['gini']
     }
-]
 
 
 ## Model parameters
 #### Random forest regressor
 max_features = 6
 n_estimators = 100
-cv_rounds = 10
+cv_rounds = 4
 evaluation_metric = "accuracy"
 
 

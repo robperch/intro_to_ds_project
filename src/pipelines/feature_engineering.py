@@ -133,14 +133,21 @@ def feature_generation(df):
                     (data_dict[key]['data_type']=='categoric')
                    ]
     print("\n++ List of categorical features ({}) that will be processed through the pipeline are:".format(len(cat_features)))
+    ohe_dict = {}
     for cat in cat_features:
         print("    {}. {}".format(cat_features.index(cat) + 1, cat))
+        cat_list = list(df[cat].unique())
+        cat_list.sort()
+        ohe_dict[cat] = cat_list
 
 
     #### Building and applying pipeline.
     categoric_pipeline = Pipeline([('hotencode',OneHotEncoder())])
     pipeline = ColumnTransformer([('categoric', categoric_pipeline, cat_features)])
     df_features_prc = pipeline.fit_transform(df_features)
+
+    # clf['pipeline'].transformers_[1][1]['hotencode']\
+    #                    .get_feature_names(categorical_features)
 
 
     return df_features_prc, df_labels
@@ -160,45 +167,64 @@ def feature_selection(df_features_prc, df_labels):
     """
 
 
+    ## Splitting data in train and test
+    X_train, X_test, y_train, y_test = train_test_split(df_features_prc, df_labels, test_size=0.3)
+
+
     ## Selecting and training model - Random Forrest.
-    model = RandomForestClassifier(max_features=max_features, n_estimators=n_estimators)
+    model = RandomForestClassifier(oob_score=True, n_jobs=-1)
     print("\n++ The model that will be used is: {}\n".format(model))
-    model.fit(df_features_prc, df_labels)
 
 
     ## Evaluating model performance with cross validation
-    # print("\nFeatures feed to the model: {}\n".format(df_features_prc))
-    # print("\nLabels feed to the model: {}\n".format(df_labels))
-    cv_scores = cross_val_score(
-        model,
-        df_features_prc,
-        df_labels,
-        scoring=evaluation_metric,
-        cv=cv_rounds
+    # cv_scores = cross_val_score(
+    #     model,
+    #     df_features_prc,
+    #     df_labels,
+    #     scoring=evaluation_metric,
+    #     cv=cv_rounds
+    # )
+    #
+    # print("\n++ Model performance metrics:\n")
+    # print("    ++++ Cross validation scores:")
+    # i = 1
+    # for cvs in list(cv_scores):
+    #     print("        Round {} -> {}".format(i, cvs))
+    #     i += 1
+    # print("\n")
+    # print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
+    # print("    ++++ Cross validation score standard deviation:\n", cv_scores.std())
+
+
+    ## Grid search CV to select best possible model.
+    grid_search = GridSearchCV(model,
+                               param_grid,
+                               cv=2,
+                               scoring=evaluation_metric,
+                               return_train_score=True,
+                               n_jobs=-1
+                               )
+
+    grid_search.fit(X_train, y_train)
+
+    print(grid_search.best_params_)
+    print(grid_search.best_estimator_)
+
+    print("\n++ Grid search results:\n")
+    print("    ++++ Best estimator: {}".format(grid_search.best_estimator_))
+    print("    ++++ Number of features in best estimator: {} \n".format(grid_search.best_estimator_.n_features_))
+    print("    ++++ Best estimator oob score: {}\n".format(grid_search.best_estimator_.oob_score_))
+
+
+    ## Determining model's best estimators
+    feature_importance = pd.Dataframe(
+        {
+            "Importance": grid_search.best_estimator_.feature_importances_,
+            "Feature": df_features_prc.columns
+        }
     )
-
-    print("\n++ Model performance metrics:\n")
-    print("    ++++ Cross validation scores:")
-    i = 1
-    for cvs in list(cv_scores):
-        print("        Round {} -> {}".format(i, cvs))
-        i += 1
-    print("\n")
-    print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
-    print("    ++++ Cross validation score standard deviation:\n", cv_scores.std())
-
-
-    # ## Grid search CV to select best possible model.
-    # grid_search = GridSearchCV(model,
-    #                            param_grid,
-    #                            cv=10,
-    #                            scoring=evaluation_metric,
-    #                            return_train_score=True)
-    #
-    # grid_search.fit(df_features_prc, df_labels)
-    #
-    # print(grid_search.best_params_)
-    # print(grid_search.best_estimator_)
+    feature_importance.sort_values(by="Importance", ascending=False)
+    print(display(feature_importance))
 
 
     return df_features_prc
