@@ -24,6 +24,16 @@ from src.utils.data_dict import (
     data_dict
 )
 
+from src.utils.params import (
+    data_path,
+    ingestion_pickle_loc
+)
+
+from src.utils.utils import (
+    load_df,
+    save_df
+)
+
 
 
 
@@ -35,7 +45,7 @@ from src.utils.data_dict import (
 
 
 ## Converting data into pandas dataframe by providing the data's location.
-def ingest_file(filename):
+def ingest_file(data_path):
     """
     Converting data into pandas dataframe by providing the data's location.
         args:
@@ -45,9 +55,9 @@ def ingest_file(filename):
     """
 
     ## Reading file in specified path
-    df_c5 = pd.read_csv(filename)
+    df = pd.read_csv(data_path)
 
-    return df_c5
+    return df
 
 
 
@@ -61,7 +71,7 @@ def save_ingestion(df, path):
     """
 
     ## Converting and saving dataframe.
-    pickle.dump(df, open(path + "ingest_df.pkl", "wb"))
+    save_df(df, path)
 
 
 
@@ -119,7 +129,7 @@ def generate_label(df):
 
 
 ## Function desigend to execute all ingestion functions.
-def ingest(path, ingestion_save):
+def ingest(data_path, ingestion_pickle_loc):
     """
     Function desigend to execute all ingestion functions.
         args:
@@ -130,7 +140,7 @@ def ingest(path, ingestion_save):
     """
 
     ## Executing ingestion functions
-    df = ingest_file(path)
+    df = ingest_file(data_path)
     drop_cols(df)
     generate_label(df)
     save_ingestion(df, ingestion_pickle_loc)
