@@ -7,6 +7,5 @@
 | Code   | Name               | GitHub user  |
 | ------ | ------------------ | ------------ |
 | 173013 | José Roberto Pérez | Roberto919   |
-|        | Mariana Lugo       | codeMariana  |
-|        | Elena Villalobos   | ElenaVillano |
-
+| 118626 | Mariana Lugo       | codeMariana  |
+| 197730 | Elena Villalobos   | ElenaVillano |
