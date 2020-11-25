@@ -236,8 +236,11 @@ def feature_generation(df):
         for i in range(len(ohe_dict[ohe_key])):
             df_features_prc_cols.insert(i + df_features_prc_cols.index(ohe_key), ohe_dict[ohe_key][i])
         df_features_prc_cols.remove(ohe_key)
+    # print(list(df_features_prc_cols))
+    # print(len(df_features_prc_cols))
 
-    enc_cat_features = pipeline.named_transformers_['categoric']['hotencode'].get_feature_names()
+    # enc_cat_features = pipeline.named_transformers_['categoric']['hotencode'].get_feature_names()
+    # print(enc_cat_features)
     # labels = np.concatenate([numeric_features, enc_cat_features])
     # transformed_df_columns = pd.DataFrame(preprocessor.transform(X_train).toarray(), columns=labels).columns
     # print(transformed_df_columns)
@@ -249,7 +252,7 @@ def feature_generation(df):
 
 
 ## Select most relevant features for the model.
-def feature_selection(df_features_prc, df_labels):
+def feature_selection(df_features_prc, df_labels, df_features_prc_cols):
     """
     Select most relevant features for the model.
         args:
@@ -318,14 +321,14 @@ def feature_selection(df_features_prc, df_labels):
 
 
     ## Determining model's best estimators
-    # feature_importance = pd.DataFrame(
-    #     {
-    #         "Importance": grid_search.best_estimator_.feature_importances_,
-    #         "Feature": df_features_prc.columns
-    #     }
-    # )
-    # feature_importance.sort_values(by="Importance", ascending=False)
-    # print(display(feature_importance))
+    feature_importance = pd.DataFrame(
+        {
+            "Importance": grid_search.best_estimator_.feature_importances_,
+            "Feature": df_features_prc_cols
+        }
+    )
+    feature_importance.sort_values(by="Importance", ascending=False, inplace=True)
+    print(feature_importance))
 
 
     return df_features_prc
@@ -354,9 +357,9 @@ def feature_engineering(transformation_pickle_loc, fe_pickle_loc):
     ## Executing transformation functions
     df = load_transformation(transformation_pickle_loc)
     df_features_prc, df_labels, df_features_prc_cols = feature_generation(df)
-    df_features_prc = feature_selection(df_features_prc, df_labels)
+    df_features_prc = feature_selection(df_features_prc, df_labels, df_features_prc_cols)
     save_fe(df_features_prc, fe_pickle_loc)
-    print("** Feature engineering module successfully executed **\n")
+    print("\n** Feature engineering module successfully executed **\n")
 
 
 
