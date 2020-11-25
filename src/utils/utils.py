@@ -22,7 +22,7 @@ import pickle
 
 ## Ancillary modules
 
-# sys.path.append("..")
+sys.path.append("..")
 
 from src.utils.data_dict import (
     data_dict
@@ -263,23 +263,6 @@ def data_profiling_numeric(data, num_vars):
 
 
     return
-
-
-
-def proporcion(listaVar,n):
-    """
-    Calculate the data proportion of categorical variables.
-        args:
-            listaVar (Serie): Serie with unique values of categorical variables
-                               to get use value_counts() into a Serie
-            n (int): value of total observation of data set.
-        returns:
-           newList(list): List with name, count and proportion of each category.
-    """
-    newList = []
-    for lis in listaVar.iteritems():
-        newList.append([lis[0],lis[1],"{}%".format(round(100*(lis[1]/n),1))])
-    return newList
 
 
 

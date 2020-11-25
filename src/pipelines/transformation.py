@@ -92,12 +92,17 @@ def date_transformation(col, df):
 
     df['anio_inicio'] = df['anio_inicio'].replace(['19'],'2019')
     df['anio_inicio'] = df['anio_inicio'].replace(['18'],'2018')
-
+    
+    cyc_lst = ["dia_inicio", "mes_inicio"]
+    for val in cyc_lst:
+        cyclic_trasformation(df, val)
+    
+    df.drop(['dia_inicio','mes_inicio'], axis=1, inplace=True)
     return df
 
 
 
-##
+##Conduct relevant transformations to hour variables.
 def hour_transformation(col, df):
     """
     """
@@ -107,7 +112,34 @@ def hour_transformation(col, df):
     df['hora_inicio'] = hora_inicio[0]
     df['min_inicio'] = hora_inicio[1]
     df['hora_inicio'] = round(df['hora_inicio'].apply(lambda x: float(x)),0)
+    
+    cyc_lst = ["hora_inicio"]
+    for val in cyc_lst:
+        cyclic_trasformation(df, val)
+    
+    df.drop(['hora_inicio','min_inicio'], axis=1, inplace=True)
+    return df
 
+
+def cyclic_trasformation(df, col):
+    """
+    Conduct relevant cyclical hour transformations to cos and sin coordinates.
+        args:
+            col (string): name of  column that will be transformed into cyclical hr.
+            df (dataframe): df that will be transformed.
+        returns:
+            df (dataframe): resulting df with cyclical column.
+    """
+    if "hora" in col:
+        div=24    
+    elif "dia" in col:
+        div= 30.4
+    elif "mes" in col:
+        div=12
+    
+    df[col + '_sin'] = np.sin(2*np.pi*df[col].apply(lambda x: float(x))/div)
+    df[col+ '_cos'] = np.cos(2*np.pi*df[col].apply(lambda x: float(x))/div)
+    
     return df
 
 
