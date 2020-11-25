@@ -105,6 +105,7 @@ def date_transformation(col, df):
         cyclic_trasformation(df, val)
 
     df.drop(['dia_inicio','mes_inicio'], axis=1, inplace=True)
+
     return df
 
 
@@ -125,7 +126,9 @@ def hour_transformation(col, df):
         cyclic_trasformation(df, val)
 
     df.drop(['hora_inicio','min_inicio'], axis=1, inplace=True)
+
     return df
+
 
 
 def cyclic_trasformation(df, col):

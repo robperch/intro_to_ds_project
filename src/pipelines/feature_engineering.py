@@ -197,6 +197,7 @@ def feature_generation(df):
     )
     # print(df_features.columns)
     df_features_prc = pipeline.fit_transform(df_features)
+    print("\n    ++++ Dimensions of matrix after going through pipeline: {}\n".format(df_features_prc.shape))
 
 
     ## List of the transformed columns
@@ -264,7 +265,7 @@ def feature_selection(df_features_prc, df_labels):
     # print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
     # print("    ++++ Cross validation score standard deviation:\n", cv_scores.std())
 
-    tscv = TimeSeriesSplit(n_splits=4)
+    tscv = TimeSeriesSplit(n_splits=2)
 
     ## Grid search CV to select best possible model.
     grid_search = GridSearchCV(model,

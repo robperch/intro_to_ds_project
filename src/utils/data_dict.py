@@ -24,14 +24,14 @@ data_dict = {
     "hora_creacion": {
         "relevant": True,
         "data_type": "date_and_time",
-        "model_relevant": True
+        "model_relevant": False
     },
     "dia_semana": {
         "relevant": True,
-        "data_type": "date_and_time",
+        "data_type": "categoric",
         "model_relevant": True
     },
-    "codigo_cierre": {
+    "codigo_cierre": { ## This feature will only be used to obtain labels and then its dropped.
         "relevant": True,
         "data_type": "categoric",
         "model_relevant": False
