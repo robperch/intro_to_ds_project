@@ -24,7 +24,8 @@ from sklearn.model_selection import (
     cross_val_score
 )
 from sklearn.preprocessing import (
-    OneHotEncoder
+    OneHotEncoder,
+    StandardScaler
 )
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -34,6 +35,7 @@ from sklearn.pipeline import Pipeline
 ## Ancillary modules
 
 from src.utils.data_dict import (
+    data_created_dict,
     data_dict
 )
 
@@ -174,12 +176,20 @@ def feature_generation(df):
 
 
     ## Generation dummy columns of categoric variables with OneHotEncoder
-    #### Creating list of the features that will processed through the pipeline.
-    cat_features = [key for key in data_dict if
+
+    #### Creating list of the features that will processed through the pipeline (categoric).
+    cat_features_orig = [key for key in data_dict if
                     (data_dict[key]['model_relevant']==True) &
                     (data_dict[key]['data_type']=='categoric')
                    ]
-    print("\n++ List of categorical features ({}) that will be processed through the pipeline are:".format(len(cat_features)))
+
+    cat_features_add = [key for key in data_created_dict if
+                    (data_created_dict[key]['model_relevant']==True) &
+                    (data_created_dict[key]['data_type']=='categoric')
+                   ]
+    cat_features = cat_features_orig + cat_features_add
+
+    print("\n++ List of categorical features ({}) that will be processed through the categoric pipeline are:".format(len(cat_features)))
     ohe_dict = {}
     for cat in cat_features:
         print("    {}. {}".format(cat_features.index(cat) + 1, cat))
@@ -187,20 +197,40 @@ def feature_generation(df):
         cat_list.sort()
         ohe_dict[cat] = cat_list
 
+    #### Creating list of the features that will processed through the pipeline (numeric).
+    num_features_orig = [key for key in data_dict if
+                    (data_dict[key]['model_relevant']==True) &
+                    (data_dict[key]['data_type']=='numeric')
+                   ]
+    num_features_add = [key for key in data_created_dict if
+                    (data_created_dict[key]['model_relevant']==True) &
+                    (data_created_dict[key]['data_type']=='numeric')
+                   ]
+    num_features = num_features_orig + num_features_add
+
+    print("\n++ List of numeric features ({}) that will be processed through the numeric pipeline are:".format(len(num_features)))
+    for num in num_features:
+        print("    {}. {}".format(num_features.index(num) + 1, num))
+
 
     #### Building and applying pipeline.
-    categoric_pipeline = Pipeline([('hotencode',OneHotEncoder())])
+    categoric_pipeline = Pipeline([
+        ('hotencode',OneHotEncoder())
+    ])
+    numeric_pipeline = Pipeline([
+        ('std_scaler', StandardScaler())
+    ])
+
     pipeline = ColumnTransformer([
         ('categoric', categoric_pipeline, cat_features),
-    ],
-    # remainder='passthrough'
-    )
+        ('numeric', numeric_pipeline, num_features)
+    ])
     # print(df_features.columns)
     df_features_prc = pipeline.fit_transform(df_features)
     print("\n    ++++ Dimensions of matrix after going through pipeline: {}\n".format(df_features_prc.shape))
 
 
-    ## List of the transformed columns
+    ## List of all features that were fed to the model.
     df_features_prc_cols = list(df_features.columns)
     for ohe_key in ohe_dict:
         for i in range(len(ohe_dict[ohe_key])):
