@@ -328,7 +328,7 @@ def feature_selection(df_features_prc, df_labels, df_features_prc_cols):
         }
     )
     feature_importance.sort_values(by="Importance", ascending=False, inplace=True)
-    print(feature_importance))
+    print(feature_importance)
 
 
     return df_features_prc
