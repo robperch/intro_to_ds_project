@@ -195,11 +195,12 @@ def feature_selection(df_features_prc, df_labels):
     # print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
     # print("    ++++ Cross validation score standard deviation:\n", cv_scores.std())
 
+    tscv = TimeSeriesSplit(n_splits=4)
 
     ## Grid search CV to select best possible model.
     grid_search = GridSearchCV(model,
                                param_grid,
-                               cv=2,
+                               cv=tscv,
                                scoring=evaluation_metric,
                                return_train_score=True,
                                n_jobs=-1
