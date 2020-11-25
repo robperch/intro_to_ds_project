@@ -298,7 +298,7 @@ def feature_selection(df_features_prc, df_labels, df_features_prc_cols):
     # print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
     # print("    ++++ Cross validation score standard deviation:\n", cv_scores.std())
 
-    tscv = TimeSeriesSplit(n_splits=2)
+    tscv = TimeSeriesSplit(n_splits=4)
 
     ## Grid search CV to select best possible model.
     grid_search = GridSearchCV(model,
@@ -328,7 +328,7 @@ def feature_selection(df_features_prc, df_labels, df_features_prc_cols):
         }
     )
     feature_importance.sort_values(by="Importance", ascending=False, inplace=True)
-    print(feature_importance) 
+    print(feature_importance)
 
 
     return df_features_prc
