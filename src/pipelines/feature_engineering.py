@@ -15,7 +15,10 @@
 import sys
 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import (
+    GridSearchCV,
+    TimeSeriesSplit
+)
 from sklearn.model_selection import (
     train_test_split,
     cross_val_score
@@ -42,7 +45,9 @@ from src.utils.utils import (
 from src.utils.params import (
     param_grid,
     max_features,
+    max_depth,
     n_estimators,
+    max_leaf_nodes,
     cv_rounds,
     evaluation_metric,
     transformation_pickle_loc,
@@ -229,7 +234,14 @@ def feature_selection(df_features_prc, df_labels):
 
 
     ## Selecting and training model - Random Forrest.
-    model = RandomForestClassifier(oob_score=True, n_jobs=-1)
+    model = RandomForestClassifier(
+        max_features,
+        max_depth,
+        n_estimators,
+        max_leaf_nodes,
+        oob_score=True,
+        n_jobs=-1,
+    )
     print("\n++ The model that will be used is: {}\n".format(model))
 
 
