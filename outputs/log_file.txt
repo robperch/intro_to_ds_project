@@ -1,0 +1,120 @@
+++++++++++++++++++++++++++++++++++++++++++++++++
+Sun Nov 29 14:20:29 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+(*Manual note: this results correspond to the final deliverable of project 1*)
+
+
+
+** Ingestion module successfully executed **
+
+
+** Tranformation module successfully executed **
+
+
+++ Complete list of features (10) that will be fed to the model:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+    5. dia_inicio_sin
+    6. dia_inicio_cos
+    7. mes_inicio_sin
+    8. mes_inicio_cos
+    9. hora_inicio_sin
+    10. hora_inicio_cos
+
+++ List of categorical features (4) that will be processed through the categoric pipeline are:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+
+++ List of numeric features (6) that will be processed through the numeric pipeline are:
+    1. dia_inicio_sin
+    2. dia_inicio_cos
+    3. mes_inicio_sin
+    4. mes_inicio_cos
+    5. hora_inicio_sin
+    6. hora_inicio_cos
+
+    ++++ Dimensions of matrix after going through pipeline: (1383138, 55)
+
+
+++ The model that will be used is: RandomForestClassifier(criterion=10, max_depth=10, min_samples_split=10,
+                       n_estimators=6, n_jobs=-1, oob_score=True)
+
+{'criterion': 'gini', 'min_samples_leaf': 9, 'n_estimators': 400}
+RandomForestClassifier(max_depth=10, min_samples_leaf=9, min_samples_split=10,
+                       n_estimators=400, n_jobs=-1, oob_score=True)
+
+++ Grid search results:
+
+    ++++ Best estimator: RandomForestClassifier(max_depth=10, min_samples_leaf=9, min_samples_split=10,
+                       n_estimators=400, n_jobs=-1, oob_score=True)
+    ++++ Number of features in best estimator: 55
+
+    ++++ Best estimator oob score: 0.7959287169126912
+
+      Importance                                        Feature
+10  3.107310e-01                accidente-choque sin lesionados
+37  1.698090e-01                                LLAMADA_911_066
+34  9.869784e-02                               BOTÓN DE AUXILIO
+38  9.604450e-02                                          RADIO
+8   8.137575e-02                accidente-choque con lesionados
+26  6.138646e-02                          lesionado-atropellado
+42  2.509613e-02                                           2014
+20  2.084787e-02                            accidente-volcadura
+54  1.894505e-02                                hora_inicio_cos
+53  1.771122e-02                                hora_inicio_sin
+39  1.765587e-02                                          REDES
+14  1.188121e-02                         accidente-motociclista
+45  6.560095e-03                                           2017
+46  5.469098e-03                                           2018
+51  5.019586e-03                                 mes_inicio_sin
+50  4.983465e-03                                 dia_inicio_cos
+49  4.904560e-03                                 dia_inicio_sin
+52  4.583552e-03                                 mes_inicio_cos
+44  4.434226e-03                                           2016
+47  4.415085e-03                                           2019
+35  4.148618e-03                                         CÁMARA
+43  4.096893e-03                                           2015
+36  3.840663e-03                                 LLAMADA APP911
+40  2.446636e-03                                          ZELLO
+6   1.784271e-03                                        Viernes
+48  1.532701e-03                                           2020
+0   1.384225e-03                                        Domingo
+9   1.293751e-03                 accidente-choque con prensados
+22  1.264258e-03                            cadáver-atropellado
+5   1.035879e-03                                         Sábado
+16  8.088812e-04     accidente-persona atrapada / desbarrancada
+3   7.357052e-04                                         Martes
+2   6.780200e-04                                          Lunes
+4   6.574752e-04                                      Miércoles
+1   6.204462e-04                                         Jueves
+17  5.587844e-04                    accidente-vehiculo atrapado
+21  4.925126e-04              cadáver-accidente automovilístico
+25  4.545692e-04            lesionado-accidente automovilístico
+15  4.249539e-04                                accidente-otros
+19  4.037225e-04             accidente-vehículo atrapado-varado
+27  3.146953e-04          mi ciudad-calle-incidente de tránsito
+33  2.052973e-04                                    APLICATIVOS
+11  1.335320e-04                             accidente-ciclista
+31  4.072003e-05                    sismo-choque sin lesionados
+24  2.904073e-05                detención ciudadana-atropellado
+23  2.185076e-05  detención ciudadana-accidente automovilístico
+18  2.079324e-05               accidente-vehiculo desbarrancado
+29  1.676487e-05                    sismo-choque con lesionados
+12  1.329959e-06                          accidente-ferroviario
+13  9.156648e-07                            accidente-monopatín
+41  5.381208e-07                                           2013
+28  0.000000e+00           mi ciudad-taxi-incidente de tránsito
+7   0.000000e+00  Detención ciudadana-accidente automovilístico
+32  0.000000e+00                      sismo-persona atropellada
+30  0.000000e+00                     sismo-choque con prensados
+
+** Feature engineering module successfully executed **
+
+
+------------------------------------------------
+Sun Nov 29 15:07:34 CST 2020
+------------------------------------------------
