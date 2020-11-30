@@ -11,15 +11,12 @@
 
 
 ## Python libraries.
-from sklearn.ensemble import (
-    RandomForestClassifier,
-    DecisionTreeClassifier
-)
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import (
     OneHotEncoder,
     StandardScaler
 )
-from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
 
@@ -58,11 +55,6 @@ categoric_pipeline = Pipeline([
 ])
 numeric_pipeline = Pipeline([
     ('std_scaler', StandardScaler())
-])
-
-pipeline = ColumnTransformer([
-    ('categoric', categoric_pipeline, cat_features),
-    ('numeric', numeric_pipeline, num_features)
 ])
 
 
