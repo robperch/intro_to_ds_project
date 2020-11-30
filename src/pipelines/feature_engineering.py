@@ -14,7 +14,6 @@
 
 import sys
 
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import (
     GridSearchCV,
     TimeSeriesSplit
@@ -23,13 +22,6 @@ from sklearn.model_selection import (
     train_test_split,
     cross_val_score
 )
-from sklearn.preprocessing import (
-    OneHotEncoder,
-    StandardScaler
-)
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-
 
 
 ## Ancillary modules
@@ -45,15 +37,12 @@ from src.utils.utils import (
 )
 
 from src.utils.params import (
-    param_grid,
-    max_features,
-    max_depth,
-    n_estimators,
-    max_leaf_nodes,
+    pipeline,
+    models_dict,
     cv_rounds,
     evaluation_metric,
     transformation_pickle_loc,
-    fe_pickle_loc
+    fe_pickle_loc,
 )
 
 import pandas as pd
@@ -96,46 +85,6 @@ def save_fe(df, path):
     """
 
     save_df(df, path)
-
-
-
-##
-def get_feature_out(estimator, feature_in):
-    if hasattr(estimator,'get_feature_names'):
-        if isinstance(estimator, _VectorizerMixin):
-            # handling all vectorizers
-            return [f'vec_{f}' \
-                for f in estimator.get_feature_names()]
-        else:
-            return estimator.get_feature_names(feature_in)
-    elif isinstance(estimator, SelectorMixin):
-        return np.array(feature_in)[estimator.get_support()]
-    else:
-        return feature_in
-
-
-
-##
-def get_ct_feature_names(ct):
-    # handles all estimators, pipelines inside ColumnTransfomer
-    # doesn't work when remainder =='passthrough'
-    # which requires the input column names.
-    output_features = []
-
-    for name, estimator, features in ct.transformers_:
-        if name!='remainder':
-            if isinstance(estimator, Pipeline):
-                current_features = features
-                for step in estimator:
-                    current_features = get_feature_out(step, current_features)
-                features_out = current_features
-            else:
-                features_out = get_feature_out(estimator, features)
-            output_features.extend(features_out)
-        elif estimator=='passthrough':
-            output_features.extend(ct._feature_names_in[features])
-
-    return output_features
 
 
 
@@ -213,19 +162,7 @@ def feature_generation(df):
         print("    {}. {}".format(num_features.index(num) + 1, num))
 
 
-    #### Building and applying pipeline.
-    categoric_pipeline = Pipeline([
-        ('hotencode',OneHotEncoder())
-    ])
-    numeric_pipeline = Pipeline([
-        ('std_scaler', StandardScaler())
-    ])
-
-    pipeline = ColumnTransformer([
-        ('categoric', categoric_pipeline, cat_features),
-        ('numeric', numeric_pipeline, num_features)
-    ])
-    # print(df_features.columns)
+    #### Applying data processing pipeline.
     df_features_prc = pipeline.fit_transform(df_features)
     print("\n    ++++ Dimensions of matrix after going through pipeline: {}\n".format(df_features_prc.shape))
 
@@ -236,14 +173,6 @@ def feature_generation(df):
         for i in range(len(ohe_dict[ohe_key])):
             df_features_prc_cols.insert(i + df_features_prc_cols.index(ohe_key), ohe_dict[ohe_key][i])
         df_features_prc_cols.remove(ohe_key)
-    # print(list(df_features_prc_cols))
-    # print(len(df_features_prc_cols))
-
-    # enc_cat_features = pipeline.named_transformers_['categoric']['hotencode'].get_feature_names()
-    # print(enc_cat_features)
-    # labels = np.concatenate([numeric_features, enc_cat_features])
-    # transformed_df_columns = pd.DataFrame(preprocessor.transform(X_train).toarray(), columns=labels).columns
-    # print(transformed_df_columns)
 
 
     return df_features_prc, df_labels, df_features_prc_cols
@@ -268,42 +197,14 @@ def feature_selection(df_features_prc, df_labels, df_features_prc_cols):
 
 
     ## Selecting and training model - Random Forrest.
-    model = RandomForestClassifier(
-        max_features,
-        max_depth,
-        n_estimators,
-        max_leaf_nodes,
-        oob_score=True,
-        n_jobs=-1,
-    )
+    model = models_dict["rf"]["model"]
     print("\n++ The model that will be used is: {}\n".format(model))
 
-
-    ## Evaluating model performance with cross validation
-    # cv_scores = cross_val_score(
-    #     model,
-    #     df_features_prc,
-    #     df_labels,
-    #     scoring=evaluation_metric,
-    #     cv=cv_rounds
-    # )
-    #
-    # print("\n++ Model performance metrics:\n")
-    # print("    ++++ Cross validation scores:")
-    # i = 1
-    # for cvs in list(cv_scores):
-    #     print("        Round {} -> {}".format(i, cvs))
-    #     i += 1
-    # print("\n")
-    # print("    ++++ Cross validation mean score: {} \n".format(cv_scores.mean()))
-    # print("    ++++ Cross validation score standard deviation:\n", cv_scores.std())
-
-    tscv = TimeSeriesSplit(n_splits=4)
 
     ## Grid search CV to select best possible model.
     grid_search = GridSearchCV(model,
                                param_grid,
-                               cv=tscv,
+                               cv=TimeSeriesSplit(n_splits=1),
                                scoring=evaluation_metric,
                                return_train_score=True,
                                n_jobs=-1
