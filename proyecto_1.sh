@@ -24,6 +24,11 @@ log_file_path=outputs/log_file.txt
 
 
 # Registering the execution start time
+echo  >> ${log_file_path}
+echo  >> ${log_file_path}
+echo  >> ${log_file_path}
+echo  >> ${log_file_path}
+echo  >> ${log_file_path}
 echo ++++++++++++++++++++++++++++++++++++++++++++++++ >> ${log_file_path} 2>&1
 echo `date` >> ${log_file_path} 2>&1
 echo ++++++++++++++++++++++++++++++++++++++++++++++++ >> ${log_file_path} 2>&1

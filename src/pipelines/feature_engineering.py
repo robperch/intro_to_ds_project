@@ -22,6 +22,7 @@ from sklearn.model_selection import (
     train_test_split,
     cross_val_score
 )
+from sklearn.compose import ColumnTransformer
 
 
 ## Ancillary modules
@@ -37,7 +38,8 @@ from src.utils.utils import (
 )
 
 from src.utils.params import (
-    pipeline,
+    categoric_pipeline,
+    numeric_pipeline,
     models_dict,
     cv_rounds,
     evaluation_metric,
@@ -163,6 +165,10 @@ def feature_generation(df):
 
 
     #### Applying data processing pipeline.
+    pipeline = ColumnTransformer([
+        ('categoric', categoric_pipeline, cat_features),
+        ('numeric', numeric_pipeline, num_features)
+    ])
     df_features_prc = pipeline.fit_transform(df_features)
     print("\n    ++++ Dimensions of matrix after going through pipeline: {}\n".format(df_features_prc.shape))
 
@@ -203,8 +209,8 @@ def feature_selection(df_features_prc, df_labels, df_features_prc_cols):
 
     ## Grid search CV to select best possible model.
     grid_search = GridSearchCV(model,
-                               param_grid,
-                               cv=TimeSeriesSplit(n_splits=1),
+                               models_dict["rf"]["param_grid"],
+                               cv=TimeSeriesSplit(n_splits=2),
                                scoring=evaluation_metric,
                                return_train_score=True,
                                n_jobs=-1

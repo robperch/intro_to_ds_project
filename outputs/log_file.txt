@@ -118,3 +118,129 @@ RandomForestClassifier(max_depth=10, min_samples_leaf=9, min_samples_split=10,
 ------------------------------------------------
 Sun Nov 29 15:07:34 CST 2020
 ------------------------------------------------
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Mon Nov 30 10:18:35 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+** Ingestion module successfully executed **
+
+
+** Tranformation module successfully executed **
+
+
+++ Complete list of features (10) that will be fed to the model:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+    5. dia_inicio_sin
+    6. dia_inicio_cos
+    7. mes_inicio_sin
+    8. mes_inicio_cos
+    9. hora_inicio_sin
+    10. hora_inicio_cos
+
+++ List of categorical features (4) that will be processed through the categoric pipeline are:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+
+++ List of numeric features (6) that will be processed through the numeric pipeline are:
+    1. dia_inicio_sin
+    2. dia_inicio_cos
+    3. mes_inicio_sin
+    4. mes_inicio_cos
+    5. hora_inicio_sin
+    6. hora_inicio_cos
+
+    ++++ Dimensions of matrix after going through pipeline: (1383138, 55)
+
+
+++ The model that will be used is: RandomForestClassifier(max_features=6, max_leaf_nodes=10, n_estimators=10,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+
+{'criterion': 'gini', 'min_samples_leaf': 9, 'n_estimators': 400}
+RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=9,
+                       n_estimators=400, n_jobs=-1, oob_score=True,
+                       random_state=1111)
+
+++ Grid search results:
+
+    ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=9,
+                       n_estimators=400, n_jobs=-1, oob_score=True,
+                       random_state=1111)
+    ++++ Number of features in best estimator: 55
+
+    ++++ Best estimator oob score: 0.7961301224132303
+
+      Importance                                        Feature
+10  3.146229e-01                accidente-choque sin lesionados
+37  1.913516e-01                                LLAMADA_911_066
+34  1.142081e-01                               BOTÓN DE AUXILIO
+38  1.035529e-01                                          RADIO
+8   9.557218e-02                accidente-choque con lesionados
+26  6.747855e-02                          lesionado-atropellado
+20  2.119918e-02                            accidente-volcadura
+42  1.668342e-02                                           2014
+53  1.440854e-02                                hora_inicio_sin
+39  1.282153e-02                                          REDES
+14  1.244596e-02                         accidente-motociclista
+54  1.081737e-02                                hora_inicio_cos
+44  4.063362e-03                                           2016
+35  3.382041e-03                                         CÁMARA
+45  2.724776e-03                                           2017
+47  2.445137e-03                                           2019
+46  2.257299e-03                                           2018
+36  1.798752e-03                                 LLAMADA APP911
+22  1.279099e-03                            cadáver-atropellado
+43  1.029981e-03                                           2015
+0   9.634984e-04                                        Domingo
+6   9.241552e-04                                        Viernes
+40  6.493864e-04                                          ZELLO
+9   6.486316e-04                 accidente-choque con prensados
+21  6.002997e-04              cadáver-accidente automovilístico
+51  4.702120e-04                                 mes_inicio_sin
+5   4.020240e-04                                         Sábado
+52  3.846174e-04                                 mes_inicio_cos
+25  2.770222e-04            lesionado-accidente automovilístico
+16  1.632511e-04     accidente-persona atrapada / desbarrancada
+48  1.107127e-04                                           2020
+19  8.425108e-05             accidente-vehículo atrapado-varado
+27  4.879688e-05          mi ciudad-calle-incidente de tránsito
+17  4.696635e-05                    accidente-vehiculo atrapado
+33  3.096447e-05                                    APLICATIVOS
+15  1.498375e-05                                accidente-otros
+4   7.517667e-06                                      Miércoles
+31  7.501830e-06                    sismo-choque sin lesionados
+1   5.400410e-06                                         Jueves
+11  5.044760e-06                             accidente-ciclista
+18  3.807118e-06               accidente-vehiculo desbarrancado
+2   3.277777e-06                                          Lunes
+50  2.858867e-06                                 dia_inicio_cos
+49  1.089279e-06                                 dia_inicio_sin
+24  9.723644e-07                detención ciudadana-atropellado
+3   0.000000e+00                                         Martes
+23  0.000000e+00  detención ciudadana-accidente automovilístico
+28  0.000000e+00           mi ciudad-taxi-incidente de tránsito
+7   0.000000e+00  Detención ciudadana-accidente automovilístico
+29  0.000000e+00                    sismo-choque con lesionados
+41  0.000000e+00                                           2013
+30  0.000000e+00                     sismo-choque con prensados
+13  0.000000e+00                            accidente-monopatín
+32  0.000000e+00                      sismo-persona atropellada
+12  0.000000e+00                          accidente-ferroviario
+
+** Feature engineering module successfully executed **
+
+
+------------------------------------------------
+Mon Nov 30 10:22:10 CST 2020
+------------------------------------------------
