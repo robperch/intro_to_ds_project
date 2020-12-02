@@ -37,7 +37,11 @@ ingestion_pickle_loc = "outputs/ingest_df.pkl"
 transformation_pickle_loc = "outputs/transformation_df.pkl"
 
 ## Feature engineering
-fe_pickle_loc = "outputs/fe_df.pkl"
+fe_pickle_loc_imp_features = "outputs/fe_df_imp_features.pkl"
+fe_pickle_loc_feature_labs = "outputs/fe_df_feature_labs.pkl"
+
+## Modeling
+models_pickle_loc = "outputs/model_loop.pkl"
 
 
 
@@ -94,6 +98,8 @@ models_dict = {
 ## Additional parameters for cv_grid
 cv_rounds = 1
 evaluation_metric = "accuracy"
+feature_importance_theshold = 0.005#0.07
+tag_non_relevant_cats = "other_nr_categories"
 
 
 

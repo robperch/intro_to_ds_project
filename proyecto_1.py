@@ -19,7 +19,8 @@ from src.utils.params import (
     data_path,
     ingestion_pickle_loc,
     transformation_pickle_loc,
-    fe_pickle_loc
+    fe_pickle_loc_imp_features,
+    fe_pickle_loc_feature_labs,
 )
 
 from src.pipelines.ingestion import (
@@ -61,7 +62,7 @@ def main():
     transform(ingestion_pickle_loc, transformation_pickle_loc)
 
     ## Executing feature engineering function
-    feature_engineering(transformation_pickle_loc, fe_pickle_loc)
+    feature_engineering(transformation_pickle_loc, fe_pickle_loc_imp_features, fe_pickle_loc_feature_labs)
 
 
 
