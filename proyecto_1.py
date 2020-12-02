@@ -35,6 +35,10 @@ from src.pipelines.feature_engineering import (
     feature_engineering
 )
 
+from src.pipelines.modeling import (
+    modeling
+)
+
 
 
 
@@ -63,6 +67,9 @@ def main():
 
     ## Executing feature engineering function
     feature_engineering(transformation_pickle_loc, fe_pickle_loc_imp_features, fe_pickle_loc_feature_labs)
+
+    ## Executing modeling functions
+    modeling(fe_pickle_loc_imp_features, fe_pickle_loc_feature_labs)
 
 
 

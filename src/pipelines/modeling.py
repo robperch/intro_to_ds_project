@@ -10,11 +10,31 @@
 #############
 
 
+## Python libraries
+
+from sklearn.model_selection import (
+    GridSearchCV,
+    TimeSeriesSplit
+)
+
+from sklearn.model_selection import (
+    train_test_split
+)
+
+
 ## Ancillary modules
 
+from src.utils.utils import (
+    load_df,
+    save_df
+)
+
 from src.utils.params import (
-    fe_pickle_loc,
+    fe_pickle_loc_imp_features,
+    fe_pickle_loc_feature_labs,
     models_pickle_loc,
+    models_dict,
+    evaluation_metric,
 )
 
 
@@ -58,12 +78,66 @@ def save_models(selected_model, path):
 
 
 
+##
+def select_best_model(models_mloop):
+    """
+    """
+
+    res = "nothing_"
+    bench = 0
+
+    for mdl in models_mloop:
+        if models_mloop[mdl]["best_estimator_score"] > bench:
+            res = mdl
+            bench = models_mloop[mdl]["best_estimator_score"]
+
+    print("\n++The model with the best performance is: {} (score: {})".format(res, round(bench, 6)))
+
+    return res
+
+
+
 
 
 "------------------------------------------------------------------------------"
 ########################
 ## Modeling functions ##
 ########################
+
+
+##
+def magic_loop(models_dict, df_imp_features_prc, df_labels):
+    """
+    """
+
+
+    ## Splitting data in train and test
+    X_train, X_test, y_train, y_test = train_test_split(df_imp_features_prc, df_labels, test_size=0.3)
+
+
+    ##
+    models_mloop = {}
+    for mdl in models_dict:
+
+        model = models_dict[mdl]["model"]
+
+        grid_search = GridSearchCV(model,
+                               models_dict[mdl]["param_grid"],
+                               cv=TimeSeriesSplit(n_splits=2),
+                               scoring=evaluation_metric,
+                               return_train_score=True,
+                               n_jobs=-1
+                               )
+        grid_search.fit(X_train, y_train)
+
+        models_mloop[mdl] = {
+            "best_estimator": grid_search.best_estimator_,
+            "best_estimator_score": grid_search.best_score_
+        }
+
+    sel_model = models_mloop[select_best_model(models_mloop)]["best_estimator"]
+
+    return sel_model
 
 
 
@@ -76,22 +150,22 @@ def save_models(selected_model, path):
 
 
 ## Function desigend to execute all fe functions.
-def model_evaluation(transformation_pickle_loc, fe_pickle_loc):
+def modeling(fe_pickle_loc_imp_features, fe_pickle_loc_feature_labs):
     """
-    Function desigend to execute all fe functions.
+    Function desigend to execute all modeling functions.
         args:
-            transformation_pickle_loc (string): path where the picke obtained from the transformation is.
-            fe_pickle_loc (string): location where the resulting pickle object will be stored.
+            fe_pickle_loc (string): path where the picke obtained from the feature engineering is.
+            models_pickle_loc (string): location where the resulting pickle object (best model) will be stored.
         returns:
             -
     """
 
-    ## Executing transformation functions
-    df = load_transformation(transformation_pickle_loc)
-    df_features_prc, df_labels, df_features_prc_cols = feature_generation(df)
-    df_features_prc = feature_selection(df_features_prc, df_labels, df_features_prc_cols)
-    save_fe(df_features_prc, fe_pickle_loc)
-    print("\n** Feature engineering module successfully executed **\n")
+    ## Executing modeling functions
+    df_imp_features_prc = load_features(fe_pickle_loc_imp_features)
+    df_labels = load_features(fe_pickle_loc_feature_labs)
+    sel_model = magic_loop(models_dict, df_imp_features_prc, df_labels)
+    save_models(sel_model, models_pickle_loc)
+    print("\n** Modeling module successfully executed **\n")
 
 
 

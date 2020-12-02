@@ -65,7 +65,7 @@ numeric_pipeline = Pipeline([
 ## Models and parameters
 models_dict = {
 
-    "rf": {
+    "random_forest": {
         "model": RandomForestClassifier(
             max_features=6,
             n_estimators=10,
@@ -75,20 +75,19 @@ models_dict = {
             random_state=1111
         ),
         "param_grid": {
-            "n_estimators": [400],
-            "min_samples_leaf": [9],
+            "n_estimators": [100, 300, 500, 800],
+            "min_samples_leaf": [3, 5, 7],
             "criterion": ['gini']
         }
     },
 
-    "dt": {
+    "decision_tree": {
         "model": DecisionTreeClassifier(
             random_state=2222
             ),
         "param_grid": {
-            'n_estimators': [500],
-            'max_depth': [15],
-            'min_samples_leaf': [7]
+            'max_depth': [5, 10, 15, None],
+            'min_samples_leaf': [3, 5, 7]
         }
     },
 
@@ -98,7 +97,7 @@ models_dict = {
 ## Additional parameters for cv_grid
 cv_rounds = 1
 evaluation_metric = "accuracy"
-feature_importance_theshold = 0.005#0.07
+feature_importance_theshold = 0.07
 tag_non_relevant_cats = "other_nr_categories"
 
 

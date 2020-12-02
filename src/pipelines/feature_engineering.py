@@ -41,7 +41,6 @@ from src.utils.params import (
     categoric_pipeline,
     numeric_pipeline,
     models_dict,
-    cv_rounds,
     evaluation_metric,
     feature_importance_theshold,
     tag_non_relevant_cats,
@@ -301,13 +300,13 @@ def feature_selection(df, df_features_prc, df_labels, df_features_prc_cols, ohe_
 
 
     ## Selecting and training model - Random Forrest.
-    model = models_dict["rf"]["model"]
+    model = models_dict["random_forest"]["model"]
     print("\n++ The model that will be used is: {}\n".format(model))
 
 
     ## Grid search CV to select best possible model.
     grid_search = GridSearchCV(model,
-                               models_dict["rf"]["param_grid"],
+                               models_dict["random_forest"]["param_grid"],
                                cv=TimeSeriesSplit(n_splits=2),
                                scoring=evaluation_metric,
                                return_train_score=True,
@@ -316,12 +315,11 @@ def feature_selection(df, df_features_prc, df_labels, df_features_prc_cols, ohe_
 
     grid_search.fit(X_train, y_train)
 
-    print(grid_search.best_params_)
-    print(grid_search.best_estimator_)
-
     print("\n++ Grid search results:\n")
+    print("    ++++ Best parameters: {}".format(grid_search.best_params_))
     print("    ++++ Best estimator: {}".format(grid_search.best_estimator_))
     print("    ++++ Number of features in best estimator: {} \n".format(grid_search.best_estimator_.n_features_))
+    print("    ++++ Best estimator score: {}\n".format(grid_search.best_score_))
     print("    ++++ Best estimator oob score: {}\n".format(grid_search.best_estimator_.oob_score_))
 
 
