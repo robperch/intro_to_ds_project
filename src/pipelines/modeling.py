@@ -137,7 +137,28 @@ def magic_loop(models_dict, df_imp_features_prc, df_labels):
 
     sel_model = models_mloop[select_best_model(models_mloop)]["best_estimator"]
 
-    return sel_model
+
+    return sel_model, X_test, y_test
+
+
+
+## Testing model with test data set.
+def best_model_predict_test(sel_model, X_test):
+    """
+    Testing model with test data set.
+        args:
+            sel_model (sklearn model): best model obtained from magic loop.
+            X_test (numpy array): dataset to test best model.
+        returns:
+            test_predict_labs (array): labels predicted by best model.
+            test_predict_scores (array): probabilities related with classification by best model.
+    """
+
+    ## Predict test labels and probabilities with selected model.
+    test_predict_labs = sel_model.predict(X_test)
+    test_predict_scores = sel_model.predict_proba(X_test)
+
+    return test_predict_labs, test_predict_scores
 
 
 
@@ -163,8 +184,15 @@ def modeling(fe_pickle_loc_imp_features, fe_pickle_loc_feature_labs):
     ## Executing modeling functions
     df_imp_features_prc = load_features(fe_pickle_loc_imp_features)
     df_labels = load_features(fe_pickle_loc_feature_labs)
-    sel_model = magic_loop(models_dict, df_imp_features_prc, df_labels)
+    sel_model, X_test, y_test = magic_loop(models_dict, df_imp_features_prc, df_labels)
     save_models(sel_model, models_pickle_loc)
+    save_models(X_test, "outputs/X_test.pkl")
+    save_models(y_test, "outputs/y_test.pkl")
+
+    test_predict_labs, test_predict_scores = best_model_predict_test(sel_model, X_test)
+    save_models(test_predict_labs, "outputs/test_predict_labs.pkl")
+    save_models(test_predict_scores, "outputs/test_predict_scores.pkl")
+
     print("\n** Modeling module successfully executed **\n")
 
 
