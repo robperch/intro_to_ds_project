@@ -83,6 +83,24 @@ def save_ingestion(df, path):
 #############################
 
 
+## Set the unique call identifier as index
+def set_index(df):
+    """
+    Set the unique call identifier as index
+        args:
+            df (dataframe): df whose index will be asigned.
+        returns:
+            df (dataframe): df with correct index.
+    """
+
+    ## Selection the if feature based on data dict and setting it as index.
+    id_feature = [key for key in data_dict if "id_feature" in data_dict[key]][0]
+    df.set_index(id_feature, inplace=True, drop=False)
+
+    return df
+
+
+
 ## Eliminating unused columns from dataframe.
 def drop_cols(df):
     """
@@ -98,6 +116,9 @@ def drop_cols(df):
 
     ## Dropping non relevant columns
     df.drop(nrel_col, inplace=True, axis=1)
+
+
+    return df
 
 
 
@@ -117,6 +138,9 @@ def generate_label(df):
                                             ("(N) " in x)
                                             else 0.0
                                            )
+
+
+    return df
 
 
 
@@ -141,8 +165,9 @@ def ingest(data_path, ingestion_pickle_loc):
 
     ## Executing ingestion functions
     df = ingest_file(data_path)
-    drop_cols(df)
-    generate_label(df)
+    df = set_index(df)
+    df = drop_cols(df)
+    df = generate_label(df)
     save_ingestion(df, ingestion_pickle_loc)
     print("\n** Ingestion module successfully executed **\n")
 

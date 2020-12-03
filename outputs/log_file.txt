@@ -4962,7 +4962,7 @@ Tue Dec 1 20:23:40 CST 2020
     ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=9,
                        n_estimators=400, n_jobs=-1, oob_score=True,
                        random_state=1111)
-    ++++ Number of features in best estimator: 55 
+    ++++ Number of features in best estimator: 55
 
     ++++ Best estimator score: 0.7957221471685485
 
@@ -4972,123 +4972,123 @@ Tue Dec 1 20:23:40 CST 2020
 ++ Threshold used to discriminate variables' importance: 0.005
 
 
-++ Report of processed features importance analysis: 
+++ Report of processed features importance analysis:
     Importance                                        Feature  \
-0     0.335475                accidente-choque sin lesionados   
-1     0.194937                                LLAMADA_911_066   
-2     0.104042                               BOTÓN DE AUXILIO   
-3     0.099689                                          RADIO   
-4     0.091312                accidente-choque con lesionados   
-5     0.065029                          lesionado-atropellado   
-6     0.020980                            accidente-volcadura   
-7     0.017092                                           2014   
-8     0.015794                                hora_inicio_sin   
-9     0.012192                                          REDES   
-10    0.010254                         accidente-motociclista   
-11    0.009348                                hora_inicio_cos   
-12    0.003944                                           2016   
-13    0.003449                                         CÁMARA   
-14    0.002801                                           2017   
-15    0.002690                                           2018   
-16    0.002223                                           2019   
-17    0.001722                                 LLAMADA APP911   
-18    0.001084                            cadáver-atropellado   
-19    0.001035                                           2015   
-20    0.000774                                        Viernes   
-21    0.000753                 accidente-choque con prensados   
-22    0.000641                                        Domingo   
-23    0.000522                                          ZELLO   
-24    0.000438                                 mes_inicio_cos   
-25    0.000388              cadáver-accidente automovilístico   
-26    0.000306                                 mes_inicio_sin   
-27    0.000245            lesionado-accidente automovilístico   
-28    0.000180                                         Sábado   
-29    0.000167     accidente-persona atrapada / desbarrancada   
-30    0.000156                    accidente-vehiculo atrapado   
-31    0.000115                                           2020   
-32    0.000081             accidente-vehículo atrapado-varado   
-33    0.000040          mi ciudad-calle-incidente de tránsito   
-34    0.000020                                          Lunes   
-35    0.000016                    sismo-choque sin lesionados   
-36    0.000012                                    APLICATIVOS   
-37    0.000010                                      Miércoles   
-38    0.000009                                         Jueves   
-39    0.000009                                accidente-otros   
-40    0.000007                             accidente-ciclista   
-41    0.000006               accidente-vehiculo desbarrancado   
-42    0.000005                                 dia_inicio_cos   
-43    0.000003                                         Martes   
-44    0.000002                detención ciudadana-atropellado   
-45    0.000002                                 dia_inicio_sin   
-46    0.000000  detención ciudadana-accidente automovilístico   
-47    0.000000  Detención ciudadana-accidente automovilístico   
-48    0.000000                          accidente-ferroviario   
-49    0.000000                                           2013   
-50    0.000000                      sismo-persona atropellada   
-51    0.000000                     sismo-choque con prensados   
-52    0.000000                    sismo-choque con lesionados   
-53    0.000000           mi ciudad-taxi-incidente de tránsito   
-54    0.000000                            accidente-monopatín   
+0     0.335475                accidente-choque sin lesionados
+1     0.194937                                LLAMADA_911_066
+2     0.104042                               BOTÓN DE AUXILIO
+3     0.099689                                          RADIO
+4     0.091312                accidente-choque con lesionados
+5     0.065029                          lesionado-atropellado
+6     0.020980                            accidente-volcadura
+7     0.017092                                           2014
+8     0.015794                                hora_inicio_sin
+9     0.012192                                          REDES
+10    0.010254                         accidente-motociclista
+11    0.009348                                hora_inicio_cos
+12    0.003944                                           2016
+13    0.003449                                         CÁMARA
+14    0.002801                                           2017
+15    0.002690                                           2018
+16    0.002223                                           2019
+17    0.001722                                 LLAMADA APP911
+18    0.001084                            cadáver-atropellado
+19    0.001035                                           2015
+20    0.000774                                        Viernes
+21    0.000753                 accidente-choque con prensados
+22    0.000641                                        Domingo
+23    0.000522                                          ZELLO
+24    0.000438                                 mes_inicio_cos
+25    0.000388              cadáver-accidente automovilístico
+26    0.000306                                 mes_inicio_sin
+27    0.000245            lesionado-accidente automovilístico
+28    0.000180                                         Sábado
+29    0.000167     accidente-persona atrapada / desbarrancada
+30    0.000156                    accidente-vehiculo atrapado
+31    0.000115                                           2020
+32    0.000081             accidente-vehículo atrapado-varado
+33    0.000040          mi ciudad-calle-incidente de tránsito
+34    0.000020                                          Lunes
+35    0.000016                    sismo-choque sin lesionados
+36    0.000012                                    APLICATIVOS
+37    0.000010                                      Miércoles
+38    0.000009                                         Jueves
+39    0.000009                                accidente-otros
+40    0.000007                             accidente-ciclista
+41    0.000006               accidente-vehiculo desbarrancado
+42    0.000005                                 dia_inicio_cos
+43    0.000003                                         Martes
+44    0.000002                detención ciudadana-atropellado
+45    0.000002                                 dia_inicio_sin
+46    0.000000  detención ciudadana-accidente automovilístico
+47    0.000000  Detención ciudadana-accidente automovilístico
+48    0.000000                          accidente-ferroviario
+49    0.000000                                           2013
+50    0.000000                      sismo-persona atropellada
+51    0.000000                     sismo-choque con prensados
+52    0.000000                    sismo-choque con lesionados
+53    0.000000           mi ciudad-taxi-incidente de tránsito
+54    0.000000                            accidente-monopatín
 
-     Mother_feature  Important  
-0      incidente_c4       True  
-1      tipo_entrada       True  
-2      tipo_entrada       True  
-3      tipo_entrada       True  
-4      incidente_c4       True  
-5      incidente_c4       True  
-6      incidente_c4       True  
-7       anio_inicio       True  
-8   hora_inicio_sin       True  
-9      tipo_entrada       True  
-10     incidente_c4       True  
-11  hora_inicio_cos       True  
-12      anio_inicio      False  
-13     tipo_entrada      False  
-14      anio_inicio      False  
-15      anio_inicio      False  
-16      anio_inicio      False  
-17     tipo_entrada      False  
-18     incidente_c4      False  
-19      anio_inicio      False  
-20       dia_semana      False  
-21     incidente_c4      False  
-22       dia_semana      False  
-23     tipo_entrada      False  
-24   mes_inicio_cos      False  
-25     incidente_c4      False  
-26   mes_inicio_sin      False  
-27     incidente_c4      False  
-28       dia_semana      False  
-29     incidente_c4      False  
-30     incidente_c4      False  
-31      anio_inicio      False  
-32     incidente_c4      False  
-33     incidente_c4      False  
-34       dia_semana      False  
-35     incidente_c4      False  
-36     tipo_entrada      False  
-37       dia_semana      False  
-38       dia_semana      False  
-39     incidente_c4      False  
-40     incidente_c4      False  
-41     incidente_c4      False  
-42   dia_inicio_cos      False  
-43       dia_semana      False  
-44     incidente_c4      False  
-45   dia_inicio_sin      False  
-46     incidente_c4      False  
-47     incidente_c4      False  
-48     incidente_c4      False  
-49      anio_inicio      False  
-50     incidente_c4      False  
-51     incidente_c4      False  
-52     incidente_c4      False  
-53     incidente_c4      False  
-54     incidente_c4      False  
+     Mother_feature  Important
+0      incidente_c4       True
+1      tipo_entrada       True
+2      tipo_entrada       True
+3      tipo_entrada       True
+4      incidente_c4       True
+5      incidente_c4       True
+6      incidente_c4       True
+7       anio_inicio       True
+8   hora_inicio_sin       True
+9      tipo_entrada       True
+10     incidente_c4       True
+11  hora_inicio_cos       True
+12      anio_inicio      False
+13     tipo_entrada      False
+14      anio_inicio      False
+15      anio_inicio      False
+16      anio_inicio      False
+17     tipo_entrada      False
+18     incidente_c4      False
+19      anio_inicio      False
+20       dia_semana      False
+21     incidente_c4      False
+22       dia_semana      False
+23     tipo_entrada      False
+24   mes_inicio_cos      False
+25     incidente_c4      False
+26   mes_inicio_sin      False
+27     incidente_c4      False
+28       dia_semana      False
+29     incidente_c4      False
+30     incidente_c4      False
+31      anio_inicio      False
+32     incidente_c4      False
+33     incidente_c4      False
+34       dia_semana      False
+35     incidente_c4      False
+36     tipo_entrada      False
+37       dia_semana      False
+38       dia_semana      False
+39     incidente_c4      False
+40     incidente_c4      False
+41     incidente_c4      False
+42   dia_inicio_cos      False
+43       dia_semana      False
+44     incidente_c4      False
+45   dia_inicio_sin      False
+46     incidente_c4      False
+47     incidente_c4      False
+48     incidente_c4      False
+49      anio_inicio      False
+50     incidente_c4      False
+51     incidente_c4      False
+52     incidente_c4      False
+53     incidente_c4      False
+54     incidente_c4      False
 
 
-++ Summary dictionary derived from feature importance analysis: 
+++ Summary dictionary derived from feature importance analysis:
 
 {
     "incidente_c4": {
@@ -5208,7 +5208,7 @@ Tue Dec 1 20:42:42 CST 2020
     ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=9,
                        n_estimators=400, n_jobs=-1, oob_score=True,
                        random_state=1111)
-    ++++ Number of features in best estimator: 55 
+    ++++ Number of features in best estimator: 55
 
     ++++ Best estimator score: 0.7952062392325521
 
@@ -5218,123 +5218,123 @@ Tue Dec 1 20:42:42 CST 2020
 ++ Threshold used to discriminate variables' importance: 0.005
 
 
-++ Report of processed features importance analysis: 
+++ Report of processed features importance analysis:
     Importance                                        Feature  \
-0     0.328480                accidente-choque sin lesionados   
-1     0.189320                                LLAMADA_911_066   
-2     0.111316                               BOTÓN DE AUXILIO   
-3     0.104818                                          RADIO   
-4     0.086774                accidente-choque con lesionados   
-5     0.069328                          lesionado-atropellado   
-6     0.021257                            accidente-volcadura   
-7     0.016404                                           2014   
-8     0.014169                                hora_inicio_sin   
-9     0.011552                         accidente-motociclista   
-10    0.011350                                          REDES   
-11    0.011087                                hora_inicio_cos   
-12    0.003762                                         CÁMARA   
-13    0.003610                                           2016   
-14    0.003512                                           2017   
-15    0.002065                                           2019   
-16    0.001983                                           2018   
-17    0.001452                                 LLAMADA APP911   
-18    0.001151                            cadáver-atropellado   
-19    0.001002                                           2015   
-20    0.000976                                        Viernes   
-21    0.000753                                 mes_inicio_sin   
-22    0.000745                 accidente-choque con prensados   
-23    0.000602                                 mes_inicio_cos   
-24    0.000583                                          ZELLO   
-25    0.000458                                        Domingo   
-26    0.000300            lesionado-accidente automovilístico   
-27    0.000259                                         Sábado   
-28    0.000256              cadáver-accidente automovilístico   
-29    0.000155     accidente-persona atrapada / desbarrancada   
-30    0.000139                                           2020   
-31    0.000091                    accidente-vehiculo atrapado   
-32    0.000089             accidente-vehículo atrapado-varado   
-33    0.000055          mi ciudad-calle-incidente de tránsito   
-34    0.000048                                    APLICATIVOS   
-35    0.000026                    sismo-choque sin lesionados   
-36    0.000021                                accidente-otros   
-37    0.000013                             accidente-ciclista   
-38    0.000010                                         Jueves   
-39    0.000009                                         Martes   
-40    0.000005                                 dia_inicio_cos   
-41    0.000005                                          Lunes   
-42    0.000004                                      Miércoles   
-43    0.000002                                 dia_inicio_sin   
-44    0.000001               accidente-vehiculo desbarrancado   
-45    0.000000                    sismo-choque con lesionados   
-46    0.000000                      sismo-persona atropellada   
-47    0.000000  Detención ciudadana-accidente automovilístico   
-48    0.000000           mi ciudad-taxi-incidente de tránsito   
-49    0.000000                          accidente-ferroviario   
-50    0.000000                            accidente-monopatín   
-51    0.000000                detención ciudadana-atropellado   
-52    0.000000                                           2013   
-53    0.000000  detención ciudadana-accidente automovilístico   
-54    0.000000                     sismo-choque con prensados   
+0     0.328480                accidente-choque sin lesionados
+1     0.189320                                LLAMADA_911_066
+2     0.111316                               BOTÓN DE AUXILIO
+3     0.104818                                          RADIO
+4     0.086774                accidente-choque con lesionados
+5     0.069328                          lesionado-atropellado
+6     0.021257                            accidente-volcadura
+7     0.016404                                           2014
+8     0.014169                                hora_inicio_sin
+9     0.011552                         accidente-motociclista
+10    0.011350                                          REDES
+11    0.011087                                hora_inicio_cos
+12    0.003762                                         CÁMARA
+13    0.003610                                           2016
+14    0.003512                                           2017
+15    0.002065                                           2019
+16    0.001983                                           2018
+17    0.001452                                 LLAMADA APP911
+18    0.001151                            cadáver-atropellado
+19    0.001002                                           2015
+20    0.000976                                        Viernes
+21    0.000753                                 mes_inicio_sin
+22    0.000745                 accidente-choque con prensados
+23    0.000602                                 mes_inicio_cos
+24    0.000583                                          ZELLO
+25    0.000458                                        Domingo
+26    0.000300            lesionado-accidente automovilístico
+27    0.000259                                         Sábado
+28    0.000256              cadáver-accidente automovilístico
+29    0.000155     accidente-persona atrapada / desbarrancada
+30    0.000139                                           2020
+31    0.000091                    accidente-vehiculo atrapado
+32    0.000089             accidente-vehículo atrapado-varado
+33    0.000055          mi ciudad-calle-incidente de tránsito
+34    0.000048                                    APLICATIVOS
+35    0.000026                    sismo-choque sin lesionados
+36    0.000021                                accidente-otros
+37    0.000013                             accidente-ciclista
+38    0.000010                                         Jueves
+39    0.000009                                         Martes
+40    0.000005                                 dia_inicio_cos
+41    0.000005                                          Lunes
+42    0.000004                                      Miércoles
+43    0.000002                                 dia_inicio_sin
+44    0.000001               accidente-vehiculo desbarrancado
+45    0.000000                    sismo-choque con lesionados
+46    0.000000                      sismo-persona atropellada
+47    0.000000  Detención ciudadana-accidente automovilístico
+48    0.000000           mi ciudad-taxi-incidente de tránsito
+49    0.000000                          accidente-ferroviario
+50    0.000000                            accidente-monopatín
+51    0.000000                detención ciudadana-atropellado
+52    0.000000                                           2013
+53    0.000000  detención ciudadana-accidente automovilístico
+54    0.000000                     sismo-choque con prensados
 
-     Mother_feature  Important  
-0      incidente_c4       True  
-1      tipo_entrada       True  
-2      tipo_entrada       True  
-3      tipo_entrada       True  
-4      incidente_c4       True  
-5      incidente_c4       True  
-6      incidente_c4       True  
-7       anio_inicio       True  
-8   hora_inicio_sin       True  
-9      incidente_c4       True  
-10     tipo_entrada       True  
-11  hora_inicio_cos       True  
-12     tipo_entrada      False  
-13      anio_inicio      False  
-14      anio_inicio      False  
-15      anio_inicio      False  
-16      anio_inicio      False  
-17     tipo_entrada      False  
-18     incidente_c4      False  
-19      anio_inicio      False  
-20       dia_semana      False  
-21   mes_inicio_sin      False  
-22     incidente_c4      False  
-23   mes_inicio_cos      False  
-24     tipo_entrada      False  
-25       dia_semana      False  
-26     incidente_c4      False  
-27       dia_semana      False  
-28     incidente_c4      False  
-29     incidente_c4      False  
-30      anio_inicio      False  
-31     incidente_c4      False  
-32     incidente_c4      False  
-33     incidente_c4      False  
-34     tipo_entrada      False  
-35     incidente_c4      False  
-36     incidente_c4      False  
-37     incidente_c4      False  
-38       dia_semana      False  
-39       dia_semana      False  
-40   dia_inicio_cos      False  
-41       dia_semana      False  
-42       dia_semana      False  
-43   dia_inicio_sin      False  
-44     incidente_c4      False  
-45     incidente_c4      False  
-46     incidente_c4      False  
-47     incidente_c4      False  
-48     incidente_c4      False  
-49     incidente_c4      False  
-50     incidente_c4      False  
-51     incidente_c4      False  
-52      anio_inicio      False  
-53     incidente_c4      False  
-54     incidente_c4      False  
+     Mother_feature  Important
+0      incidente_c4       True
+1      tipo_entrada       True
+2      tipo_entrada       True
+3      tipo_entrada       True
+4      incidente_c4       True
+5      incidente_c4       True
+6      incidente_c4       True
+7       anio_inicio       True
+8   hora_inicio_sin       True
+9      incidente_c4       True
+10     tipo_entrada       True
+11  hora_inicio_cos       True
+12     tipo_entrada      False
+13      anio_inicio      False
+14      anio_inicio      False
+15      anio_inicio      False
+16      anio_inicio      False
+17     tipo_entrada      False
+18     incidente_c4      False
+19      anio_inicio      False
+20       dia_semana      False
+21   mes_inicio_sin      False
+22     incidente_c4      False
+23   mes_inicio_cos      False
+24     tipo_entrada      False
+25       dia_semana      False
+26     incidente_c4      False
+27       dia_semana      False
+28     incidente_c4      False
+29     incidente_c4      False
+30      anio_inicio      False
+31     incidente_c4      False
+32     incidente_c4      False
+33     incidente_c4      False
+34     tipo_entrada      False
+35     incidente_c4      False
+36     incidente_c4      False
+37     incidente_c4      False
+38       dia_semana      False
+39       dia_semana      False
+40   dia_inicio_cos      False
+41       dia_semana      False
+42       dia_semana      False
+43   dia_inicio_sin      False
+44     incidente_c4      False
+45     incidente_c4      False
+46     incidente_c4      False
+47     incidente_c4      False
+48     incidente_c4      False
+49     incidente_c4      False
+50     incidente_c4      False
+51     incidente_c4      False
+52      anio_inicio      False
+53     incidente_c4      False
+54     incidente_c4      False
 
 
-++ Summary dictionary derived from feature importance analysis: 
+++ Summary dictionary derived from feature importance analysis:
 
 {
     "incidente_c4": {
@@ -5442,7 +5442,7 @@ Tue Dec 1 20:52:16 CST 2020
     ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=9,
                        n_estimators=400, n_jobs=-1, oob_score=True,
                        random_state=1111)
-    ++++ Number of features in best estimator: 55 
+    ++++ Number of features in best estimator: 55
 
     ++++ Best estimator score: 0.7957500340840078
 
@@ -5452,123 +5452,123 @@ Tue Dec 1 20:52:16 CST 2020
 ++ Threshold used to discriminate variables' importance: 0.005
 
 
-++ Report of processed features importance analysis: 
+++ Report of processed features importance analysis:
       Importance                                        Feature  \
-0   3.351991e-01                accidente-choque sin lesionados   
-1   1.948603e-01                                LLAMADA_911_066   
-2   1.072602e-01                               BOTÓN DE AUXILIO   
-3   9.494316e-02                                          RADIO   
-4   9.130076e-02                accidente-choque con lesionados   
-5   6.659663e-02                          lesionado-atropellado   
-6   2.181034e-02                            accidente-volcadura   
-7   1.574236e-02                                           2014   
-8   1.303023e-02                                hora_inicio_sin   
-9   1.255866e-02                         accidente-motociclista   
-10  1.128733e-02                                          REDES   
-11  1.102101e-02                                hora_inicio_cos   
-12  4.016524e-03                                           2017   
-13  3.347852e-03                                           2016   
-14  3.302982e-03                                         CÁMARA   
-15  2.480614e-03                                           2018   
-16  2.336204e-03                                           2019   
-17  1.578895e-03                                 LLAMADA APP911   
-18  1.114794e-03                            cadáver-atropellado   
-19  1.062816e-03                                        Viernes   
-20  9.622364e-04                                           2015   
-21  7.862356e-04                                        Domingo   
-22  6.132549e-04                                          ZELLO   
-23  5.098898e-04                 accidente-choque con prensados   
-24  4.122309e-04                                 mes_inicio_cos   
-25  3.879122e-04              cadáver-accidente automovilístico   
-26  3.336809e-04                                 mes_inicio_sin   
-27  2.683462e-04                                         Sábado   
-28  2.638286e-04            lesionado-accidente automovilístico   
-29  1.465637e-04     accidente-persona atrapada / desbarrancada   
-30  1.206854e-04             accidente-vehículo atrapado-varado   
-31  1.183330e-04                                           2020   
-32  1.055583e-04                    accidente-vehiculo atrapado   
-33  6.288914e-05          mi ciudad-calle-incidente de tránsito   
-34  1.635522e-05                                accidente-otros   
-35  1.298944e-05                                    APLICATIVOS   
-36  1.015020e-05                             accidente-ciclista   
-37  4.281836e-06                                      Miércoles   
-38  4.241301e-06                                 dia_inicio_sin   
-39  3.379154e-06                    sismo-choque sin lesionados   
-40  2.793125e-06                                         Jueves   
-41  1.547808e-06                detención ciudadana-atropellado   
-42  9.898190e-07                                         Martes   
-43  8.265997e-07                                 dia_inicio_cos   
-44  0.000000e+00               accidente-vehiculo desbarrancado   
-45  0.000000e+00                                          Lunes   
-46  0.000000e+00           mi ciudad-taxi-incidente de tránsito   
-47  0.000000e+00  Detención ciudadana-accidente automovilístico   
-48  0.000000e+00                    sismo-choque con lesionados   
-49  0.000000e+00                     sismo-choque con prensados   
-50  0.000000e+00                                           2013   
-51  0.000000e+00                          accidente-ferroviario   
-52  0.000000e+00  detención ciudadana-accidente automovilístico   
-53  0.000000e+00                      sismo-persona atropellada   
-54  0.000000e+00                            accidente-monopatín   
+0   3.351991e-01                accidente-choque sin lesionados
+1   1.948603e-01                                LLAMADA_911_066
+2   1.072602e-01                               BOTÓN DE AUXILIO
+3   9.494316e-02                                          RADIO
+4   9.130076e-02                accidente-choque con lesionados
+5   6.659663e-02                          lesionado-atropellado
+6   2.181034e-02                            accidente-volcadura
+7   1.574236e-02                                           2014
+8   1.303023e-02                                hora_inicio_sin
+9   1.255866e-02                         accidente-motociclista
+10  1.128733e-02                                          REDES
+11  1.102101e-02                                hora_inicio_cos
+12  4.016524e-03                                           2017
+13  3.347852e-03                                           2016
+14  3.302982e-03                                         CÁMARA
+15  2.480614e-03                                           2018
+16  2.336204e-03                                           2019
+17  1.578895e-03                                 LLAMADA APP911
+18  1.114794e-03                            cadáver-atropellado
+19  1.062816e-03                                        Viernes
+20  9.622364e-04                                           2015
+21  7.862356e-04                                        Domingo
+22  6.132549e-04                                          ZELLO
+23  5.098898e-04                 accidente-choque con prensados
+24  4.122309e-04                                 mes_inicio_cos
+25  3.879122e-04              cadáver-accidente automovilístico
+26  3.336809e-04                                 mes_inicio_sin
+27  2.683462e-04                                         Sábado
+28  2.638286e-04            lesionado-accidente automovilístico
+29  1.465637e-04     accidente-persona atrapada / desbarrancada
+30  1.206854e-04             accidente-vehículo atrapado-varado
+31  1.183330e-04                                           2020
+32  1.055583e-04                    accidente-vehiculo atrapado
+33  6.288914e-05          mi ciudad-calle-incidente de tránsito
+34  1.635522e-05                                accidente-otros
+35  1.298944e-05                                    APLICATIVOS
+36  1.015020e-05                             accidente-ciclista
+37  4.281836e-06                                      Miércoles
+38  4.241301e-06                                 dia_inicio_sin
+39  3.379154e-06                    sismo-choque sin lesionados
+40  2.793125e-06                                         Jueves
+41  1.547808e-06                detención ciudadana-atropellado
+42  9.898190e-07                                         Martes
+43  8.265997e-07                                 dia_inicio_cos
+44  0.000000e+00               accidente-vehiculo desbarrancado
+45  0.000000e+00                                          Lunes
+46  0.000000e+00           mi ciudad-taxi-incidente de tránsito
+47  0.000000e+00  Detención ciudadana-accidente automovilístico
+48  0.000000e+00                    sismo-choque con lesionados
+49  0.000000e+00                     sismo-choque con prensados
+50  0.000000e+00                                           2013
+51  0.000000e+00                          accidente-ferroviario
+52  0.000000e+00  detención ciudadana-accidente automovilístico
+53  0.000000e+00                      sismo-persona atropellada
+54  0.000000e+00                            accidente-monopatín
 
-     Mother_feature  Important  
-0      incidente_c4       True  
-1      tipo_entrada       True  
-2      tipo_entrada       True  
-3      tipo_entrada       True  
-4      incidente_c4       True  
-5      incidente_c4       True  
-6      incidente_c4       True  
-7       anio_inicio       True  
-8   hora_inicio_sin       True  
-9      incidente_c4       True  
-10     tipo_entrada       True  
-11  hora_inicio_cos       True  
-12      anio_inicio      False  
-13      anio_inicio      False  
-14     tipo_entrada      False  
-15      anio_inicio      False  
-16      anio_inicio      False  
-17     tipo_entrada      False  
-18     incidente_c4      False  
-19       dia_semana      False  
-20      anio_inicio      False  
-21       dia_semana      False  
-22     tipo_entrada      False  
-23     incidente_c4      False  
-24   mes_inicio_cos      False  
-25     incidente_c4      False  
-26   mes_inicio_sin      False  
-27       dia_semana      False  
-28     incidente_c4      False  
-29     incidente_c4      False  
-30     incidente_c4      False  
-31      anio_inicio      False  
-32     incidente_c4      False  
-33     incidente_c4      False  
-34     incidente_c4      False  
-35     tipo_entrada      False  
-36     incidente_c4      False  
-37       dia_semana      False  
-38   dia_inicio_sin      False  
-39     incidente_c4      False  
-40       dia_semana      False  
-41     incidente_c4      False  
-42       dia_semana      False  
-43   dia_inicio_cos      False  
-44     incidente_c4      False  
-45       dia_semana      False  
-46     incidente_c4      False  
-47     incidente_c4      False  
-48     incidente_c4      False  
-49     incidente_c4      False  
-50      anio_inicio      False  
-51     incidente_c4      False  
-52     incidente_c4      False  
-53     incidente_c4      False  
-54     incidente_c4      False  
+     Mother_feature  Important
+0      incidente_c4       True
+1      tipo_entrada       True
+2      tipo_entrada       True
+3      tipo_entrada       True
+4      incidente_c4       True
+5      incidente_c4       True
+6      incidente_c4       True
+7       anio_inicio       True
+8   hora_inicio_sin       True
+9      incidente_c4       True
+10     tipo_entrada       True
+11  hora_inicio_cos       True
+12      anio_inicio      False
+13      anio_inicio      False
+14     tipo_entrada      False
+15      anio_inicio      False
+16      anio_inicio      False
+17     tipo_entrada      False
+18     incidente_c4      False
+19       dia_semana      False
+20      anio_inicio      False
+21       dia_semana      False
+22     tipo_entrada      False
+23     incidente_c4      False
+24   mes_inicio_cos      False
+25     incidente_c4      False
+26   mes_inicio_sin      False
+27       dia_semana      False
+28     incidente_c4      False
+29     incidente_c4      False
+30     incidente_c4      False
+31      anio_inicio      False
+32     incidente_c4      False
+33     incidente_c4      False
+34     incidente_c4      False
+35     tipo_entrada      False
+36     incidente_c4      False
+37       dia_semana      False
+38   dia_inicio_sin      False
+39     incidente_c4      False
+40       dia_semana      False
+41     incidente_c4      False
+42       dia_semana      False
+43   dia_inicio_cos      False
+44     incidente_c4      False
+45       dia_semana      False
+46     incidente_c4      False
+47     incidente_c4      False
+48     incidente_c4      False
+49     incidente_c4      False
+50      anio_inicio      False
+51     incidente_c4      False
+52     incidente_c4      False
+53     incidente_c4      False
+54     incidente_c4      False
 
 
-++ Summary dictionary derived from feature importance analysis: 
+++ Summary dictionary derived from feature importance analysis:
 
 {
     "incidente_c4": {
@@ -5676,7 +5676,7 @@ Tue Dec 1 21:01:11 CST 2020
     ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=9,
                        n_estimators=400, n_jobs=-1, oob_score=True,
                        random_state=1111)
-    ++++ Number of features in best estimator: 55 
+    ++++ Number of features in best estimator: 55
 
     ++++ Best estimator score: 0.7963062231201121
 
@@ -5686,123 +5686,123 @@ Tue Dec 1 21:01:11 CST 2020
 ++ Threshold used to discriminate variables' importance: 0.005
 
 
-++ Report of processed features importance analysis: 
+++ Report of processed features importance analysis:
       Importance                                        Feature  \
-0   3.167774e-01                accidente-choque sin lesionados   
-1   2.061631e-01                                LLAMADA_911_066   
-2   1.042046e-01                               BOTÓN DE AUXILIO   
-3   1.016561e-01                accidente-choque con lesionados   
-4   9.629335e-02                                          RADIO   
-5   6.829761e-02                          lesionado-atropellado   
-6   2.052594e-02                            accidente-volcadura   
-7   1.442007e-02                                hora_inicio_sin   
-8   1.438597e-02                                           2014   
-9   1.270037e-02                         accidente-motociclista   
-10  1.001641e-02                                          REDES   
-11  9.779462e-03                                hora_inicio_cos   
-12  4.094868e-03                                           2016   
-13  3.643192e-03                                         CÁMARA   
-14  3.521283e-03                                           2017   
-15  2.225789e-03                                           2019   
-16  2.161436e-03                                           2018   
-17  1.808862e-03                                 LLAMADA APP911   
-18  1.061185e-03                                        Viernes   
-19  8.154904e-04                                           2015   
-20  8.027182e-04                            cadáver-atropellado   
-21  8.003592e-04                                        Domingo   
-22  7.208629e-04                                          ZELLO   
-23  6.150696e-04                 accidente-choque con prensados   
-24  4.624614e-04                                 mes_inicio_cos   
-25  4.504354e-04              cadáver-accidente automovilístico   
-26  4.474745e-04            lesionado-accidente automovilístico   
-27  3.341185e-04                                         Sábado   
-28  3.312249e-04                                 mes_inicio_sin   
-29  1.237823e-04     accidente-persona atrapada / desbarrancada   
-30  9.125168e-05                    accidente-vehiculo atrapado   
-31  8.801764e-05                                           2020   
-32  5.659749e-05             accidente-vehículo atrapado-varado   
-33  4.823034e-05          mi ciudad-calle-incidente de tránsito   
-34  3.122872e-05                                accidente-otros   
-35  9.351138e-06                                          Lunes   
-36  7.833234e-06                             accidente-ciclista   
-37  7.299793e-06                                      Miércoles   
-38  6.874619e-06                                    APLICATIVOS   
-39  5.151113e-06                                 dia_inicio_sin   
-40  3.231957e-06                    sismo-choque con lesionados   
-41  1.865482e-06                    sismo-choque sin lesionados   
-42  1.399798e-06                                         Martes   
-43  6.767245e-07  detención ciudadana-accidente automovilístico   
-44  0.000000e+00               accidente-vehiculo desbarrancado   
-45  0.000000e+00                detención ciudadana-atropellado   
-46  0.000000e+00                                         Jueves   
-47  0.000000e+00                                 dia_inicio_cos   
-48  0.000000e+00  Detención ciudadana-accidente automovilístico   
-49  0.000000e+00           mi ciudad-taxi-incidente de tránsito   
-50  0.000000e+00                     sismo-choque con prensados   
-51  0.000000e+00                                           2013   
-52  0.000000e+00                          accidente-ferroviario   
-53  0.000000e+00                      sismo-persona atropellada   
-54  0.000000e+00                            accidente-monopatín   
+0   3.167774e-01                accidente-choque sin lesionados
+1   2.061631e-01                                LLAMADA_911_066
+2   1.042046e-01                               BOTÓN DE AUXILIO
+3   1.016561e-01                accidente-choque con lesionados
+4   9.629335e-02                                          RADIO
+5   6.829761e-02                          lesionado-atropellado
+6   2.052594e-02                            accidente-volcadura
+7   1.442007e-02                                hora_inicio_sin
+8   1.438597e-02                                           2014
+9   1.270037e-02                         accidente-motociclista
+10  1.001641e-02                                          REDES
+11  9.779462e-03                                hora_inicio_cos
+12  4.094868e-03                                           2016
+13  3.643192e-03                                         CÁMARA
+14  3.521283e-03                                           2017
+15  2.225789e-03                                           2019
+16  2.161436e-03                                           2018
+17  1.808862e-03                                 LLAMADA APP911
+18  1.061185e-03                                        Viernes
+19  8.154904e-04                                           2015
+20  8.027182e-04                            cadáver-atropellado
+21  8.003592e-04                                        Domingo
+22  7.208629e-04                                          ZELLO
+23  6.150696e-04                 accidente-choque con prensados
+24  4.624614e-04                                 mes_inicio_cos
+25  4.504354e-04              cadáver-accidente automovilístico
+26  4.474745e-04            lesionado-accidente automovilístico
+27  3.341185e-04                                         Sábado
+28  3.312249e-04                                 mes_inicio_sin
+29  1.237823e-04     accidente-persona atrapada / desbarrancada
+30  9.125168e-05                    accidente-vehiculo atrapado
+31  8.801764e-05                                           2020
+32  5.659749e-05             accidente-vehículo atrapado-varado
+33  4.823034e-05          mi ciudad-calle-incidente de tránsito
+34  3.122872e-05                                accidente-otros
+35  9.351138e-06                                          Lunes
+36  7.833234e-06                             accidente-ciclista
+37  7.299793e-06                                      Miércoles
+38  6.874619e-06                                    APLICATIVOS
+39  5.151113e-06                                 dia_inicio_sin
+40  3.231957e-06                    sismo-choque con lesionados
+41  1.865482e-06                    sismo-choque sin lesionados
+42  1.399798e-06                                         Martes
+43  6.767245e-07  detención ciudadana-accidente automovilístico
+44  0.000000e+00               accidente-vehiculo desbarrancado
+45  0.000000e+00                detención ciudadana-atropellado
+46  0.000000e+00                                         Jueves
+47  0.000000e+00                                 dia_inicio_cos
+48  0.000000e+00  Detención ciudadana-accidente automovilístico
+49  0.000000e+00           mi ciudad-taxi-incidente de tránsito
+50  0.000000e+00                     sismo-choque con prensados
+51  0.000000e+00                                           2013
+52  0.000000e+00                          accidente-ferroviario
+53  0.000000e+00                      sismo-persona atropellada
+54  0.000000e+00                            accidente-monopatín
 
-     Mother_feature  Important  
-0      incidente_c4       True  
-1      tipo_entrada       True  
-2      tipo_entrada       True  
-3      incidente_c4       True  
-4      tipo_entrada       True  
-5      incidente_c4       True  
-6      incidente_c4       True  
-7   hora_inicio_sin       True  
-8       anio_inicio       True  
-9      incidente_c4       True  
-10     tipo_entrada       True  
-11  hora_inicio_cos       True  
-12      anio_inicio      False  
-13     tipo_entrada      False  
-14      anio_inicio      False  
-15      anio_inicio      False  
-16      anio_inicio      False  
-17     tipo_entrada      False  
-18       dia_semana      False  
-19      anio_inicio      False  
-20     incidente_c4      False  
-21       dia_semana      False  
-22     tipo_entrada      False  
-23     incidente_c4      False  
-24   mes_inicio_cos      False  
-25     incidente_c4      False  
-26     incidente_c4      False  
-27       dia_semana      False  
-28   mes_inicio_sin      False  
-29     incidente_c4      False  
-30     incidente_c4      False  
-31      anio_inicio      False  
-32     incidente_c4      False  
-33     incidente_c4      False  
-34     incidente_c4      False  
-35       dia_semana      False  
-36     incidente_c4      False  
-37       dia_semana      False  
-38     tipo_entrada      False  
-39   dia_inicio_sin      False  
-40     incidente_c4      False  
-41     incidente_c4      False  
-42       dia_semana      False  
-43     incidente_c4      False  
-44     incidente_c4      False  
-45     incidente_c4      False  
-46       dia_semana      False  
-47   dia_inicio_cos      False  
-48     incidente_c4      False  
-49     incidente_c4      False  
-50     incidente_c4      False  
-51      anio_inicio      False  
-52     incidente_c4      False  
-53     incidente_c4      False  
-54     incidente_c4      False  
+     Mother_feature  Important
+0      incidente_c4       True
+1      tipo_entrada       True
+2      tipo_entrada       True
+3      incidente_c4       True
+4      tipo_entrada       True
+5      incidente_c4       True
+6      incidente_c4       True
+7   hora_inicio_sin       True
+8       anio_inicio       True
+9      incidente_c4       True
+10     tipo_entrada       True
+11  hora_inicio_cos       True
+12      anio_inicio      False
+13     tipo_entrada      False
+14      anio_inicio      False
+15      anio_inicio      False
+16      anio_inicio      False
+17     tipo_entrada      False
+18       dia_semana      False
+19      anio_inicio      False
+20     incidente_c4      False
+21       dia_semana      False
+22     tipo_entrada      False
+23     incidente_c4      False
+24   mes_inicio_cos      False
+25     incidente_c4      False
+26     incidente_c4      False
+27       dia_semana      False
+28   mes_inicio_sin      False
+29     incidente_c4      False
+30     incidente_c4      False
+31      anio_inicio      False
+32     incidente_c4      False
+33     incidente_c4      False
+34     incidente_c4      False
+35       dia_semana      False
+36     incidente_c4      False
+37       dia_semana      False
+38     tipo_entrada      False
+39   dia_inicio_sin      False
+40     incidente_c4      False
+41     incidente_c4      False
+42       dia_semana      False
+43     incidente_c4      False
+44     incidente_c4      False
+45     incidente_c4      False
+46       dia_semana      False
+47   dia_inicio_cos      False
+48     incidente_c4      False
+49     incidente_c4      False
+50     incidente_c4      False
+51      anio_inicio      False
+52     incidente_c4      False
+53     incidente_c4      False
+54     incidente_c4      False
 
 
-++ Summary dictionary derived from feature importance analysis: 
+++ Summary dictionary derived from feature importance analysis:
 
 {
     "incidente_c4": {
@@ -5914,7 +5914,7 @@ Tue Dec 1 21:13:36 CST 2020
     ++++ Best parameters: {'criterion': 'gini', 'min_samples_leaf': 3, 'n_estimators': 100}
     ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=3,
                        n_jobs=-1, oob_score=True, random_state=1111)
-    ++++ Number of features in best estimator: 55 
+    ++++ Number of features in best estimator: 55
 
     ++++ Best estimator score: 0.796062987246384
 
@@ -5924,123 +5924,123 @@ Tue Dec 1 21:13:36 CST 2020
 ++ Threshold used to discriminate variables' importance: 0.07
 
 
-++ Report of processed features importance analysis: 
+++ Report of processed features importance analysis:
     Importance                                        Feature  \
-0     0.313061                accidente-choque sin lesionados   
-1     0.172657                                LLAMADA_911_066   
-2     0.130091                               BOTÓN DE AUXILIO   
-3     0.116987                                          RADIO   
-4     0.089000                accidente-choque con lesionados   
-5     0.069539                          lesionado-atropellado   
-6     0.018231                                hora_inicio_sin   
-7     0.016647                                           2014   
-8     0.016606                            accidente-volcadura   
-9     0.012305                                          REDES   
-10    0.010806                         accidente-motociclista   
-11    0.009173                                hora_inicio_cos   
-12    0.005799                                           2016   
-13    0.003214                                           2019   
-14    0.002834                                           2017   
-15    0.002747                                         CÁMARA   
-16    0.001522                                           2018   
-17    0.001482                            cadáver-atropellado   
-18    0.001174                                           2015   
-19    0.000980                                        Viernes   
-20    0.000785                 accidente-choque con prensados   
-21    0.000765                                 LLAMADA APP911   
-22    0.000760                                        Domingo   
-23    0.000579                                 mes_inicio_cos   
-24    0.000512                                 mes_inicio_sin   
-25    0.000400                                          ZELLO   
-26    0.000332              cadáver-accidente automovilístico   
-27    0.000233                                         Sábado   
-28    0.000214            lesionado-accidente automovilístico   
-29    0.000185                                           2020   
-30    0.000142     accidente-persona atrapada / desbarrancada   
-31    0.000089             accidente-vehículo atrapado-varado   
-32    0.000077          mi ciudad-calle-incidente de tránsito   
-33    0.000034                                    APLICATIVOS   
-34    0.000023                                          Lunes   
-35    0.000008                                      Miércoles   
-36    0.000008                    sismo-choque sin lesionados   
-37    0.000000                                 dia_inicio_sin   
-38    0.000000                                         Martes   
-39    0.000000                             accidente-ciclista   
-40    0.000000                                 dia_inicio_cos   
-41    0.000000  Detención ciudadana-accidente automovilístico   
-42    0.000000  detención ciudadana-accidente automovilístico   
-43    0.000000                          accidente-ferroviario   
-44    0.000000                                           2013   
-45    0.000000                detención ciudadana-atropellado   
-46    0.000000                                accidente-otros   
-47    0.000000                    accidente-vehiculo atrapado   
-48    0.000000               accidente-vehiculo desbarrancado   
-49    0.000000                      sismo-persona atropellada   
-50    0.000000                     sismo-choque con prensados   
-51    0.000000                    sismo-choque con lesionados   
-52    0.000000           mi ciudad-taxi-incidente de tránsito   
-53    0.000000                                         Jueves   
-54    0.000000                            accidente-monopatín   
+0     0.313061                accidente-choque sin lesionados
+1     0.172657                                LLAMADA_911_066
+2     0.130091                               BOTÓN DE AUXILIO
+3     0.116987                                          RADIO
+4     0.089000                accidente-choque con lesionados
+5     0.069539                          lesionado-atropellado
+6     0.018231                                hora_inicio_sin
+7     0.016647                                           2014
+8     0.016606                            accidente-volcadura
+9     0.012305                                          REDES
+10    0.010806                         accidente-motociclista
+11    0.009173                                hora_inicio_cos
+12    0.005799                                           2016
+13    0.003214                                           2019
+14    0.002834                                           2017
+15    0.002747                                         CÁMARA
+16    0.001522                                           2018
+17    0.001482                            cadáver-atropellado
+18    0.001174                                           2015
+19    0.000980                                        Viernes
+20    0.000785                 accidente-choque con prensados
+21    0.000765                                 LLAMADA APP911
+22    0.000760                                        Domingo
+23    0.000579                                 mes_inicio_cos
+24    0.000512                                 mes_inicio_sin
+25    0.000400                                          ZELLO
+26    0.000332              cadáver-accidente automovilístico
+27    0.000233                                         Sábado
+28    0.000214            lesionado-accidente automovilístico
+29    0.000185                                           2020
+30    0.000142     accidente-persona atrapada / desbarrancada
+31    0.000089             accidente-vehículo atrapado-varado
+32    0.000077          mi ciudad-calle-incidente de tránsito
+33    0.000034                                    APLICATIVOS
+34    0.000023                                          Lunes
+35    0.000008                                      Miércoles
+36    0.000008                    sismo-choque sin lesionados
+37    0.000000                                 dia_inicio_sin
+38    0.000000                                         Martes
+39    0.000000                             accidente-ciclista
+40    0.000000                                 dia_inicio_cos
+41    0.000000  Detención ciudadana-accidente automovilístico
+42    0.000000  detención ciudadana-accidente automovilístico
+43    0.000000                          accidente-ferroviario
+44    0.000000                                           2013
+45    0.000000                detención ciudadana-atropellado
+46    0.000000                                accidente-otros
+47    0.000000                    accidente-vehiculo atrapado
+48    0.000000               accidente-vehiculo desbarrancado
+49    0.000000                      sismo-persona atropellada
+50    0.000000                     sismo-choque con prensados
+51    0.000000                    sismo-choque con lesionados
+52    0.000000           mi ciudad-taxi-incidente de tránsito
+53    0.000000                                         Jueves
+54    0.000000                            accidente-monopatín
 
-     Mother_feature  Important  
-0      incidente_c4       True  
-1      tipo_entrada       True  
-2      tipo_entrada       True  
-3      tipo_entrada       True  
-4      incidente_c4       True  
-5      incidente_c4      False  
-6   hora_inicio_sin      False  
-7       anio_inicio      False  
-8      incidente_c4      False  
-9      tipo_entrada      False  
-10     incidente_c4      False  
-11  hora_inicio_cos      False  
-12      anio_inicio      False  
-13      anio_inicio      False  
-14      anio_inicio      False  
-15     tipo_entrada      False  
-16      anio_inicio      False  
-17     incidente_c4      False  
-18      anio_inicio      False  
-19       dia_semana      False  
-20     incidente_c4      False  
-21     tipo_entrada      False  
-22       dia_semana      False  
-23   mes_inicio_cos      False  
-24   mes_inicio_sin      False  
-25     tipo_entrada      False  
-26     incidente_c4      False  
-27       dia_semana      False  
-28     incidente_c4      False  
-29      anio_inicio      False  
-30     incidente_c4      False  
-31     incidente_c4      False  
-32     incidente_c4      False  
-33     tipo_entrada      False  
-34       dia_semana      False  
-35       dia_semana      False  
-36     incidente_c4      False  
-37   dia_inicio_sin      False  
-38       dia_semana      False  
-39     incidente_c4      False  
-40   dia_inicio_cos      False  
-41     incidente_c4      False  
-42     incidente_c4      False  
-43     incidente_c4      False  
-44      anio_inicio      False  
-45     incidente_c4      False  
-46     incidente_c4      False  
-47     incidente_c4      False  
-48     incidente_c4      False  
-49     incidente_c4      False  
-50     incidente_c4      False  
-51     incidente_c4      False  
-52     incidente_c4      False  
-53       dia_semana      False  
-54     incidente_c4      False  
+     Mother_feature  Important
+0      incidente_c4       True
+1      tipo_entrada       True
+2      tipo_entrada       True
+3      tipo_entrada       True
+4      incidente_c4       True
+5      incidente_c4      False
+6   hora_inicio_sin      False
+7       anio_inicio      False
+8      incidente_c4      False
+9      tipo_entrada      False
+10     incidente_c4      False
+11  hora_inicio_cos      False
+12      anio_inicio      False
+13      anio_inicio      False
+14      anio_inicio      False
+15     tipo_entrada      False
+16      anio_inicio      False
+17     incidente_c4      False
+18      anio_inicio      False
+19       dia_semana      False
+20     incidente_c4      False
+21     tipo_entrada      False
+22       dia_semana      False
+23   mes_inicio_cos      False
+24   mes_inicio_sin      False
+25     tipo_entrada      False
+26     incidente_c4      False
+27       dia_semana      False
+28     incidente_c4      False
+29      anio_inicio      False
+30     incidente_c4      False
+31     incidente_c4      False
+32     incidente_c4      False
+33     tipo_entrada      False
+34       dia_semana      False
+35       dia_semana      False
+36     incidente_c4      False
+37   dia_inicio_sin      False
+38       dia_semana      False
+39     incidente_c4      False
+40   dia_inicio_cos      False
+41     incidente_c4      False
+42     incidente_c4      False
+43     incidente_c4      False
+44      anio_inicio      False
+45     incidente_c4      False
+46     incidente_c4      False
+47     incidente_c4      False
+48     incidente_c4      False
+49     incidente_c4      False
+50     incidente_c4      False
+51     incidente_c4      False
+52     incidente_c4      False
+53       dia_semana      False
+54     incidente_c4      False
 
 
-++ Summary dictionary derived from feature importance analysis: 
+++ Summary dictionary derived from feature importance analysis:
 
 {
     "incidente_c4": {
@@ -6076,6 +6076,309 @@ None
 
 ------------------------------------------------
 Tue Dec 1 21:47:41 CST 2020
+------------------------------------------------
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Thu Dec 3 09:49:41 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+++The model with the best performance is: random_forest (score: 0.795843)
+
+------------------------------------------------
+Thu Dec 3 10:04:48 CST 2020
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Thu Dec 3 10:06:55 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+++The model with the best performance is: random_forest (score: 0.796254)
+
+** Modeling module successfully executed **
+
+
+------------------------------------------------
+Thu Dec 3 10:22:00 CST 2020
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Thu Dec 3 10:50:19 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+------------------------------------------------
+Thu Dec 3 10:50:27 CST 2020
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Thu Dec 3 10:51:33 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Index(['folio', 'fecha_creacion', 'hora_creacion', 'dia_semana',
+       'codigo_cierre', 'fecha_cierre', 'año_cierre', 'mes_cierre',
+       'hora_cierre', 'delegacion_inicio', 'incidente_c4', 'latitud',
+       'longitud', 'clas_con_f_alarma', 'tipo_entrada', 'delegacion_cierre',
+       'geopoint', 'mes'],
+      dtype='object')
+
+------------------------------------------------
+Thu Dec 3 10:51:41 CST 2020
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Thu Dec 3 10:54:38 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+** Ingestion module successfully executed **
+
+
+** Tranformation module successfully executed **
+
+
+++ Complete list of features (10) that will be fed to the model:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+    5. dia_inicio_sin
+    6. dia_inicio_cos
+    7. mes_inicio_sin
+    8. mes_inicio_cos
+    9. hora_inicio_sin
+    10. hora_inicio_cos
+
+++ List of categorical features (4) that will be processed through the categoric pipeline are:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+
+++ List of numeric features (6) that will be processed through the numeric pipeline are:
+    1. dia_inicio_sin
+    2. dia_inicio_cos
+    3. mes_inicio_sin
+    4. mes_inicio_cos
+    5. hora_inicio_sin
+    6. hora_inicio_cos
+
+++ Dimensions of matrix after going through pipeline: (1383138, 55)
+
+
+++ The model that will be used is: RandomForestClassifier(max_features=6, max_leaf_nodes=10, n_estimators=10,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+
+
+++ Grid search results:
+
+    ++++ Best parameters: {'criterion': 'gini', 'min_samples_leaf': 3, 'n_estimators': 100}
+    ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=3,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+    ++++ Number of features in best estimator: 55 
+
+    ++++ Best estimator score: 0.7961559436312482
+
+    ++++ Best estimator oob score: 0.7957655268148185
+
+
+++ Threshold used to discriminate variables' importance: 0.07
+
+
+++ Report of processed features importance analysis: 
+    Importance                                        Feature  \
+0     0.333193                accidente-choque sin lesionados   
+1     0.210009                                LLAMADA_911_066   
+2     0.104992                                          RADIO   
+3     0.100711                               BOTÓN DE AUXILIO   
+4     0.074209                accidente-choque con lesionados   
+5     0.060963                          lesionado-atropellado   
+6     0.023547                            accidente-volcadura   
+7     0.019280                                           2014   
+8     0.018547                                hora_inicio_sin   
+9     0.015168                                          REDES   
+10    0.009235                         accidente-motociclista   
+11    0.007787                                hora_inicio_cos   
+12    0.004876                                           2016   
+13    0.002622                                           2017   
+14    0.002501                                           2019   
+15    0.002017                                           2018   
+16    0.001845                                         CÁMARA   
+17    0.001167                                        Domingo   
+18    0.001040                                 LLAMADA APP911   
+19    0.000971                            cadáver-atropellado   
+20    0.000942                                           2015   
+21    0.000908                                        Viernes   
+22    0.000623                 accidente-choque con prensados   
+23    0.000583                                 mes_inicio_sin   
+24    0.000469                                 mes_inicio_cos   
+25    0.000403                                          ZELLO   
+26    0.000324                                         Sábado   
+27    0.000250              cadáver-accidente automovilístico   
+28    0.000207            lesionado-accidente automovilístico   
+29    0.000126                                           2020   
+30    0.000105     accidente-persona atrapada / desbarrancada   
+31    0.000099                                 dia_inicio_cos   
+32    0.000060                    accidente-vehiculo atrapado   
+33    0.000060          mi ciudad-calle-incidente de tránsito   
+34    0.000050             accidente-vehículo atrapado-varado   
+35    0.000033                                      Miércoles   
+36    0.000028                                         Jueves   
+37    0.000023                                accidente-otros   
+38    0.000012                                    APLICATIVOS   
+39    0.000008                                         Martes   
+40    0.000005                                 dia_inicio_sin   
+41    0.000000                                          Lunes   
+42    0.000000  detención ciudadana-accidente automovilístico   
+43    0.000000                detención ciudadana-atropellado   
+44    0.000000           mi ciudad-taxi-incidente de tránsito   
+45    0.000000                     sismo-choque con prensados   
+46    0.000000                    sismo-choque con lesionados   
+47    0.000000                            accidente-monopatín   
+48    0.000000                    sismo-choque sin lesionados   
+49    0.000000  Detención ciudadana-accidente automovilístico   
+50    0.000000                                           2013   
+51    0.000000                      sismo-persona atropellada   
+52    0.000000                             accidente-ciclista   
+53    0.000000                          accidente-ferroviario   
+54    0.000000               accidente-vehiculo desbarrancado   
+
+     Mother_feature  Important  
+0      incidente_c4       True  
+1      tipo_entrada       True  
+2      tipo_entrada       True  
+3      tipo_entrada       True  
+4      incidente_c4       True  
+5      incidente_c4      False  
+6      incidente_c4      False  
+7       anio_inicio      False  
+8   hora_inicio_sin      False  
+9      tipo_entrada      False  
+10     incidente_c4      False  
+11  hora_inicio_cos      False  
+12      anio_inicio      False  
+13      anio_inicio      False  
+14      anio_inicio      False  
+15      anio_inicio      False  
+16     tipo_entrada      False  
+17       dia_semana      False  
+18     tipo_entrada      False  
+19     incidente_c4      False  
+20      anio_inicio      False  
+21       dia_semana      False  
+22     incidente_c4      False  
+23   mes_inicio_sin      False  
+24   mes_inicio_cos      False  
+25     tipo_entrada      False  
+26       dia_semana      False  
+27     incidente_c4      False  
+28     incidente_c4      False  
+29      anio_inicio      False  
+30     incidente_c4      False  
+31   dia_inicio_cos      False  
+32     incidente_c4      False  
+33     incidente_c4      False  
+34     incidente_c4      False  
+35       dia_semana      False  
+36       dia_semana      False  
+37     incidente_c4      False  
+38     tipo_entrada      False  
+39       dia_semana      False  
+40   dia_inicio_sin      False  
+41       dia_semana      False  
+42     incidente_c4      False  
+43     incidente_c4      False  
+44     incidente_c4      False  
+45     incidente_c4      False  
+46     incidente_c4      False  
+47     incidente_c4      False  
+48     incidente_c4      False  
+49     incidente_c4      False  
+50      anio_inicio      False  
+51     incidente_c4      False  
+52     incidente_c4      False  
+53     incidente_c4      False  
+54     incidente_c4      False  
+
+
+++ Summary dictionary derived from feature importance analysis: 
+
+{
+    "incidente_c4": {
+        "data_type": "categoric",
+        "important_categories": [
+            "accidente-choque sin lesionados",
+            "accidente-choque con lesionados"
+        ]
+    },
+    "tipo_entrada": {
+        "data_type": "categoric",
+        "important_categories": [
+            "LLAMADA_911_066",
+            "RADIO",
+            "BOTÓN DE AUXILIO"
+        ]
+    }
+}
+
+None
+
+
+++ Dimensions of matrix after going through pipeline: (1383138, 7)
+
+
+** Feature engineering module successfully executed **
+
+
+++The model with the best performance is: random_forest (score: 0.795127)
+
+** Modeling module successfully executed **
+
+
+------------------------------------------------
+Thu Dec 3 11:29:48 CST 2020
 ------------------------------------------------
 
 
