@@ -98,7 +98,7 @@ def date_transformation(col, df):
         returns:
             df (dataframe): resulting df with cleaned date column.
     """
-    fechas_inicio = df[col].str.split("/", n=2,expand=True)
+    fechas_inicio = df[col].str.split("/", n=2, expand=True)
     df['dia_inicio'] = fechas_inicio[0]
     df['mes_inicio'] = fechas_inicio[1]
     df['anio_inicio'] = fechas_inicio[2]
