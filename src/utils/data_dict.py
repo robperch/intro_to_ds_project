@@ -14,7 +14,8 @@ data_dict = {
     "folio": {
         "relevant": False,
         "data_type": "categoric",
-        "model_relevant": False
+        "model_relevant": False,
+        "id_feature": True
     },
     "fecha_creacion": {
         "relevant": True,
