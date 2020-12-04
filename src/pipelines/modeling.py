@@ -138,7 +138,7 @@ def magic_loop(models_dict, df_imp_features_prc, df_labels):
     sel_model = models_mloop[select_best_model(models_mloop)]["best_estimator"]
 
 
-    return sel_model, X_test, y_test
+    return sel_model, X_train, X_test, y_train, y_test
 
 
 
@@ -184,8 +184,10 @@ def modeling(fe_pickle_loc_imp_features, fe_pickle_loc_feature_labs):
     ## Executing modeling functions
     df_imp_features_prc = load_features(fe_pickle_loc_imp_features)
     df_labels = load_features(fe_pickle_loc_feature_labs)
-    sel_model, X_test, y_test = magic_loop(models_dict, df_imp_features_prc, df_labels)
+    sel_model, X_train, X_test, y_train, y_test = magic_loop(models_dict, df_imp_features_prc, df_labels)
     save_models(sel_model, models_pickle_loc)
+    save_models(X_train, "outputs/X_train")
+    save_models(y_train, "outputs/y_train")
     save_models(X_test, "outputs/X_test.pkl")
     save_models(y_test, "outputs/y_test.pkl")
 
