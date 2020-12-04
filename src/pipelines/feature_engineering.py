@@ -41,6 +41,7 @@ from src.utils.params import (
     categoric_pipeline,
     numeric_pipeline,
     models_dict,
+    time_series_splits,
     evaluation_metric,
     feature_importance_theshold,
     tag_non_relevant_cats,
@@ -307,7 +308,7 @@ def feature_selection(df, df_features_prc, df_labels, df_features_prc_cols, ohe_
     ## Grid search CV to select best possible model.
     grid_search = GridSearchCV(model,
                                models_dict["random_forest"]["param_grid"],
-                               cv=TimeSeriesSplit(n_splits=2),
+                               cv=TimeSeriesSplit(n_splits=time_series_splits),
                                scoring=evaluation_metric,
                                return_train_score=True,
                                n_jobs=-1

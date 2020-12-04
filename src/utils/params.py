@@ -100,9 +100,9 @@ models_dict = {
 
 
 ## Additional parameters for cv_grid
-cv_rounds = 1
+time_series_splits = 8
 evaluation_metric = "accuracy"
-feature_importance_theshold = 0.07
+feature_importance_theshold = 0.15
 tag_non_relevant_cats = "other_nr_categories"
 
 

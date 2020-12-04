@@ -40,6 +40,7 @@ from src.utils.params import (
     test_predict_labs_pickle_loc,
     test_predict_scores_pickle_loc,
     models_dict,
+    time_series_splits,
     evaluation_metric,
 )
 
@@ -129,7 +130,7 @@ def magic_loop(models_dict, df_imp_features_prc, df_labels):
 
         grid_search = GridSearchCV(model,
                                models_dict[mdl]["param_grid"],
-                               cv=TimeSeriesSplit(n_splits=2),
+                               cv=TimeSeriesSplit(n_splits=time_series_splits),
                                scoring=evaluation_metric,
                                return_train_score=True,
                                n_jobs=-1
