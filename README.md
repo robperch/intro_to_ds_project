@@ -9,3 +9,6 @@
 | 173013 | José Roberto Pérez | Roberto919   |
 | 118626 | Mariana Lugo       | codeMariana  |
 | 197730 | Elena Villalobos   | ElenaVillano |
+
+#### AWS instance
+- Public DNS: ubuntu@ec2-54-210-84-207.compute-1.amazonaws.com

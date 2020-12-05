@@ -31,18 +31,23 @@ from sklearn.pipeline import Pipeline
 
 ## Ingestion
 data_path = "data/incidentes-viales-c5.csv"
-ingestion_pickle_loc = "outputs/ingest_df.pkl"
+ingestion_pickle_loc = "outputs/ingest/ingest_df.pkl"
 
 ## Transformation
-transformation_pickle_loc = "outputs/transformation_df.pkl"
+transformation_pickle_loc = "outputs/transformation/transformation_df.pkl"
 
 ## Feature engineering
-fe_pickle_loc_imp_features = "outputs/fe_df_imp_features.pkl"
-fe_pickle_loc_feature_labs = "outputs/fe_df_feature_labs.pkl"
+fe_pickle_loc_imp_features = "outputs/feature_engineering/fe_df_imp_features.pkl"
+fe_pickle_loc_feature_labs = "outputs/feature_engineering/fe_df_feature_labs.pkl"
 
 ## Modeling
-models_pickle_loc = "outputs/model_loop.pkl"
-
+models_pickle_loc = "outputs/modeling/model_loop.pkl"
+X_train_pickle_loc = "outputs/modeling/X_train.pkl"
+y_train_pickle_loc = "outputs/modeling/y_train.pkl"
+X_test_pickle_loc = "outputs/modeling/X_test.pkl"
+y_test_pickle_loc = "outputs/modeling/y_test.pkl"
+test_predict_labs_pickle_loc = "outputs/modeling/test_predict_labs.pkl"
+test_predict_scores_pickle_loc = "outputs/modeling/test_predict_scores.pkl"
 
 
 
@@ -95,9 +100,9 @@ models_dict = {
 
 
 ## Additional parameters for cv_grid
-cv_rounds = 1
+time_series_splits = 8
 evaluation_metric = "accuracy"
-feature_importance_theshold = 0.07
+feature_importance_theshold = 0.001
 tag_non_relevant_cats = "other_nr_categories"
 
 

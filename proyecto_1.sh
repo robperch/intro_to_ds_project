@@ -45,7 +45,7 @@ echo  >> ${log_file_path}
 ###########################
 
 
-pyenv activate itam_intro_to_ds >> ${log_file_path}
+#pyenv activate itam_intro_to_ds >> ${log_file_path}
 python3 proyecto_1.py >> ${log_file_path}
 
 

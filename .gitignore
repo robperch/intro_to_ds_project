@@ -14,5 +14,6 @@ __pycache__
 *.csv
 
 
-## Models
-*.pkl
+## Pickles
+ingest_df.pkl
+transformation_df.pkl

@@ -33,7 +33,14 @@ from src.utils.params import (
     fe_pickle_loc_imp_features,
     fe_pickle_loc_feature_labs,
     models_pickle_loc,
+    X_train_pickle_loc,
+    y_train_pickle_loc,
+    X_test_pickle_loc,
+    y_test_pickle_loc,
+    test_predict_labs_pickle_loc,
+    test_predict_scores_pickle_loc,
     models_dict,
+    time_series_splits,
     evaluation_metric,
 )
 
@@ -123,7 +130,7 @@ def magic_loop(models_dict, df_imp_features_prc, df_labels):
 
         grid_search = GridSearchCV(model,
                                models_dict[mdl]["param_grid"],
-                               cv=TimeSeriesSplit(n_splits=2),
+                               cv=TimeSeriesSplit(n_splits=time_series_splits),
                                scoring=evaluation_metric,
                                return_train_score=True,
                                n_jobs=-1
@@ -138,7 +145,7 @@ def magic_loop(models_dict, df_imp_features_prc, df_labels):
     sel_model = models_mloop[select_best_model(models_mloop)]["best_estimator"]
 
 
-    return sel_model, X_test, y_test
+    return sel_model, X_train, X_test, y_train, y_test
 
 
 
@@ -184,14 +191,16 @@ def modeling(fe_pickle_loc_imp_features, fe_pickle_loc_feature_labs):
     ## Executing modeling functions
     df_imp_features_prc = load_features(fe_pickle_loc_imp_features)
     df_labels = load_features(fe_pickle_loc_feature_labs)
-    sel_model, X_test, y_test = magic_loop(models_dict, df_imp_features_prc, df_labels)
+    sel_model, X_train, X_test, y_train, y_test = magic_loop(models_dict, df_imp_features_prc, df_labels)
     save_models(sel_model, models_pickle_loc)
-    save_models(X_test, "outputs/X_test.pkl")
-    save_models(y_test, "outputs/y_test.pkl")
+    save_models(X_train, X_train_pickle_loc)
+    save_models(y_train, y_train_pickle_loc)
+    save_models(X_test, X_test_pickle_loc)
+    save_models(y_test, y_test_pickle_loc)
 
     test_predict_labs, test_predict_scores = best_model_predict_test(sel_model, X_test)
-    save_models(test_predict_labs, "outputs/test_predict_labs.pkl")
-    save_models(test_predict_scores, "outputs/test_predict_scores.pkl")
+    save_models(test_predict_labs, test_predict_labs_pickle_loc)
+    save_models(test_predict_scores, test_predict_scores_pickle_loc)
 
     print("\n** Modeling module successfully executed **\n")
 
