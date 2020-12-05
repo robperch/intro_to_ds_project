@@ -102,7 +102,7 @@ models_dict = {
 ## Additional parameters for cv_grid
 time_series_splits = 8
 evaluation_metric = "accuracy"
-feature_importance_theshold = 0.15
+feature_importance_theshold = 0.001
 tag_non_relevant_cats = "other_nr_categories"
 
 

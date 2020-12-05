@@ -6696,3 +6696,519 @@ Fri Dec 4 21:46:21 UTC 2020
 
 
 
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Fri Dec 4 19:50:58 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+** Ingestion module successfully executed **
+
+
+** Tranformation module successfully executed **
+
+
+++ Complete list of features (10) that will be fed to the model:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+    5. dia_inicio_sin
+    6. dia_inicio_cos
+    7. mes_inicio_sin
+    8. mes_inicio_cos
+    9. hora_inicio_sin
+    10. hora_inicio_cos
+
+++ List of categorical features (4) that will be processed through the categoric pipeline are:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+
+++ List of numeric features (6) that will be processed through the numeric pipeline are:
+    1. dia_inicio_sin
+    2. dia_inicio_cos
+    3. mes_inicio_sin
+    4. mes_inicio_cos
+    5. hora_inicio_sin
+    6. hora_inicio_cos
+
+++ Dimensions of matrix after going through pipeline: (1383138, 55)
+
+
+++ The model that will be used is: RandomForestClassifier(max_features=6, max_leaf_nodes=10, n_estimators=10,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+
+
+++ Grid search results:
+
+    ++++ Best parameters: {'criterion': 'gini', 'min_samples_leaf': 3, 'n_estimators': 100}
+    ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=3,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+    ++++ Number of features in best estimator: 55 
+
+    ++++ Best estimator score: 0.7957695418165593
+
+    ++++ Best estimator oob score: 0.7957665596635392
+
+
+++ Threshold used to discriminate variables' importance: 0.15
+
+
+++ Report of processed features importance analysis: 
+    Importance                                        Feature  \
+0     0.282441                accidente-choque sin lesionados   
+1     0.202316                                LLAMADA_911_066   
+2     0.119079                               BOTÓN DE AUXILIO   
+3     0.116007                                          RADIO   
+4     0.087671                accidente-choque con lesionados   
+5     0.081222                          lesionado-atropellado   
+6     0.021185                                hora_inicio_sin   
+7     0.017859                            accidente-volcadura   
+8     0.015683                                           2014   
+9     0.011548                                          REDES   
+10    0.010861                         accidente-motociclista   
+11    0.009274                                hora_inicio_cos   
+12    0.005088                                           2016   
+13    0.003684                                           2017   
+14    0.003010                                         CÁMARA   
+15    0.002229                                           2019   
+16    0.002111                                           2018   
+17    0.001442                                 LLAMADA APP911   
+18    0.001261                                        Viernes   
+19    0.000974                            cadáver-atropellado   
+20    0.000774                 accidente-choque con prensados   
+21    0.000757                                           2015   
+22    0.000646                                        Domingo   
+23    0.000475                                 mes_inicio_cos   
+24    0.000472              cadáver-accidente automovilístico   
+25    0.000408                                 mes_inicio_sin   
+26    0.000359                                          ZELLO   
+27    0.000352                                           2020   
+28    0.000273                                         Sábado   
+29    0.000251            lesionado-accidente automovilístico   
+30    0.000137     accidente-persona atrapada / desbarrancada   
+31    0.000059             accidente-vehículo atrapado-varado   
+32    0.000028          mi ciudad-calle-incidente de tránsito   
+33    0.000027                                    APLICATIVOS   
+34    0.000025                    accidente-vehiculo atrapado   
+35    0.000007                                      Miércoles   
+36    0.000006                                 dia_inicio_sin   
+37    0.000000                             accidente-ciclista   
+38    0.000000                                         Martes   
+39    0.000000                                 dia_inicio_cos   
+40    0.000000                                          Lunes   
+41    0.000000  Detención ciudadana-accidente automovilístico   
+42    0.000000  detención ciudadana-accidente automovilístico   
+43    0.000000                          accidente-ferroviario   
+44    0.000000                                           2013   
+45    0.000000                detención ciudadana-atropellado   
+46    0.000000                                accidente-otros   
+47    0.000000               accidente-vehiculo desbarrancado   
+48    0.000000                      sismo-persona atropellada   
+49    0.000000                    sismo-choque sin lesionados   
+50    0.000000                     sismo-choque con prensados   
+51    0.000000                    sismo-choque con lesionados   
+52    0.000000           mi ciudad-taxi-incidente de tránsito   
+53    0.000000                                         Jueves   
+54    0.000000                            accidente-monopatín   
+
+     Mother_feature  Important  
+0      incidente_c4       True  
+1      tipo_entrada       True  
+2      tipo_entrada      False  
+3      tipo_entrada      False  
+4      incidente_c4      False  
+5      incidente_c4      False  
+6   hora_inicio_sin      False  
+7      incidente_c4      False  
+8       anio_inicio      False  
+9      tipo_entrada      False  
+10     incidente_c4      False  
+11  hora_inicio_cos      False  
+12      anio_inicio      False  
+13      anio_inicio      False  
+14     tipo_entrada      False  
+15      anio_inicio      False  
+16      anio_inicio      False  
+17     tipo_entrada      False  
+18       dia_semana      False  
+19     incidente_c4      False  
+20     incidente_c4      False  
+21      anio_inicio      False  
+22       dia_semana      False  
+23   mes_inicio_cos      False  
+24     incidente_c4      False  
+25   mes_inicio_sin      False  
+26     tipo_entrada      False  
+27      anio_inicio      False  
+28       dia_semana      False  
+29     incidente_c4      False  
+30     incidente_c4      False  
+31     incidente_c4      False  
+32     incidente_c4      False  
+33     tipo_entrada      False  
+34     incidente_c4      False  
+35       dia_semana      False  
+36   dia_inicio_sin      False  
+37     incidente_c4      False  
+38       dia_semana      False  
+39   dia_inicio_cos      False  
+40       dia_semana      False  
+41     incidente_c4      False  
+42     incidente_c4      False  
+43     incidente_c4      False  
+44      anio_inicio      False  
+45     incidente_c4      False  
+46     incidente_c4      False  
+47     incidente_c4      False  
+48     incidente_c4      False  
+49     incidente_c4      False  
+50     incidente_c4      False  
+51     incidente_c4      False  
+52     incidente_c4      False  
+53       dia_semana      False  
+54     incidente_c4      False  
+
+
+++ Summary dictionary derived from feature importance analysis: 
+
+{
+    "incidente_c4": {
+        "data_type": "categoric",
+        "important_categories": [
+            "accidente-choque sin lesionados"
+        ]
+    },
+    "tipo_entrada": {
+        "data_type": "categoric",
+        "important_categories": [
+            "LLAMADA_911_066"
+        ]
+    }
+}
+
+None
+
+
+++ Dimensions of matrix after going through pipeline: (1383138, 4)
+
+
+** Feature engineering module successfully executed **
+
+
+------------------------------------------------
+Fri Dec 4 21:06:31 CST 2020
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Fri Dec 4 21:08:50 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+** Ingestion module successfully executed **
+
+
+** Tranformation module successfully executed **
+
+
+++ Complete list of features (10) that will be fed to the model:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+    5. dia_inicio_sin
+    6. dia_inicio_cos
+    7. mes_inicio_sin
+    8. mes_inicio_cos
+    9. hora_inicio_sin
+    10. hora_inicio_cos
+
+++ List of categorical features (4) that will be processed through the categoric pipeline are:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+
+++ List of numeric features (6) that will be processed through the numeric pipeline are:
+    1. dia_inicio_sin
+    2. dia_inicio_cos
+    3. mes_inicio_sin
+    4. mes_inicio_cos
+    5. hora_inicio_sin
+    6. hora_inicio_cos
+
+++ Dimensions of matrix after going through pipeline: (1383138, 55)
+
+
+++ The model that will be used is: RandomForestClassifier(max_features=6, max_leaf_nodes=10, n_estimators=10,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+
+
+------------------------------------------------
+Fri Dec 4 21:11:51 CST 2020
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+Fri Dec 4 21:12:52 CST 2020
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+** Ingestion module successfully executed **
+
+
+** Tranformation module successfully executed **
+
+
+++ Complete list of features (10) that will be fed to the model:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+    5. dia_inicio_sin
+    6. dia_inicio_cos
+    7. mes_inicio_sin
+    8. mes_inicio_cos
+    9. hora_inicio_sin
+    10. hora_inicio_cos
+
+++ List of categorical features (4) that will be processed through the categoric pipeline are:
+    1. dia_semana
+    2. incidente_c4
+    3. tipo_entrada
+    4. anio_inicio
+
+++ List of numeric features (6) that will be processed through the numeric pipeline are:
+    1. dia_inicio_sin
+    2. dia_inicio_cos
+    3. mes_inicio_sin
+    4. mes_inicio_cos
+    5. hora_inicio_sin
+    6. hora_inicio_cos
+
+++ Dimensions of matrix after going through pipeline: (1383138, 55)
+
+
+++ The model that will be used is: RandomForestClassifier(max_features=6, max_leaf_nodes=10, n_estimators=10,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+
+
+++ Grid search results:
+
+    ++++ Best parameters: {'criterion': 'gini', 'min_samples_leaf': 3, 'n_estimators': 100}
+    ++++ Best estimator: RandomForestClassifier(max_features=6, max_leaf_nodes=10, min_samples_leaf=3,
+                       n_jobs=-1, oob_score=True, random_state=1111)
+    ++++ Number of features in best estimator: 55 
+
+    ++++ Best estimator score: 0.7954639467544178
+
+    ++++ Best estimator oob score: 0.7955176431218473
+
+
+++ Threshold used to discriminate variables' importance: 0.001
+
+
+++ Report of processed features importance analysis: 
+    Importance                                        Feature  \
+0     0.321773                accidente-choque sin lesionados   
+1     0.193473                                LLAMADA_911_066   
+2     0.108386                               BOTÓN DE AUXILIO   
+3     0.104249                                          RADIO   
+4     0.103330                accidente-choque con lesionados   
+5     0.063838                          lesionado-atropellado   
+6     0.017707                                hora_inicio_sin   
+7     0.016889                                           2014   
+8     0.016578                            accidente-volcadura   
+9     0.010948                         accidente-motociclista   
+10    0.010419                                          REDES   
+11    0.008607                                hora_inicio_cos   
+12    0.005150                                           2016   
+13    0.003366                                           2017   
+14    0.002512                                         CÁMARA   
+15    0.002205                                           2019   
+16    0.002086                                           2018   
+17    0.001214                                 LLAMADA APP911   
+18    0.001181                                           2015   
+19    0.000916                            cadáver-atropellado   
+20    0.000820                                        Domingo   
+21    0.000645                                        Viernes   
+22    0.000636                                          ZELLO   
+23    0.000455                                         Sábado   
+24    0.000451                                 mes_inicio_sin   
+25    0.000439                 accidente-choque con prensados   
+26    0.000398            lesionado-accidente automovilístico   
+27    0.000397              cadáver-accidente automovilístico   
+28    0.000357                                 mes_inicio_cos   
+29    0.000161     accidente-persona atrapada / desbarrancada   
+30    0.000153                                           2020   
+31    0.000077             accidente-vehículo atrapado-varado   
+32    0.000056                    accidente-vehiculo atrapado   
+33    0.000039                                accidente-otros   
+34    0.000029                                    APLICATIVOS   
+35    0.000022                    sismo-choque sin lesionados   
+36    0.000017                                         Martes   
+37    0.000016                                 dia_inicio_sin   
+38    0.000009          mi ciudad-calle-incidente de tránsito   
+39    0.000000                             accidente-ciclista   
+40    0.000000                            accidente-monopatín   
+41    0.000000                                           2013   
+42    0.000000                      sismo-persona atropellada   
+43    0.000000  Detención ciudadana-accidente automovilístico   
+44    0.000000                     sismo-choque con prensados   
+45    0.000000                    sismo-choque con lesionados   
+46    0.000000                                      Miércoles   
+47    0.000000           mi ciudad-taxi-incidente de tránsito   
+48    0.000000                                         Jueves   
+49    0.000000               accidente-vehiculo desbarrancado   
+50    0.000000                                 dia_inicio_cos   
+51    0.000000                detención ciudadana-atropellado   
+52    0.000000  detención ciudadana-accidente automovilístico   
+53    0.000000                                          Lunes   
+54    0.000000                          accidente-ferroviario   
+
+     Mother_feature  Important  
+0      incidente_c4       True  
+1      tipo_entrada       True  
+2      tipo_entrada       True  
+3      tipo_entrada       True  
+4      incidente_c4       True  
+5      incidente_c4       True  
+6   hora_inicio_sin       True  
+7       anio_inicio       True  
+8      incidente_c4       True  
+9      incidente_c4       True  
+10     tipo_entrada       True  
+11  hora_inicio_cos       True  
+12      anio_inicio       True  
+13      anio_inicio       True  
+14     tipo_entrada       True  
+15      anio_inicio       True  
+16      anio_inicio       True  
+17     tipo_entrada       True  
+18      anio_inicio       True  
+19     incidente_c4      False  
+20       dia_semana      False  
+21       dia_semana      False  
+22     tipo_entrada      False  
+23       dia_semana      False  
+24   mes_inicio_sin      False  
+25     incidente_c4      False  
+26     incidente_c4      False  
+27     incidente_c4      False  
+28   mes_inicio_cos      False  
+29     incidente_c4      False  
+30      anio_inicio      False  
+31     incidente_c4      False  
+32     incidente_c4      False  
+33     incidente_c4      False  
+34     tipo_entrada      False  
+35     incidente_c4      False  
+36       dia_semana      False  
+37   dia_inicio_sin      False  
+38     incidente_c4      False  
+39     incidente_c4      False  
+40     incidente_c4      False  
+41      anio_inicio      False  
+42     incidente_c4      False  
+43     incidente_c4      False  
+44     incidente_c4      False  
+45     incidente_c4      False  
+46       dia_semana      False  
+47     incidente_c4      False  
+48       dia_semana      False  
+49     incidente_c4      False  
+50   dia_inicio_cos      False  
+51     incidente_c4      False  
+52     incidente_c4      False  
+53       dia_semana      False  
+54     incidente_c4      False  
+
+
+++ Summary dictionary derived from feature importance analysis: 
+
+{
+    "incidente_c4": {
+        "data_type": "categoric",
+        "important_categories": [
+            "accidente-choque sin lesionados",
+            "accidente-choque con lesionados",
+            "lesionado-atropellado",
+            "accidente-volcadura",
+            "accidente-motociclista"
+        ]
+    },
+    "tipo_entrada": {
+        "data_type": "categoric",
+        "important_categories": [
+            "LLAMADA_911_066",
+            "BOTÓN DE AUXILIO",
+            "RADIO",
+            "REDES",
+            "CÁMARA",
+            "LLAMADA APP911"
+        ]
+    },
+    "hora_inicio_sin": {
+        "data_type": "numeric"
+    },
+    "anio_inicio": {
+        "data_type": "categoric",
+        "important_categories": [
+            "2014",
+            "2016",
+            "2017",
+            "2019",
+            "2018",
+            "2015"
+        ]
+    },
+    "hora_inicio_cos": {
+        "data_type": "numeric"
+    }
+}
+
+None
+
+
+++ Dimensions of matrix after going through pipeline: (1383138, 22)
+
+
+** Feature engineering module successfully executed **
+
+
+++The model with the best performance is: random_forest (score: 0.79573)
+
+** Modeling module successfully executed **
+
+
+------------------------------------------------
+Sat Dec 5 07:12:18 CST 2020
+------------------------------------------------
+
+
+
+
