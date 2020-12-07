@@ -49,6 +49,11 @@ y_test_pickle_loc = "outputs/modeling/y_test.pkl"
 test_predict_labs_pickle_loc = "outputs/modeling/test_predict_labs.pkl"
 test_predict_scores_pickle_loc = "outputs/modeling/test_predict_scores.pkl"
 
+## Model evaluation
+metrics_report_pickle_loc = "outputs/model_evaluation/metrics_report.pkl"
+aequitas_df_pickle_loc = "outputs/model_evaluation/aequitas_df.pkl"
+
+
 
 
 
