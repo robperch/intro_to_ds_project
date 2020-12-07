@@ -70,7 +70,7 @@ def recall_at_k(y_true, y_scores, k):
 
 	return recall_score(y_true, y_pred)
 
-def curva_pre_re(y_test,y_scores,k_espe):
+def curva_pre_re(y_test,y_scores):
 	k_values = list(np.arange(0.01, 0.99, 0.01))
 	d = pd.DataFrame(index=range(len(k_values)),columns=['k','precision','recall'])
 	for k in range(len(k_values)):
@@ -79,22 +79,10 @@ def curva_pre_re(y_test,y_scores,k_espe):
 		d['recall'][k]=recall_at_k(y_test,y_scores,k_values[k])
 
 	fig, ax1 = plt.subplots()
-	ax1.plot(d['k'], d['precision'], label='precision@k')
-	ax1.plot(d['k'], d['recall'], label='recall@,')
-	plt.axvline(k_espe,color='r')
-	plt.title("Precision and Recall at k%")
-	plt.xlabel("k%")
-	plt.ylabel("best_value")
+	ax1.plot(d['k'], d['precision'], label='precision')
+	ax1.plot(d['k'], d['recall'], label='recall')
 	plt.legend()
 
-def predicted_labels(y_test,predicted_scores,umbral):
-	dfx = pd.DataFrame(y_test)
-	dfx["1_prob"] = predicted_scores[:, 1]
-	dfx["prob_label"] = dfx["1_prob"].apply(lambda x: 1 if x >= umbral else 0)
-	dfx["correct"] = dfx.apply(lambda x: True if x["label"] == x["prob_label"] else False, axis=1)
-	predicted_labels= dfx['prob_label']
-
-	return predicted_labels 
 
 
 
