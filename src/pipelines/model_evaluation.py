@@ -205,8 +205,6 @@ def model_evaluation(y_test_pickle_loc, test_predict_scores_pickle_loc):
     """
     """
 
-    print("Starting model evaluation!!!")
-
     ## Importing raw entries
     y_test = load_df(y_test_pickle_loc)
     predicted_scores = load_df(test_predict_scores_pickle_loc)
@@ -216,7 +214,7 @@ def model_evaluation(y_test_pickle_loc, test_predict_scores_pickle_loc):
 
     fpr, tpr, thresholds = roc_curve(y_test, predicted_scores[:,1], pos_label=1)
 
-    print("++ Tabla de referencia: \n{}\n".format(tabla_referencia()))
+    print("\n++ Tabla de referencia: \n{}\n".format(tabla_referencia()))
     print("++ Tabla de confusión 1: \n{}\n".format(tabla_confusion(confusion_matrix(y_test, predicted_labels, normalize='all'))))
     print("++ Tabla de confusión 2: \n{}\n".format(tabla_confusion(confusion_matrix(y_test, predicted_labels))))
     print("\n++ Score accuracy: {}\n".format(accuracy_score(y_test, predicted_labels)))
@@ -248,3 +246,15 @@ def model_evaluation(y_test_pickle_loc, test_predict_scores_pickle_loc):
     save_metrics(df_aeq, aequitas_df_pickle_loc)
 
     print("\n** Model evaluation module successfully executed **\n")
+
+
+
+
+
+"------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------"
+#################
+## END OF FILE ##
+#################
+"------------------------------------------------------------------------------"
+"------------------------------------------------------------------------------"
