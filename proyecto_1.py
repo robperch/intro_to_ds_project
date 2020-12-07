@@ -22,7 +22,8 @@ from src.utils.params import (
     fe_pickle_loc_imp_features,
     fe_pickle_loc_feature_labs,
     y_test_pickle_loc,
-    test_predict_scores_pickle_loc
+    test_predict_scores_pickle_loc,
+    aequitas_df_pickle_loc
 )
 
 from src.pipelines.ingestion import (
@@ -43,6 +44,10 @@ from src.pipelines.modeling import (
 
 from src.pipelines.model_evaluation import (
     model_evaluation
+)
+
+from src.pipelines.bias_fairness import (
+    bias_fairness
 )
 
 
@@ -79,6 +84,9 @@ def main():
 
     ## Executing model evaluation functions
     model_evaluation(y_test_pickle_loc, test_predict_scores_pickle_loc)
+
+    ## Executing aequitas analysis
+    bias_fairness(aequitas_df_pickle_loc)
 
 
 
